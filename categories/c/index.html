@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>skytoup blog</title>
+  <title>Category: c | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -86,7 +86,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -208,94 +208,41 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-<section id="intro">
+
+
+<section id="services">
     <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2015-10-02T16:00:00.000Z" itemprop="datePublished">
-          2015-10-03
-      </time>
-    
-</span>
-                <h1></h1>
-            </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2015/08/06/把json转成java、objc的module的小工具/">把json转成java、objc的module的小工具</a></h4>
+                            
+                            <p><time datetime="2015-08-06T12:31:00.000Z"><a href="/2015/08/06/把json转成java、objc的module的小工具/">2015-08-06</a></time></p>
+                        </div>
+                    
+                </div>
+                <nav class="pagination" role="pagination">
+                  
+                  
+                </nav>
+            </div>    
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p>title: MacOs下安装go lang<br>date: 2015-10-03 13:15:00</p>
-<h2 id="category:_Go">category: Go</h2><h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
-<p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://img.blog.csdn.net/20151003131401247" alt="download"><br>下载后，双击进行安装。</p>
-</blockquote>
-<h2 id="2-配置环境变量">2.配置环境变量</h2><blockquote>
-<p>$GOROOT:go lang 安装目录<br>  $GOPATH:go lang 工作目录，有点像Eclipse那样子    </p>
-</blockquote>
-<p>下面开始配置<br>到终端输入以下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile # &#25171;&#24320;&#29615;&#22659;&#21464;&#37327;&#37197;&#32622;</span><br></pre></td></tr></table></figure></p>
-<p>在最下面添加<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export GOPATH=/Users/(&#29992;&#25143;&#21517;/&#36335;&#24452;) # &#25913;&#25104;&#20320;&#21916;&#27426;&#30340;&#36335;&#24452;&#10;export GOROOT=/usr/local/go # &#40664;&#35748;&#23433;&#35013;&#37117;&#24066;&#36825;&#20010;&#36335;&#24452;</span><br></pre></td></tr></table></figure></p>
-<p>添加完毕后，退出vim<br>到终端输入以下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile # &#35753;&#29615;&#22659;&#21464;&#37327;&#37197;&#32622;&#29983;&#25928;</span><br></pre></td></tr></table></figure></p>
-<p>完成后，到$GOPATH的目录下，新建三个文件夹<br><img src="http://img.blog.csdn.net/20151003131439905" alt="new dir"></p>
-<pre><code><span class="attribute">bin</span>:存放编译后的可执行文件;
-<span class="attribute">pkg</span>:存放编译后的包文件;
-<span class="attribute">src</span>:存放项目源文件;
-</code></pre><p>最后，到终端输入以下命令验证时候安装成功:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://img.blog.csdn.net/20151003131454906" alt="go version"><br>出现类似图中则为成功，若不成功，请检测一下你的环境变量配置。</p>
-<h2 id="3-IDE">3.IDE</h2><blockquote>
-<p>一.Sublime Text(个人比较喜欢)<br>安装好SublimeText后，再安装插件管理器，到插件管理器安装处，输入GoSublime，回车安装<br>安装完成后，还要安装一个语法提示插件:<br>到终端输入一下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/nsf/gocode&#10;go install github.com/nsf/gocode</span><br></pre></td></tr></table></figure></p>
-<p>二.LiteIDE<br>下载地址:<a href="http://www.golangtc.com/download/liteide" target="_blank" rel="external">LiteIDE</a></p>
-<blockquote>
-<p><img src="http://img.blog.csdn.net/20151003131512470" alt="LiteIDE"><br>  下载其中一个即可<br>  解压即可用</p>
-</blockquote>
-<p>三.Wide<br>项目地址:<a href="https://github.com/b3log/wide" target="_blank" rel="external">Wide项目</a><br>官网地址:<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a><br>下载后，使用go来运行，在浏览器打开指定的ip和端口即可使用(详情请参考<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a>)</p>
-</blockquote>
-<h2 id="4-学习Go_lang">4.学习Go lang</h2><ul>
-<li>官方教程:<a href="http://tour.studygolang.com/welcome/1" target="_blank" rel="external">免翻墙</a></li>
-<li>Go语言中文网:<a href="http://studygolang.com/" target="_blank" rel="external">Go语言中文网</a></li>
-<li>GoLang中国:<a href="http://www.golangtc.com/" target="_blank" rel="external">GoLang中国</a></li>
-</ul>
+    </div>
+</section> 
 
-            </br>
-            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
-            <div class="clearfix"></div>
-            <hr class="nogutter">
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>永无止境</p>
         </div>
-        <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2015/11/26/IntelliJ-IDEA开发golang环境配置/" style="float: left;">
-        ← IntelliJ IDEA开发golang环境配置
-    </a>
-    
-    
-    <a class="pull-right" href="/2015/08/27/iOS-metaio虚拟现实-位置-demo/">
-        iOS metaio虚拟现实-位置 demo →
-    </a>
-    
-</nav>
-
-        <div class="duoshuo"><div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//skytoupblog.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
     </div>
 </section>
-
-
       
 <!-- ============================ Footer =========================== -->
 

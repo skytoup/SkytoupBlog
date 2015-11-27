@@ -4,7 +4,7 @@
   <subtitle><![CDATA[分享个人经验]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2015-11-27T09:23:39.000Z</updated>
+  <updated>2015-11-27T09:29:17.000Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -15,13 +15,12 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title><![CDATA[IntelliJ IDEA开发golang环境配置]]></title>
     <link href="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA%E5%BC%80%E5%8F%91golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/</id>
-    <published>2015-11-25T16:00:00.000Z</published>
-    <updated>2015-11-27T09:23:39.000Z</updated>
-    <content type="html"><![CDATA[<p>title: IntelliJ IDEA开发golang环境配置<br>date: 2015-11-26 22:50:00</p>
-<h2 id="category:_Go">category: Go</h2><p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
+    <published>2015-11-26T14:50:00.000Z</published>
+    <updated>2015-11-27T09:29:17.000Z</updated>
+    <content type="html"><![CDATA[<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
 <p>好了下面开始了</p>
 <ol>
 <li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://blog.csdn.net/skytoup/article/details/48877839" target="_blank" rel="external">MAC安装GO</a>）</li>
@@ -52,9 +51,13 @@
 </ol>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: IntelliJ IDEA开发golang环境配置<br>date: 2015-11-26 22:50:00</p>
-<h2 id="category:_Go">category: Go</h2><p>看到一篇文章说IntelliJ IDEA开发作为Go的开发]]>
+    <![CDATA[<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
+<p>好了下面开始了</p>
+<ol>
+<li>首先把<code>GO</code>安装好]]>
     </summary>
+    
+      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
     
   </entry>
   
@@ -63,7 +66,7 @@
     <link href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
     <id>http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/</id>
     <published>2015-10-02T16:00:00.000Z</published>
-    <updated>2015-11-27T09:23:44.000Z</updated>
+    <updated>2015-11-27T09:29:21.000Z</updated>
     <content type="html"><![CDATA[<p>title: MacOs下安装go lang<br>date: 2015-10-03 13:15:00</p>
 <h2 id="category:_Go">category: Go</h2><h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
 <p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://img.blog.csdn.net/20151003131401247" alt="download"><br>下载后，双击进行安装。</p>
@@ -103,49 +106,12 @@
   </entry>
   
   <entry>
-    <title><![CDATA[iOS价格日历]]></title>
-    <link href="http://skytoup.wicp.net/2015/08/27/iOS%E4%BB%B7%E6%A0%BC%E6%97%A5%E5%8E%86/"/>
-    <id>http://skytoup.wicp.net/2015/08/27/iOS价格日历/</id>
-    <published>2015-08-27T02:17:00.000Z</published>
-    <updated>2015-11-27T07:52:35.000Z</updated>
-    <content type="html"><![CDATA[<pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。
-</code></pre><h1 id="SkyCalendarPriceView">SkyCalendarPriceView</h1><hr>
-<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p>github地址 : <a href="https://github.com/skytoup/SkyCalendarPriceView" target="_blank" rel="external">https://github.com/skytoup/SkyCalendarPriceView</a></p>
-<p><img src="https://github.com/skytoup/SkyCalendarPriceView/raw/master/1.gif" alt="GIF"></p>
-<h2 id="简介">简介</h2><p>一个可以自定义样式的价格日历</p>
-<ul>
-<li>高度封装，简单使用，传入对应的数据模型即可显示</li>
-<li>灵活度高，大部分view的样式可调整</li>
-<li>显示的文字可自定义处理，也可以自定义和系统处理一起使用</li>
-<li>可在Xib或StoryBoard中拖拽使用，也支持自动布局，也可以手写固定的Frame</li>
-<li>支持旋屏</li>
-</ul>
-<hr>
-<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyCalendarPriceView.h</code> 导入项目。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"SkyCalendarPriceView.h"</span></span></span><br></pre></td></tr></table></figure></p>
-<h3 id="基本使用">基本使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建价格日历</span></span><br><span class="line">SkyCalendarPriceView *v = [SkyCalendarPriceView calendarPriceView];</span><br><span class="line">   <span class="comment">// 创建数据模型</span></span><br><span class="line">   SkyCalendarPriceModel *model = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">3</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">30</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   SkyCalendarPriceModel *model2 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">9</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">10</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   SkyCalendarPriceModel *model3 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">7</span>) withDay:@(<span class="number">24</span>) withPrice:@(<span class="number">20</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   <span class="comment">// 导入数据模型</span></span><br><span class="line">   _v<span class="variable">.datas</span> = @[model, model2, model3];</span><br><span class="line">   <span class="comment">// 设置今天的时间，可不设置</span></span><br><span class="line">   _v<span class="variable">.today</span> = [<span class="built_in">NSDate</span> date];</span><br></pre></td></tr></table></figure>
-<h3 id="定制样式">定制样式</h3><p>详情请看<a href="SkyCalendarPriceView/SkyCalendarPriceViewConfig.h">SkyCalendarPriceViewConfig.h</a></p>
-<h3 id="代码修改部分view样式">代码修改部分view样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可通过调用以下几个方法</span></span><br><span class="line"></span><br><span class="line">SkyCalendarHeader</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfYearMonthViewStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UIView</span> *view))block</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfWeekLabelsStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">NSArray</span> *labels))block;</span><br><span class="line"></span><br><span class="line">SkyCalendarCell</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitCellStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UICollectionViewCell</span> *cell))block;</span><br></pre></td></tr></table></figure>
-<h3 id="自定义显示的数据样式">自定义显示的数据样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行显示自定义的数据样式</span></span><br><span class="line">- (<span class="built_in">NSDictionary</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDataStringDictionaryWithIndexPath:(<span class="built_in">NSIndexPath</span>*)indexPath withYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withPrice:(<span class="built_in">NSString</span>*)price withCount:(<span class="built_in">NSString</span>*)count withIsToday:(<span class="built_in">BOOL</span>)isToady;</span><br><span class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDayStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withIsToday:(<span class="built_in">BOOL</span>)isToday;</span><br><span class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView *)cview headerLabelStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month;</span><br></pre></td></tr></table></figure>
-<h3 id="若不需要header停留在顶部">若不需要header停留在顶部</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 更换默认布局（注:Xib或StoryBoard中，需手动在代码或面板里设置Layout，设置的Layout需要为UICollectionViewFlowLayout的子类）</span></span><br><span class="line">skyCalendarPriceView<span class="variable">.collectionViewLayout</span> = [<span class="built_in">UICollectionViewFlowLayout</span> new];</span><br></pre></td></tr></table></figure>
-<h3 id="监听选中/取消选中日期">监听选中/取消选中日期</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行监听</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview shouldSelectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</span><br><span class="line">- (<span class="keyword">void</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview didUnselectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。
-</code></pre><h1 id="SkyCalendarPriceView">SkyCalendarPriceView</h1><hr>
-<h2 id="测试环境：Xcode_6]]>
-    </summary>
-    
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
+    <title><![CDATA[iOS metaio虚拟现实-位置 demo]]></title>
     <link href="http://skytoup.wicp.net/2015/08/27/iOS-metaio%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E-%E4%BD%8D%E7%BD%AE-demo/"/>
     <id>http://skytoup.wicp.net/2015/08/27/iOS-metaio虚拟现实-位置-demo/</id>
-    <published>2015-08-26T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:27.000Z</updated>
-    <content type="html"><![CDATA[<p>title: iOS metaio虚拟现实-位置 demo<br>date: 2015-08-27 12:13:00</p>
-<h2 id="category:_iOS">category: iOS</h2><h1 id="LocationARTest">LocationARTest</h1><h3 id="测试环境：Xcode_6，iOS_7-0(真机)以上。">测试环境：Xcode 6，iOS 7.0(真机)以上。</h3><p>基于Metaio的demo修改出来的，查看周边的美食</p>
+    <published>2015-08-27T04:13:00.000Z</published>
+    <updated>2015-11-27T09:29:28.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="LocationARTest">LocationARTest</h1><h3 id="测试环境：Xcode_6，iOS_7-0(真机)以上。">测试环境：Xcode 6，iOS 7.0(真机)以上。</h3><p>基于Metaio的demo修改出来的，查看周边的美食</p>
 <p>github链接 : <a href="https://github.com/skytoup/LocationARTest" target="_blank" rel="external">https://github.com/skytoup/LocationARTest</a></p>
 <p><img src="https://github.com/skytoup/LocationARTest/raw/master/1.gif" alt="GIF"></p>
 <h2 id="注意">注意</h2><p>本demo不能直接运行</p>
@@ -168,41 +134,76 @@
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: iOS metaio虚拟现实-位置 demo<br>date: 2015-08-27 12:13:00</p>
-<h2 id="category:_iOS">category: iOS</h2><h1 id="LocationARTest">LocationA]]>
+    <![CDATA[<h1 id="LocationARTest">LocationARTest</h1><h3 id="测试环境：Xcode_6，iOS_7-0(真机)以上。">测试环境：Xcode 6，iOS 7.0(真机)以上。</h3><p>基于Metaio的demo修改出来的，查看周边的美]]>
     </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[iOS价格日历]]></title>
+    <link href="http://skytoup.wicp.net/2015/08/27/iOS%E4%BB%B7%E6%A0%BC%E6%97%A5%E5%8E%86/"/>
+    <id>http://skytoup.wicp.net/2015/08/27/iOS价格日历/</id>
+    <published>2015-08-27T02:17:00.000Z</published>
+    <updated>2015-11-27T09:29:25.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="SkyCalendarPriceView">SkyCalendarPriceView</h1><hr>
+<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p>github地址 : <a href="https://github.com/skytoup/SkyCalendarPriceView" target="_blank" rel="external">https://github.com/skytoup/SkyCalendarPriceView</a></p>
+<p><img src="https://github.com/skytoup/SkyCalendarPriceView/raw/master/1.gif" alt="GIF"></p>
+<h2 id="简介">简介</h2><p>一个可以自定义样式的价格日历</p>
+<ul>
+<li>高度封装，简单使用，传入对应的数据模型即可显示</li>
+<li>灵活度高，大部分view的样式可调整</li>
+<li>显示的文字可自定义处理，也可以自定义和系统处理一起使用</li>
+<li>可在Xib或StoryBoard中拖拽使用，也支持自动布局，也可以手写固定的Frame</li>
+<li>支持旋屏</li>
+</ul>
+<hr>
+<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyCalendarPriceView.h</code> 导入项目。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"SkyCalendarPriceView.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="基本使用">基本使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建价格日历</span></span><br><span class="line">SkyCalendarPriceView *v = [SkyCalendarPriceView calendarPriceView];</span><br><span class="line">   <span class="comment">// 创建数据模型</span></span><br><span class="line">   SkyCalendarPriceModel *model = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">3</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">30</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   SkyCalendarPriceModel *model2 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">9</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">10</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   SkyCalendarPriceModel *model3 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">7</span>) withDay:@(<span class="number">24</span>) withPrice:@(<span class="number">20</span>) withCount:@(<span class="number">10</span>)];</span><br><span class="line">   <span class="comment">// 导入数据模型</span></span><br><span class="line">   _v<span class="variable">.datas</span> = @[model, model2, model3];</span><br><span class="line">   <span class="comment">// 设置今天的时间，可不设置</span></span><br><span class="line">   _v<span class="variable">.today</span> = [<span class="built_in">NSDate</span> date];</span><br></pre></td></tr></table></figure>
+<h3 id="定制样式">定制样式</h3><p>详情请看<a href="SkyCalendarPriceView/SkyCalendarPriceViewConfig.h">SkyCalendarPriceViewConfig.h</a></p>
+<h3 id="代码修改部分view样式">代码修改部分view样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可通过调用以下几个方法</span></span><br><span class="line"></span><br><span class="line">SkyCalendarHeader</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfYearMonthViewStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UIView</span> *view))block</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfWeekLabelsStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">NSArray</span> *labels))block;</span><br><span class="line"></span><br><span class="line">SkyCalendarCell</span><br><span class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitCellStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UICollectionViewCell</span> *cell))block;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义显示的数据样式">自定义显示的数据样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行显示自定义的数据样式</span></span><br><span class="line">- (<span class="built_in">NSDictionary</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDataStringDictionaryWithIndexPath:(<span class="built_in">NSIndexPath</span>*)indexPath withYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withPrice:(<span class="built_in">NSString</span>*)price withCount:(<span class="built_in">NSString</span>*)count withIsToday:(<span class="built_in">BOOL</span>)isToady;</span><br><span class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDayStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withIsToday:(<span class="built_in">BOOL</span>)isToday;</span><br><span class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView *)cview headerLabelStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month;</span><br></pre></td></tr></table></figure>
+<h3 id="若不需要header停留在顶部">若不需要header停留在顶部</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 更换默认布局（注:Xib或StoryBoard中，需手动在代码或面板里设置Layout，设置的Layout需要为UICollectionViewFlowLayout的子类）</span></span><br><span class="line">skyCalendarPriceView<span class="variable">.collectionViewLayout</span> = [<span class="built_in">UICollectionViewFlowLayout</span> new];</span><br></pre></td></tr></table></figure>
+<h3 id="监听选中/取消选中日期">监听选中/取消选中日期</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行监听</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview shouldSelectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</span><br><span class="line">- (<span class="keyword">void</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview didUnselectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="SkyCalendarPriceView">SkyCalendarPriceView</h1><hr>
+<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p>github地址 : <a hr]]>
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[iOS UIView自定义四个边角的圆角]]></title>
     <link href="http://skytoup.wicp.net/2015/08/12/UIView%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9B%E4%B8%AA%E8%BE%B9%E8%A7%92%E7%9A%84%E5%9C%86%E8%A7%92/"/>
     <id>http://skytoup.wicp.net/2015/08/12/UIView自定义四个边角的圆角/</id>
-    <published>2015-08-11T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:26.000Z</updated>
-    <content type="html"><![CDATA[<p>title: iOS UIView自定义四个边角的圆角<br>date: 2015-08-12 07:28:00</p>
-<h2 id="category:_iOS">category: iOS</h2><p>UIView背景色的四个边角自定义成圆角</p>
+    <published>2015-08-11T23:28:00.000Z</published>
+    <updated>2015-11-27T09:29:32.000Z</updated>
+    <content type="html"><![CDATA[<p>UIView背景色的四个边角自定义成圆角</p>
 <p>比较简单，没什么好介绍的</p>
 <p>GitHub链接：<a href="https://github.com/skytoup/SkyRadiusView" target="_blank" rel="external">https://github.com/skytoup/SkyRadiusView</a></p>
 <p>测试环境：Xcode 6，iOS 7.0以上 </p>
 <p><img src="http://img.blog.csdn.net/20150812072718059" alt="gif"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: iOS UIView自定义四个边角的圆角<br>date: 2015-08-12 07:28:00</p>
-<h2 id="category:_iOS">category: iOS</h2><p>UIView背景色的四个边角自定义成圆角</p>
-<p>比较简单]]>
+    <![CDATA[<p>UIView背景色的四个边角自定义成圆角</p>
+<p>比较简单，没什么好介绍的</p>
+<p>GitHub链接：<a href="https://github.com/skytoup/SkyRadiusView" target="_blank" rel="external]]>
     </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[把json转成java、objc的module的小工具]]></title>
     <link href="http://skytoup.wicp.net/2015/08/06/%E6%8A%8Ajson%E8%BD%AC%E6%88%90java%E3%80%81objc%E7%9A%84module%E7%9A%84%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
     <id>http://skytoup.wicp.net/2015/08/06/把json转成java、objc的module的小工具/</id>
-    <published>2015-08-05T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:25.000Z</updated>
-    <content type="html"><![CDATA[<p>title: 把json转成java、objc的module的小工具<br>date: 2015-08-06 20:31:00</p>
-<h2 id="category:_c">category: c</h2><h3 id="简介">简介</h3><pre><code>一个把json文件，转换为java、objcetive-c的<span class="class"><span class="keyword">module</span>文件。</span>
+    <published>2015-08-06T12:31:00.000Z</published>
+    <updated>2015-11-27T09:29:35.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="简介">简介</h3><pre><code>一个把json文件，转换为java、objcetive-c的<span class="class"><span class="keyword">module</span>文件。</span>
 暂不支持一个array的下一级，还是array
 简单方便地处理后台返回的json数据，不必要一个一个字段复制到<span class="class"><span class="keyword">module</span>类上。</span>
 </code></pre><h3 id="github">github</h3><pre><code>[<span class="link_label">json2module</span>](<span class="link_url">https://github.com/skytoup/JsonToModule</span>)
@@ -231,20 +232,21 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test
 json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span class="tag">p</span> test<span class="class">.com</span><span class="class">.hehe</span> --objc --java
 </code></pre>]]></content>
     <summary type="html">
-    <![CDATA[<p>title: 把json转成java、objc的module的小工具<br>date: 2015-08-06 20:31:00</p>
-<h2 id="category:_c">category: c</h2><h3 id="简介">简介</h3><pre><code>一个]]>
+    <![CDATA[<h3 id="简介">简介</h3><pre><code>一个把json文件，转换为java、objcetive-c的<span class="class"><span class="keyword">module</span>文件。</span>
+暂不支持一个array的下一]]>
     </summary>
+    
+      <category term="c" scheme="http://skytoup.wicp.net/categories/c/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[记录一下iOS的几个UIView的方法]]></title>
     <link href="http://skytoup.wicp.net/2015/08/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8BiOS%E7%9A%84%E5%87%A0%E4%B8%AAUIView%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>http://skytoup.wicp.net/2015/08/04/记录一下iOS的几个UIView的方法/</id>
-    <published>2015-08-03T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:25.000Z</updated>
-    <content type="html"><![CDATA[<p>title: 记录一下iOS的几个UIView的方法<br>date: 2015-08-04 21:42:00</p>
-<h2 id="category:_iOS">category: iOS</h2><p>在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。<br>如果出现错误的地方，希望大家指出，谢谢。</p>
+    <published>2015-08-04T13:42:00.000Z</published>
+    <updated>2015-11-27T09:29:38.000Z</updated>
+    <content type="html"><![CDATA[<p>在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。<br>如果出现错误的地方，希望大家指出，谢谢。</p>
 <h3 id="UIView:">UIView:</h3><p>`// 重写此方法，当约束更新时，可更新你的特殊约束，别忘记调用super方法</p>
 <ul>
 <li>(void)updateConstraints;`</li>
@@ -277,9 +279,11 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: 记录一下iOS的几个UIView的方法<br>date: 2015-08-04 21:42:00</p>
-<h2 id="category:_iOS">category: iOS</h2><p>在用自动布局的时候，老是忘记更新Constraint使用哪个方法，]]>
+    <![CDATA[<p>在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。<br>如果出现错误的地方，希望大家指出，谢谢。</p>
+<h3 id="UIView:">UIView:</h3><p>`// 重写此方法，当约束更新时，可更新你的特殊约束]]>
     </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
     
   </entry>
   
@@ -288,9 +292,8 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     <link href="http://skytoup.wicp.net/2015/07/06/iOS%E4%B8%80%E4%B8%AA%E5%B8%A6%E5%8A%A8%E7%94%BB%E7%9A%84%E7%AD%89%E5%BE%85%E6%8C%87%E7%A4%BA%E5%99%A8/"/>
     <id>http://skytoup.wicp.net/2015/07/06/iOS一个带动画的等待指示器/</id>
     <published>2015-07-06T07:59:00.000Z</published>
-    <updated>2015-11-27T07:50:11.000Z</updated>
-    <content type="html"><![CDATA[<pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。
-</code></pre><h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接</a>）</h1><hr>
+    <updated>2015-11-27T09:29:01.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接</a>）</h1><hr>
 <h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p><img src="https://raw.githubusercontent.com/skytoup/SkyWaitingView/master/1.gif" alt="GIF"></p>
 <h2 id="简介">简介</h2><p>一个简单的等待指示器</p>
 <ul>
@@ -312,8 +315,7 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。
-</code></pre><h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/sky]]>
+    <![CDATA[<h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接]]>
     </summary>
     
       <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
@@ -321,13 +323,12 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[数据结构-链表]]></title>
     <link href="http://skytoup.wicp.net/2015/06/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/"/>
     <id>http://skytoup.wicp.net/2015/06/20/数据结构-链表/</id>
-    <published>2015-06-19T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:24.000Z</updated>
-    <content type="html"><![CDATA[<p>title: 数据结构-链表<br>date: 2015-06-20 15:54:00</p>
-<h2 id="category:_数据结构">category: 数据结构</h2><h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。</p>
+    <published>2015-06-20T07:54:00.000Z</published>
+    <updated>2015-11-27T09:29:44.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。</p>
 <p><code>链表的结构如下图（画得不是很好）：</code><br><img src="http://img.blog.csdn.net/20150620152944636" alt="链表示意图"></p>
 <p>这是一个双向链表，可以通过每一个节点，找到它的上一个节点，或者下一个节点。<br>如果为单向链表，则节点没有pre这个成员变量。</p>
 <p>节点的结构体定义：<br>struct link_node {<br>    struct link_node <em>next; // 前一个节点<br>    struct link_node </em>pre; // 后一个节点<br>    void *val; // 节点值<br>};</p>
@@ -349,29 +350,31 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
 <p><img src="http://img.blog.csdn.net/20150620155207116" alt="栈"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: 数据结构-链表<br>date: 2015-06-20 15:54:00</p>
-<h2 id="category:_数据结构">category: 数据结构</h2><h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结]]>
+    <![CDATA[<h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。</p>
+<p><code>链表的结构如下图（画得不是很好）：</code><br><img src="http://i]]>
     </summary>
+    
+      <category term="数据结构" scheme="http://skytoup.wicp.net/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[iOS三级联想菜单（SkyAssociationMenuView）]]></title>
     <link href="http://skytoup.wicp.net/2015/06/19/iOS%E4%B8%89%E7%BA%A7%E8%81%94%E6%83%B3%E8%8F%9C%E5%8D%95%EF%BC%88SkyAssociationMenuView%EF%BC%89/"/>
     <id>http://skytoup.wicp.net/2015/06/19/iOS三级联想菜单（SkyAssociationMenuView）/</id>
-    <published>2015-06-18T16:00:00.000Z</published>
-    <updated>2015-11-27T09:22:23.000Z</updated>
-    <content type="html"><![CDATA[<p>title: iOS三级联想菜单（SkyAssociationMenuView）<br>date: 2015-06-19 14:14:00</p>
-<h2 id="category:_iOS">category: iOS</h2><h1 id="三级联想菜单（SkyAssociationMenuView）">三级联想菜单（SkyAssociationMenuView）</h1><h3 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h3><p>以前做一个项目准备用来当做地区选择用的，后来没用上。。。。。</p>
+    <published>2015-06-19T06:14:00.000Z</published>
+    <updated>2015-11-27T09:29:47.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="三级联想菜单（SkyAssociationMenuView）">三级联想菜单（SkyAssociationMenuView）</h1><h3 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h3><p>以前做一个项目准备用来当做地区选择用的，后来没用上。。。。。</p>
 <p>只是粗略的实现了一下，写得不是很好，望大家见谅。。。。。</p>
 <p>github：<a href="https://github.com/skytoup/SkyAssociationMenuView" target="_blank" rel="external">https://github.com/skytoup/SkyAssociationMenuView</a></p>
 <p>效果图：</p>
 <p><img src="https://raw.githubusercontent.com/skytoup/SkyAssociationMenuView/master/1.gif" alt="GIF"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: iOS三级联想菜单（SkyAssociationMenuView）<br>date: 2015-06-19 14:14:00</p>
-<h2 id="category:_iOS">category: iOS</h2><h1 id="三级联想菜单（SkyAsso]]>
+    <![CDATA[<h1 id="三级联想菜单（SkyAssociationMenuView）">三级联想菜单（SkyAssociationMenuView）</h1><h3 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h3><p>以]]>
     </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
     
   </entry>
   
