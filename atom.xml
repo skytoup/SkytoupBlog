@@ -62,13 +62,12 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title><![CDATA[MacOs下安装go lang]]></title>
     <link href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
     <id>http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/</id>
-    <published>2015-10-02T16:00:00.000Z</published>
-    <updated>2015-11-27T09:29:21.000Z</updated>
-    <content type="html"><![CDATA[<p>title: MacOs下安装go lang<br>date: 2015-10-03 13:15:00</p>
-<h2 id="category:_Go">category: Go</h2><h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
+    <published>2015-10-03T05:15:00.000Z</published>
+    <updated>2015-11-27T09:34:28.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
 <p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://img.blog.csdn.net/20151003131401247" alt="download"><br>下载后，双击进行安装。</p>
 </blockquote>
 <h2 id="2-配置环境变量">2.配置环境变量</h2><blockquote>
@@ -98,10 +97,11 @@
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: MacOs下安装go lang<br>date: 2015-10-03 13:15:00</p>
-<h2 id="category:_Go">category: Go</h2><h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
-]]>
+    <![CDATA[<h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
+<p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击]]>
     </summary>
+    
+      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
     
   </entry>
   
