@@ -259,28 +259,57 @@
     
 </nav>
 
-        <div class="duoshuo"><div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-iOS价格日历" data-title="iOS价格日历" data-url="http://skytoup.wicp.net/2015/08/27/iOS价格日历/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
-s.src = '//skytoupblog.disqus.com/embed.js';
 
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-iOS价格日历" data-title="iOS价格日历" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;SkyCalendarPriceView&quot;&gt;SkyCalendarPriceView&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;测试环境：Xcode_6，iOS_7-0以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0以上。&lt;/h2&gt;&lt;p&gt;github地址 : &lt;a href=&quot;https://github.com/skytoup/SkyCalendarPriceView&quot;&gt;https://github.com/skytoup/SkyCalendarPriceView&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/skytoup/SkyCalendarPriceView/raw/master/1.gif&quot; alt=&quot;GIF&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;&lt;p&gt;一个可以自定义样式的价格日历&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高度封装，简单使用，传入对应的数据模型即可显示&lt;/li&gt;
+&lt;li&gt;灵活度高，大部分view的样式可调整&lt;/li&gt;
+&lt;li&gt;显示的文字可自定义处理，也可以自定义和系统处理一起使用&lt;/li&gt;
+&lt;li&gt;可在Xib或StoryBoard中拖拽使用，也支持自动布局，也可以手写固定的Frame&lt;/li&gt;
+&lt;li&gt;支持旋屏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;&lt;p&gt;把头文件 &lt;code&gt;SkyCalendarPriceView.h&lt;/code&gt; 导入项目。&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;#import &lt;span class=&quot;title&quot;&gt;&quot;SkyCalendarPriceView.h&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;基本使用&quot;&gt;基本使用&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 创建价格日历&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SkyCalendarPriceView *v = [SkyCalendarPriceView calendarPriceView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 创建数据模型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SkyCalendarPriceModel *model = [SkyCalendarPriceModel calendarPriceModelWithYear:@(&lt;span class=&quot;number&quot;&gt;2015&lt;/span&gt;) withMonth:@(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) withDay:@(&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;) withPrice:@(&lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;) withCount:@(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SkyCalendarPriceModel *model2 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(&lt;span class=&quot;number&quot;&gt;2015&lt;/span&gt;) withMonth:@(&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;) withDay:@(&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;) withPrice:@(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;) withCount:@(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   SkyCalendarPriceModel *model3 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(&lt;span class=&quot;number&quot;&gt;2015&lt;/span&gt;) withMonth:@(&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;) withDay:@(&lt;span class=&quot;number&quot;&gt;24&lt;/span&gt;) withPrice:@(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;) withCount:@(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 导入数据模型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   _v&lt;span class=&quot;variable&quot;&gt;.datas&lt;/span&gt; = @[model, model2, model3];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;// 设置今天的时间，可不设置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   _v&lt;span class=&quot;variable&quot;&gt;.today&lt;/span&gt; = [&lt;span class=&quot;built_in&quot;&gt;NSDate&lt;/span&gt; date];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;定制样式&quot;&gt;定制样式&lt;/h3&gt;&lt;p&gt;详情请看&lt;a href=&quot;SkyCalendarPriceView/SkyCalendarPriceViewConfig.h&quot;&gt;SkyCalendarPriceViewConfig.h&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;代码修改部分view样式&quot;&gt;代码修改部分view样式&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 可通过调用以下几个方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SkyCalendarHeader&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)SkyCalendarPriceViewInitHeaderViewOfYearMonthViewStyleWithBlock:(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;(^)(&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; *view))block&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)SkyCalendarPriceViewInitHeaderViewOfWeekLabelsStyleWithBlock:(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;(^)(&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; *labels))block;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SkyCalendarCell&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)SkyCalendarPriceViewInitCellStyleWithBlock:(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;(^)(&lt;span class=&quot;built_in&quot;&gt;UICollectionViewCell&lt;/span&gt; *cell))block;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;自定义显示的数据样式&quot;&gt;自定义显示的数据样式&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 通过实现SkyCalendarPriceViewDelegate的方法进行显示自定义的数据样式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt;*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDataStringDictionaryWithIndexPath:(&lt;span class=&quot;built_in&quot;&gt;NSIndexPath&lt;/span&gt;*)indexPath withYear:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)year withMonth:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)month withDay:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)day withPrice:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)price withCount:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)count withIsToday:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)isToady;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDayStringWithYear:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)year withMonth:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)month withDay:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)day withIsToday:(&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)isToday;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)skyCalendarPriceView:(SkyCalendarPriceView *)cview headerLabelStringWithYear:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)year withMonth:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt;*)month;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;若不需要header停留在顶部&quot;&gt;若不需要header停留在顶部&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 更换默认布局（注:Xib或StoryBoard中，需手动在代码或面板里设置Layout，设置的Layout需要为UICollectionViewFlowLayout的子类）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;skyCalendarPriceView&lt;span class=&quot;variable&quot;&gt;.collectionViewLayout&lt;/span&gt; = [&lt;span class=&quot;built_in&quot;&gt;UICollectionViewFlowLayout&lt;/span&gt; new];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;监听选中/取消选中日期&quot;&gt;监听选中/取消选中日期&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 通过实现SkyCalendarPriceViewDelegate的方法进行监听&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)skyCalendarPriceView:(SkyCalendarPriceView*)cview shouldSelectIndexWithPriceModel:(SkyCalendarPriceModel*)model;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)skyCalendarPriceView:(SkyCalendarPriceView*)cview didUnselectIndexWithPriceModel:(SkyCalendarPriceModel*)model;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;" data-url="http://skytoup.wicp.net/2015/08/27/iOS价格日历/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

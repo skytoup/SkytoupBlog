@@ -261,28 +261,59 @@
     
 </nav>
 
-        <div class="duoshuo"><div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-iOS一个带动画的等待指示器" data-title="iOS一个带动画的等待指示器" data-url="http://skytoup.wicp.net/2015/07/06/iOS一个带动画的等待指示器/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
-s.src = '//skytoupblog.disqus.com/embed.js';
 
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-iOS一个带动画的等待指示器" data-title="iOS一个带动画的等待指示器" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;SkyWaitingView（github链接）&quot;&gt;SkyWaitingView（&lt;a href=&quot;https://github.com/skytoup/SkyWaitingView&quot;&gt;github链接&lt;/a&gt;）&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;测试环境：Xcode_6，iOS_7-0以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0以上。&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/skytoup/SkyWaitingView/master/1.gif&quot; alt=&quot;GIF&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;&lt;p&gt;一个简单的等待指示器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可自定义圆弧粗细、颜色、旋转速率&lt;/li&gt;
+&lt;li&gt;可自定义标签显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;&lt;p&gt;把头文件 &lt;code&gt;SkyWaitingView.h&lt;/code&gt; 导入项目，然后设置各属性，具体使用方法请参考示例项目。&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;SkyCircleWatingView *v = [SkyCircleWatingView new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v&lt;span class=&quot;variable&quot;&gt;.frame&lt;/span&gt; = &lt;span class=&quot;built_in&quot;&gt;CGRectMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, baseY, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[v sizeToFit];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;.view&lt;/span&gt; addSubview:v];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;v&lt;span class=&quot;variable&quot;&gt;.rate&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[v start];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;关于我&quot;&gt;关于我&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一枚普通的即将大三的珠海大学生&lt;/li&gt;
+&lt;li&gt;希望大三实习、毕业的工作地方都在珠海&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;联系方式&quot;&gt;联系方式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;QQ：875766917，请备注&lt;/li&gt;
+&lt;li&gt;QQMail：875766917@qq.com&lt;/li&gt;
+&lt;/ul&gt;
+" data-url="http://skytoup.wicp.net/2015/07/06/iOS一个带动画的等待指示器/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
     </div>
 </section>
 
