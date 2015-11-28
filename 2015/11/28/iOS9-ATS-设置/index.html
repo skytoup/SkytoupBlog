@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>iOS一个带动画的等待指示器 | skytoup blog</title>
+  <title>iOS9 ATS 设置 | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -213,35 +213,35 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2015-07-06T07:59:00.000Z" itemprop="datePublished">
-          2015-07-06
+      <time datetime="2015-11-28T03:07:01.000Z" itemprop="datePublished">
+          2015-11-28
       </time>
     
 </span>
-                <h1>iOS一个带动画的等待指示器</h1>
+                <h1>iOS9 ATS 设置</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接</a>）</h1><hr>
-<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p><img src="https://raw.githubusercontent.com/skytoup/SkyWaitingView/master/1.gif" alt="GIF"></p>
-<h2 id="简介">简介</h2><p>一个简单的等待指示器</p>
-<ul>
-<li>可自定义圆弧粗细、颜色、旋转速率</li>
-<li>可自定义标签显示</li>
-</ul>
-<hr>
-<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyWaitingView.h</code> 导入项目，然后设置各属性，具体使用方法请参考示例项目。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SkyCircleWatingView *v = [SkyCircleWatingView new];</span><br><span class="line">v<span class="variable">.frame</span> = <span class="built_in">CGRectMake</span>(<span class="number">50</span>, baseY, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">[v sizeToFit];</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.view</span> addSubview:v];</span><br><span class="line">v<span class="variable">.rate</span> = <span class="number">1.</span>f;</span><br><span class="line">[v start];</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="关于我">关于我</h2><ul>
-<li>一枚普通的即将大三的珠海大学生</li>
-<li>希望大三实习、毕业的工作地方都在珠海</li>
-</ul>
-<hr>
-<h2 id="联系方式">联系方式</h2><ul>
-<li>QQ：875766917，请备注</li>
-<li>QQMail：875766917@qq.com</li>
-</ul>
+      		<p>iOS9有一个新特性–ATS(App Transport Security)，加强了一下App网络传输安全。</p>
+<h2 id="官方文档描述:"><a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14" target="_blank" rel="external">官方文档描述</a>:</h2><blockquote>
+<p>App Transport Security (ATS) enforces best practices in the secure connections between an app and its back end. ATS prevents accidental disclosure, provides secure default behavior, and is easy to adopt; it is also on by default in iOS 9 and OS X v10.11. You should adopt ATS as soon as possible, regardless of whether you’re creating a new app or updating an existing one.</p>
+<p>If you’re developing a new app, you should use HTTPS exclusively. If you have an existing app, you should use HTTPS as much as you can right now, and create a plan for migrating the rest of your app as soon as possible. In addition, your communication through higher-level APIs needs to be encrypted using TLS version 1.2 with forward secrecy. If you try to make a connection that doesn’t follow this requirement, an error is thrown. If your app needs to make a request to an insecure domain, you have to specify this domain in your app’s Info.plist file.</p>
+</blockquote>
+<pre><code>大概意思就是iOS9和OS X <span class="number">10.11</span>不能直接使用HTTP，只能使用HTTPS，现在开始，最好计划好迁移工作。
+</code></pre><p>实际上，没有强制一定要使用HTTPS，如果需要使用HTTP，可以到Info.plist文件配置一下。</p>
+<h3 id="ATS基本使用(大概用Json格式表示)">ATS基本使用(大概用Json格式表示)</h3><ol>
+<li>在Info.plist的Information Property List下添加NSAppTransportSecurity，类型是Dictionary。</li>
+<li>在NSAppTransportSecurity下添加NSAllowsArbitraryLoads，类型是Boolean，值是YES。</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">NSAppTransportSecurity</span>:<span class="value"> &#123;</span><br><span class="line">		NSAllowsArbitraryLoads : YES</span><br><span class="line">	</span></span></span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>大概意思就是，配置ATS，设置为允许使用任意的HTTP/HTTPS。
+</code></pre><h3 id="ATS进阶使用(大概用Json格式表示)">ATS进阶使用(大概用Json格式表示)</h3><p>1、允许单个服务器的HTTP连接:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、允许单个服务器的HTTPS使用较低的安全协议</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionRequiresForwardSecrecy : NO,</span><br><span class="line">				NSExceptionMinimumTLSVersion : TLSv1.0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、使用ATS，且允许使用HTTP访问指定的服务器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		NSAllowsArbitraryLoads : YES</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、指定服务器使用ATS，其余的不使用<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	NSAppTransportSecurity: &#123;</span><br><span class="line">		NSAllowsArbitraryLoads = YES,</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			使用HTTPS访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : NO</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
             </br>
             <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
@@ -250,13 +250,9 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/08/04/记录一下iOS的几个UIView的方法/" style="float: left;">
-        ← 记录一下iOS的几个UIView的方法
-    </a>
     
-    
-    <a class="pull-right" href="/2015/06/20/数据结构-链表/">
-        数据结构-链表 →
+    <a class="pull-right" href="/2015/11/26/IntelliJ-IDEA开发golang环境配置/">
+        IntelliJ IDEA开发golang环境配置 →
     </a>
     
 </nav>

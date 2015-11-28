@@ -4,7 +4,7 @@
   <subtitle><![CDATA[分享个人经验]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2015-11-27T09:29:17.000Z</updated>
+  <updated>2015-11-28T10:32:18.000Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -15,26 +15,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[iOS9 ATS 设置]]></title>
+    <link href="http://skytoup.wicp.net/2015/11/28/iOS9-ATS-%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://skytoup.wicp.net/2015/11/28/iOS9-ATS-设置/</id>
+    <published>2015-11-28T03:07:01.000Z</published>
+    <updated>2015-11-28T10:32:18.000Z</updated>
+    <content type="html"><![CDATA[<p>iOS9有一个新特性–ATS(App Transport Security)，加强了一下App网络传输安全。</p>
+<h2 id="官方文档描述:"><a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14" target="_blank" rel="external">官方文档描述</a>:</h2><blockquote>
+<p>App Transport Security (ATS) enforces best practices in the secure connections between an app and its back end. ATS prevents accidental disclosure, provides secure default behavior, and is easy to adopt; it is also on by default in iOS 9 and OS X v10.11. You should adopt ATS as soon as possible, regardless of whether you’re creating a new app or updating an existing one.</p>
+<p>If you’re developing a new app, you should use HTTPS exclusively. If you have an existing app, you should use HTTPS as much as you can right now, and create a plan for migrating the rest of your app as soon as possible. In addition, your communication through higher-level APIs needs to be encrypted using TLS version 1.2 with forward secrecy. If you try to make a connection that doesn’t follow this requirement, an error is thrown. If your app needs to make a request to an insecure domain, you have to specify this domain in your app’s Info.plist file.</p>
+</blockquote>
+<pre><code>大概意思就是iOS9和OS X <span class="number">10.11</span>不能直接使用HTTP，只能使用HTTPS，现在开始，最好计划好迁移工作。
+</code></pre><p>实际上，没有强制一定要使用HTTPS，如果需要使用HTTP，可以到Info.plist文件配置一下。</p>
+<h3 id="ATS基本使用(大概用Json格式表示)">ATS基本使用(大概用Json格式表示)</h3><ol>
+<li>在Info.plist的Information Property List下添加NSAppTransportSecurity，类型是Dictionary。</li>
+<li>在NSAppTransportSecurity下添加NSAllowsArbitraryLoads，类型是Boolean，值是YES。</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">NSAppTransportSecurity</span>:<span class="value"> &#123;</span><br><span class="line">		NSAllowsArbitraryLoads : YES</span><br><span class="line">	</span></span></span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>大概意思就是，配置ATS，设置为允许使用任意的HTTP/HTTPS。
+</code></pre><h3 id="ATS进阶使用(大概用Json格式表示)">ATS进阶使用(大概用Json格式表示)</h3><p>1、允许单个服务器的HTTP连接:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、允许单个服务器的HTTPS使用较低的安全协议</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionRequiresForwardSecrecy : NO,</span><br><span class="line">				NSExceptionMinimumTLSVersion : TLSv1.0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、使用ATS，且允许使用HTTP访问指定的服务器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	AppTransportSecurity: &#123;</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			允许HTTP访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		NSAllowsArbitraryLoads : YES</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、指定服务器使用ATS，其余的不使用<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	NSAppTransportSecurity: &#123;</span><br><span class="line">		NSAllowsArbitraryLoads = YES,</span><br><span class="line">		NSExceptionDomains: &#123;</span><br><span class="line">			使用HTTPS访问的地址: &#123;</span><br><span class="line">				NSExceptionAllowsInsecureHTTPLoads : NO</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>iOS9有一个新特性–ATS(App Transport Security)，加强了一下App网络传输安全。</p>
+<h2 id="官方文档描述:"><a href="https://developer.apple.com/library/prerelease/ios/r]]>
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[IntelliJ IDEA开发golang环境配置]]></title>
     <link href="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA%E5%BC%80%E5%8F%91golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <id>http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/</id>
     <published>2015-11-26T14:50:00.000Z</published>
-    <updated>2015-11-27T09:29:17.000Z</updated>
+    <updated>2015-11-28T03:37:57.000Z</updated>
     <content type="html"><![CDATA[<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
 <p>好了下面开始了</p>
 <ol>
-<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://blog.csdn.net/skytoup/article/details/48877839" target="_blank" rel="external">MAC安装GO</a>）</li>
+<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/">MAC安装GO</a>）</li>
 <li>安装<code>IntelliJ IDEA</code>，下载地址: <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="external">https://www.jetbrains.com/idea/download/</a>。</li>
 <li>下载<code>go-lang-idea-plugin</code>这个插件，下载地址: <a href="https://plugins.jetbrains.com/plugin/5047" target="_blank" rel="external">https://plugins.jetbrains.com/plugin/5047</a>。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)</li>
-<li><p>下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开<code>Preferences-&gt;Plugins</code>，点击<code>Install plugin from disk...</code>，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。<br><img src="http://img.blog.csdn.net/20151126221741634" alt="install plugin"></p>
+<li><p>下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开<code>Preferences-&gt;Plugins</code>，点击<code>Install plugin from disk...</code>，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg" alt="install plugin"></p>
 </li>
-<li><p>打开<code>File-&gt;Project Structure...</code>，找不到的随便打开一个项目就能看到。点击<code>SDKS</code>，新建一个<code>GO SDK</code>，填上<code>GO</code>的安装目录。<br><img src="http://img.blog.csdn.net/20151126221854291" alt="SDKS"></p>
+<li><p>打开<code>File-&gt;Project Structure...</code>，找不到的随便打开一个项目就能看到。点击<code>SDKS</code>，新建一个<code>GO SDK</code>，填上<code>GO</code>的安装目录。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221854291.jpg" alt="SDKS"></p>
 </li>
 </ol>
-<p><img src="http://img.blog.csdn.net/20151126221922557" alt="Setting SDKS"></p>
-<p>使用:随便新建一个Go项目，点击<code>Edit Configurations...</code>，新建一个<code>Go Application</code>，右边<code>File</code>你的<code>pack main</code>包含<code>func main</code>的文件，<code>Output directory</code>为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。<br><img src="http://img.blog.csdn.net/20151126222007589" alt="img"></p>
-<p><img src="http://img.blog.csdn.net/20151126222027329" alt="img"></p>
-<p><img src="http://img.blog.csdn.net/20151126222042301" alt="img"></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221922557.jpg" alt="Setting SDKS"></p>
+<p>使用:随便新建一个Go项目，点击<code>Edit Configurations...</code>，新建一个<code>Go Application</code>，右边<code>File</code>你的<code>pack main</code>包含<code>func main</code>的文件，<code>Output directory</code>为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222007589.jpg" alt="img"></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222027329.jpg" alt="img"></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222042301.jpg" alt="img"></p>
 <p>接下来来点IntelliJ IDEA的快捷键吧(我的是Mac OSX) :</p>
 <ol>
 <li>CMD+Shift+O    查找跳转文件</li>
@@ -66,9 +102,9 @@
     <link href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
     <id>http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/</id>
     <published>2015-10-03T05:15:00.000Z</published>
-    <updated>2015-11-27T09:34:28.000Z</updated>
+    <updated>2015-11-28T03:41:14.000Z</updated>
     <content type="html"><![CDATA[<h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
-<p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://img.blog.csdn.net/20151003131401247" alt="download"><br>下载后，双击进行安装。</p>
+<p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131401247.jpg" alt="download"><br>下载后，双击进行安装。</p>
 </blockquote>
 <h2 id="2-配置环境变量">2.配置环境变量</h2><blockquote>
 <p>$GOROOT:go lang 安装目录<br>  $GOPATH:go lang 工作目录，有点像Eclipse那样子    </p>
@@ -76,17 +112,17 @@
 <p>下面开始配置<br>到终端输入以下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bash_profile # &#25171;&#24320;&#29615;&#22659;&#21464;&#37327;&#37197;&#32622;</span><br></pre></td></tr></table></figure></p>
 <p>在最下面添加<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export GOPATH=/Users/(&#29992;&#25143;&#21517;/&#36335;&#24452;) # &#25913;&#25104;&#20320;&#21916;&#27426;&#30340;&#36335;&#24452;&#10;export GOROOT=/usr/local/go # &#40664;&#35748;&#23433;&#35013;&#37117;&#24066;&#36825;&#20010;&#36335;&#24452;</span><br></pre></td></tr></table></figure></p>
 <p>添加完毕后，退出vim<br>到终端输入以下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile # &#35753;&#29615;&#22659;&#21464;&#37327;&#37197;&#32622;&#29983;&#25928;</span><br></pre></td></tr></table></figure></p>
-<p>完成后，到$GOPATH的目录下，新建三个文件夹<br><img src="http://img.blog.csdn.net/20151003131439905" alt="new dir"></p>
+<p>完成后，到$GOPATH的目录下，新建三个文件夹<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131439905.jpg" alt="new dir"></p>
 <pre><code><span class="attribute">bin</span>:存放编译后的可执行文件;
 <span class="attribute">pkg</span>:存放编译后的包文件;
 <span class="attribute">src</span>:存放项目源文件;
 </code></pre><p>最后，到终端输入以下命令验证时候安装成功:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://img.blog.csdn.net/20151003131454906" alt="go version"><br>出现类似图中则为成功，若不成功，请检测一下你的环境变量配置。</p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131454906.jpg" alt="go version"><br>出现类似图中则为成功，若不成功，请检测一下你的环境变量配置。</p>
 <h2 id="3-IDE">3.IDE</h2><blockquote>
 <p>一.Sublime Text(个人比较喜欢)<br>安装好SublimeText后，再安装插件管理器，到插件管理器安装处，输入GoSublime，回车安装<br>安装完成后，还要安装一个语法提示插件:<br>到终端输入一下命令:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/nsf/gocode&#10;go install github.com/nsf/gocode</span><br></pre></td></tr></table></figure></p>
 <p>二.LiteIDE<br>下载地址:<a href="http://www.golangtc.com/download/liteide" target="_blank" rel="external">LiteIDE</a></p>
 <blockquote>
-<p><img src="http://img.blog.csdn.net/20151003131512470" alt="LiteIDE"><br>  下载其中一个即可<br>  解压即可用</p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131512470.jpg" alt="LiteIDE"><br>  下载其中一个即可<br>  解压即可用</p>
 </blockquote>
 <p>三.Wide<br>项目地址:<a href="https://github.com/b3log/wide" target="_blank" rel="external">Wide项目</a><br>官网地址:<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a><br>下载后，使用go来运行，在浏览器打开指定的ip和端口即可使用(详情请参考<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a>)</p>
 </blockquote>
