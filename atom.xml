@@ -4,7 +4,7 @@
   <subtitle><![CDATA[分享个人经验]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2015-12-09T15:52:18.000Z</updated>
+  <updated>2015-12-09T15:53:28.000Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://skytoup.wicp.net/2015/12/09/React-Native-%E4%B9%8B-Atom%E9%85%8D%E7%BD%AEnuclide%E6%8F%92%E4%BB%B6/"/>
     <id>http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/</id>
     <published>2015-12-09T15:45:36.000Z</published>
-    <updated>2015-12-09T15:52:18.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="React_Native_之_Atom配置nuclide插件">React Native 之 Atom配置nuclide插件</h1><ol>
+    <updated>2015-12-09T15:53:28.000Z</updated>
+    <content type="html"><![CDATA[<ol>
 <li>首先下载<a href="https://atom.io" target="_blank" rel="external">Atom</a>，下载地址:<a href="https://atom.io" target="_blank" rel="external">https://atom.io</a></li>
 <li>打开<code>Atom</code>，在右上角<code>Atom</code>的菜单处选择<code>Install Shell Comments</code>(安装apm)<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png" alt="shell"></li>
 <li><p>到github下载一下<code>nuclide</code>，直接用git或者下载zip文件解压。</p>
@@ -54,8 +54,8 @@ apm link
 <p>接下来就可以好好享受Atom了~~~</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="React_Native_之_Atom配置nuclide插件">React Native 之 Atom配置nuclide插件</h1><ol>
-<li>首先下载<a href="https://atom.io" target="_blank" rel="exter]]>
+    <![CDATA[<ol>
+<li>首先下载<a href="https://atom.io" target="_blank" rel="external">Atom</a>，下载地址:<a href="https://atom.io" target="_blank" rel="external"]]>
     </summary>
     
       <category term="React" scheme="http://skytoup.wicp.net/categories/React/"/>
