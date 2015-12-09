@@ -4,7 +4,7 @@
   <subtitle><![CDATA[分享个人经验]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2015-11-28T10:32:18.000Z</updated>
+  <updated>2015-12-09T15:52:18.000Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -13,6 +13,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[React Native 之 Atom配置nuclide插件]]></title>
+    <link href="http://skytoup.wicp.net/2015/12/09/React-Native-%E4%B9%8B-Atom%E9%85%8D%E7%BD%AEnuclide%E6%8F%92%E4%BB%B6/"/>
+    <id>http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/</id>
+    <published>2015-12-09T15:45:36.000Z</published>
+    <updated>2015-12-09T15:52:18.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="React_Native_之_Atom配置nuclide插件">React Native 之 Atom配置nuclide插件</h1><ol>
+<li>首先下载<a href="https://atom.io" target="_blank" rel="external">Atom</a>，下载地址:<a href="https://atom.io" target="_blank" rel="external">https://atom.io</a></li>
+<li>打开<code>Atom</code>，在右上角<code>Atom</code>的菜单处选择<code>Install Shell Comments</code>(安装apm)<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png" alt="shell"></li>
+<li><p>到github下载一下<code>nuclide</code>，直接用git或者下载zip文件解压。</p>
+<pre><code>项目地址: <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+git命令: git clone <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+</code></pre></li>
+<li><p>安装<code>nuclide</code>前，需要电脑有以下环境</p>
+<pre><code>- python <span class="number">2.6</span> <span class="operator">or</span> later
+- Atom <span class="number">0.209</span>.<span class="number">0</span> <span class="operator">or</span> later
+- <span class="keyword">Node</span><span class="identifier"> </span><span class="title">0</span>.<span class="number">12.0</span> <span class="operator">or</span> latr
+- <span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>、apm、git在你的$PATH
+(<span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>可通过安装<span class="keyword">node</span>.<span class="identifier"></span><span class="title">js</span>来安装)
+</code></pre><p>执行一下命令</p>
+<pre><code>cd nuclide
+./script/dev/setup
+<span class="preprocessor"># 上面的命令会通过npm下载东西，可能比较久</span>
+apm link
+<span class="preprocessor"># 注意，上面的命令是把当前目录 软链接 到 ~/.atom/packages 目录下，所以安装完了之后，别把nuclide这个文件夹删了！！！</span>
+</code></pre><p> 搞定之后，打开Atom试一下是否安装成功，如果不成功，<code>Atom</code>会提示你rebuild插件，我也不知道什么问题，我安装的时候失败了，点了几次rebuild就突然成功了。</p>
+</li>
+<li><p>配置一下<code>nuclide-flow</code>吧，这个插件可以检测语法错误，<code>CMD+左键点击</code>跳转。</p>
+<p> 使用这个插件之前，请先安装<code>flow</code>，安装完之后，到<code>Atom</code>的<code>Setting-Packages</code>，找到<code>nuclide</code>的插件，进入设置里面，滚动到<code>nuclide-flow</code>插件的设置，把flow的位置填上，根据个人喜好打上几个选项的钩。<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.13.png" alt="flow_1"><br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.33.png" alt="flow_1"></p>
+</li>
+<li><p>另外有几个插件也不错</p>
+<pre><code>-<span class="ruby"> atom-beautify 代码格式化
+</span>-<span class="ruby"> atomerminal 打开终端，pwd为当前文件所在路径
+</span>-<span class="ruby"> docblockr 写注释的插件</span>
+</code></pre><p> 可以通过<code>apm install xxx</code>来安装，如<code>apm install atom-beautify</code>。</p>
+</li>
+</ol>
+<p>接下来就可以好好享受Atom了~~~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="React_Native_之_Atom配置nuclide插件">React Native 之 Atom配置nuclide插件</h1><ol>
+<li>首先下载<a href="https://atom.io" target="_blank" rel="exter]]>
+    </summary>
+    
+      <category term="React" scheme="http://skytoup.wicp.net/categories/React/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[iOS9 ATS 设置]]></title>
