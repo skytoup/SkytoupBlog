@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>React Native 之 Atom配置nuclide插件 | skytoup的blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="skytoup的blog">
+    <meta name="author" content="skytoup">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="skytoup的blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Go/" class="animsition-link">Go<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/React/" class="animsition-link">React<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/node-js/" class="animsition-link">node.js<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/数据结构/" class="animsition-link">数据结构<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">关于</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">skytoup的blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">更多</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/bg.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>分享经验，共同进步</br><span>Wellcome</sapn></br></h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-12-09T15:45:36.000Z" itemprop="datePublished">
+          2015-12-09
+      </time>
+    
+</span>
+                <h1>React Native 之 Atom配置nuclide插件</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<ol>
+<li>首先下载<a href="https://atom.io" target="_blank" rel="external">Atom</a>，下载地址:<a href="https://atom.io" target="_blank" rel="external">https://atom.io</a></li>
+<li>打开<code>Atom</code>，在右上角<code>Atom</code>的菜单处选择<code>Install Shell Comments</code>(安装apm)<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png" alt="shell"></li>
+<li><p>到github下载一下<code>nuclide</code>，直接用git或者下载zip文件解压。</p>
+<pre><code>项目地址: <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+git命令: git clone <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+</code></pre></li>
+<li><p>安装<code>nuclide</code>前，需要电脑有以下环境</p>
+<pre><code>- python <span class="number">2.6</span> <span class="operator">or</span> later
+- Atom <span class="number">0.209</span>.<span class="number">0</span> <span class="operator">or</span> later
+- <span class="keyword">Node</span><span class="identifier"> </span><span class="title">0</span>.<span class="number">12.0</span> <span class="operator">or</span> latr
+- <span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>、apm、git在你的$PATH
+(<span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>可通过安装<span class="keyword">node</span>.<span class="identifier"></span><span class="title">js</span>来安装)
+</code></pre><p>执行一下命令</p>
+<pre><code>cd nuclide
+./script/dev/setup
+<span class="preprocessor"># 上面的命令会通过npm下载东西，可能比较久</span>
+apm link
+<span class="preprocessor"># 注意，上面的命令是把当前目录 软链接 到 ~/.atom/packages 目录下，所以安装完了之后，别把nuclide这个文件夹删了！！！</span>
+</code></pre><p> 搞定之后，打开Atom试一下是否安装成功，如果不成功，<code>Atom</code>会提示你rebuild插件，我也不知道什么问题，我安装的时候失败了，点了几次rebuild就突然成功了。</p>
+</li>
+<li><p>配置一下<code>nuclide-flow</code>吧，这个插件可以检测语法错误，<code>CMD+左键点击</code>跳转。</p>
+<p> 使用这个插件之前，请先安装<code>flow</code>，安装完之后，到<code>Atom</code>的<code>Setting-Packages</code>，找到<code>nuclide</code>的插件，进入设置里面，滚动到<code>nuclide-flow</code>插件的设置，把flow的位置填上，根据个人喜好打上几个选项的钩。<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.13.png" alt="flow_1"><br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.33.png" alt="flow_1"></p>
+</li>
+<li><p>另外有几个插件也不错</p>
+<pre><code>-<span class="ruby"> atom-beautify 代码格式化
+</span>-<span class="ruby"> atomerminal 打开终端，pwd为当前文件所在路径
+</span>-<span class="ruby"> docblockr 写注释的插件</span>
+</code></pre><p> 可以通过<code>apm install xxx</code>来安装，如<code>apm install atom-beautify</code>。</p>
+</li>
+</ol>
+<p>接下来就可以好好享受Atom了~~~</p>
+
+            </br>
+            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2015/12/24/React-Native搭建Redux框架/" style="float: left;">
+        ← React-Native搭建Redux框架
+    </a>
+    
+    
+    <a class="pull-right" href="/2015/11/28/iOS9-ATS-设置/">
+        iOS9 ATS 设置 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-React-Native-之-Atom配置nuclide插件" data-title="React Native 之 Atom配置nuclide插件" data-url="http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-React-Native-之-Atom配置nuclide插件" data-title="React Native 之 Atom配置nuclide插件" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;ol&gt;
+&lt;li&gt;首先下载&lt;a href=&quot;https://atom.io&quot;&gt;Atom&lt;/a&gt;，下载地址:&lt;a href=&quot;https://atom.io&quot;&gt;https://atom.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;打开&lt;code&gt;Atom&lt;/code&gt;，在右上角&lt;code&gt;Atom&lt;/code&gt;的菜单处选择&lt;code&gt;Install Shell Comments&lt;/code&gt;(安装apm)&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png&quot; alt=&quot;shell&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到github下载一下&lt;code&gt;nuclide&lt;/code&gt;，直接用git或者下载zip文件解压。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;项目地址: &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/facebook/nuclide&lt;/span&gt;
+git命令: git clone &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/facebook/nuclide&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;code&gt;nuclide&lt;/code&gt;前，需要电脑有以下环境&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- python &lt;span class=&quot;number&quot;&gt;2.6&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; later
+- Atom &lt;span class=&quot;number&quot;&gt;0.209&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; later
+- &lt;span class=&quot;keyword&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt; &lt;/span&gt;&lt;span class=&quot;title&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;12.0&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; latr
+- &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;、npm&lt;/span&gt;、apm、git在你的$PATH
+(&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;、npm&lt;/span&gt;可通过安装&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;.&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;js&lt;/span&gt;来安装)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行一下命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd nuclide
+./script/dev/setup
+&lt;span class=&quot;preprocessor&quot;&gt;# 上面的命令会通过npm下载东西，可能比较久&lt;/span&gt;
+apm link
+&lt;span class=&quot;preprocessor&quot;&gt;# 注意，上面的命令是把当前目录 软链接 到 ~/.atom/packages 目录下，所以安装完了之后，别把nuclide这个文件夹删了！！！&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 搞定之后，打开Atom试一下是否安装成功，如果不成功，&lt;code&gt;Atom&lt;/code&gt;会提示你rebuild插件，我也不知道什么问题，我安装的时候失败了，点了几次rebuild就突然成功了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置一下&lt;code&gt;nuclide-flow&lt;/code&gt;吧，这个插件可以检测语法错误，&lt;code&gt;CMD+左键点击&lt;/code&gt;跳转。&lt;/p&gt;
+&lt;p&gt; 使用这个插件之前，请先安装&lt;code&gt;flow&lt;/code&gt;，安装完之后，到&lt;code&gt;Atom&lt;/code&gt;的&lt;code&gt;Setting-Packages&lt;/code&gt;，找到&lt;code&gt;nuclide&lt;/code&gt;的插件，进入设置里面，滚动到&lt;code&gt;nuclide-flow&lt;/code&gt;插件的设置，把flow的位置填上，根据个人喜好打上几个选项的钩。&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.13.png&quot; alt=&quot;flow_1&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.33.png&quot; alt=&quot;flow_1&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;另外有几个插件也不错&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; atom-beautify 代码格式化
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; atomerminal 打开终端，pwd为当前文件所在路径
+&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; docblockr 写注释的插件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 可以通过&lt;code&gt;apm install xxx&lt;/code&gt;来安装，如&lt;code&gt;apm install atom-beautify&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来就可以好好享受Atom了~~~&lt;/p&gt;
+" data-url="http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By skytoup. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- busuanzi -->
+            <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <!-- busuanzi -->
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

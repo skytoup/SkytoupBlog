@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>React-Native搭建Redux框架 | skytoup的blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="skytoup的blog">
+    <meta name="author" content="skytoup">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="skytoup的blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Go/" class="animsition-link">Go<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/React/" class="animsition-link">React<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/node-js/" class="animsition-link">node.js<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/数据结构/" class="animsition-link">数据结构<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">关于</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">skytoup的blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">更多</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/bg.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>分享经验，共同进步</br><span>Wellcome</sapn></br></h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-12-23T22:44:23.000Z" itemprop="datePublished">
+          2015-12-24
+      </time>
+    
+</span>
+                <h1>React-Native搭建Redux框架</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<blockquote>
+<p>近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。</p>
+<p>查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。</p>
+<p>选好框架之后，发现框架的介绍资料很少，而且没有搭建的教程，只好自己做一下实验了。经过无数次实验、踩坑，终于成功了……..</p>
+<p>注: 我是一个iOS程序员，不太懂大前端，为了学习react-native，react只是随便学习了一点基础，若本文有错，望你能指出    </p>
+</blockquote>
+<p>下面分享一下成果:</p>
+<h3 id="1-_搭建基本React-Native项目">1. 搭建基本React-Native项目</h3><p>很简单，大家都会，一句命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init 你的项目名称</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-_添加框架模块">2. 添加框架模块</h3><p>新建完成基本项目后，打开package.json，在dependencies下，添加<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;react-redux&#34;: &#34;^3.1.2&#34;&#10;```&#9;&#10;&#10;&#9;&#26377;&#20154;&#25110;&#35768;&#24819;&#38382;&#65292;&#26368;&#26032;&#30340;`react-redux`&#26368;&#26032;&#29256;&#19981;&#26159;4.x&#20040;&#65311;&#20026;&#20160;&#20040;&#19981;&#29992;&#26368;&#26032;&#30340;&#12290;&#9;&#10;&#9;&#36825;&#26159;&#19968;&#20010;&#22353;&#65292;&#21040;github&#30340;&#39033;&#30446;&#20027;&#39029;&#30475;&#19979;&#38754;&#30340;&#25991;&#26723;&#65292;&#37324;&#38754;&#35828;4.x&#19981;&#25903;&#25345;`react-native`&#65292;&#35831;&#20351;&#29992;3.x&#30340;&#12290;&#10;&#9;&#10;&#28155;&#21152;&#23436;&#25104;&#21518;&#65292;&#32487;&#32493;&#36755;&#20837;&#19968;&#19979;&#21629;&#20196;&#65306;&#10;```bash&#10;npm i # &#23433;&#35013;&#21018;&#25165;&#28155;&#21152;&#30340;&#39033;&#30446;&#10;npm install --save redux&#10;npm install --save redux-thunk</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-_修改项目结构">3. 修改项目结构</h3><pre><code>以下是我的目录结构
+├── <span class="tag">App</span>
+│   ├── <span class="tag">Action</span>
+│   ├── <span class="tag">Component</span>
+│   ├── <span class="tag">Container</span>
+│   ├── <span class="tag">Reducer</span>
+│   ├── <span class="tag">Store</span>
+│   └── <span class="tag">Main</span><span class="class">.js</span>
+</code></pre><h3 id="4-创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)">4.创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)</h3><pre><code>这里就不详细说了，简单说一下搭建时，编辑文件的顺序估计就可以了，详细的编写内容，到我的github上<span class="built_in">clone</span>一下示例项目就好了。
+</code></pre><p>新建Action –&gt;&gt; 新建Redicer –&gt;&gt; 新建Store –&gt;&gt; 新建Main.js入口 –&gt;&gt; 修改android和iOS的入口文件(即项目根目录的index.xxx.js)</p>
+<p>基本就是这样子了~</p>
+<pre><code>最后附上详细代码的github地址: <span class="string">https:</span><span class="comment">//github.com/skytoup/react-native_ReduxTest</span>
+</code></pre><p>本文参考:    </p>
+<ol>
+<li>react-native的Redux示例: <a href="https://github.com/chentsulin/react-native-counter-ios-android" target="_blank" rel="external">https://github.com/chentsulin/react-native-counter-ios-android</a></li>
+</ol>
+
+            </br>
+            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2016/01/25/Node-js的BT下载/" style="float: left;">
+        ← Node.js的BT下载
+    </a>
+    
+    
+    <a class="pull-right" href="/2015/12/09/React-Native-之-Atom配置nuclide插件/">
+        React Native 之 Atom配置nuclide插件 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-React-Native搭建Redux框架" data-title="React-Native搭建Redux框架" data-url="http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-React-Native搭建Redux框架" data-title="React-Native搭建Redux框架" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;blockquote&gt;
+&lt;p&gt;近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。&lt;/p&gt;
+&lt;p&gt;查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。&lt;/p&gt;
+&lt;p&gt;选好框架之后，发现框架的介绍资料很少，而且没有搭建的教程，只好自己做一下实验了。经过无数次实验、踩坑，终于成功了……..&lt;/p&gt;
+&lt;p&gt;注: 我是一个iOS程序员，不太懂大前端，为了学习react-native，react只是随便学习了一点基础，若本文有错，望你能指出    &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面分享一下成果:&lt;/p&gt;
+&lt;h3 id=&quot;1-_搭建基本React-Native项目&quot;&gt;1. 搭建基本React-Native项目&lt;/h3&gt;&lt;p&gt;很简单，大家都会，一句命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;react-native init 你的项目名称&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-_添加框架模块&quot;&gt;2. 添加框架模块&lt;/h3&gt;&lt;p&gt;新建完成基本项目后，打开package.json，在dependencies下，添加&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#34;react-redux&amp;#34;: &amp;#34;^3.1.2&amp;#34;&amp;#10;```&amp;#9;&amp;#10;&amp;#10;&amp;#9;&amp;#26377;&amp;#20154;&amp;#25110;&amp;#35768;&amp;#24819;&amp;#38382;&amp;#65292;&amp;#26368;&amp;#26032;&amp;#30340;`react-redux`&amp;#26368;&amp;#26032;&amp;#29256;&amp;#19981;&amp;#26159;4.x&amp;#20040;&amp;#65311;&amp;#20026;&amp;#20160;&amp;#20040;&amp;#19981;&amp;#29992;&amp;#26368;&amp;#26032;&amp;#30340;&amp;#12290;&amp;#9;&amp;#10;&amp;#9;&amp;#36825;&amp;#26159;&amp;#19968;&amp;#20010;&amp;#22353;&amp;#65292;&amp;#21040;github&amp;#30340;&amp;#39033;&amp;#30446;&amp;#20027;&amp;#39029;&amp;#30475;&amp;#19979;&amp;#38754;&amp;#30340;&amp;#25991;&amp;#26723;&amp;#65292;&amp;#37324;&amp;#38754;&amp;#35828;4.x&amp;#19981;&amp;#25903;&amp;#25345;`react-native`&amp;#65292;&amp;#35831;&amp;#20351;&amp;#29992;3.x&amp;#30340;&amp;#12290;&amp;#10;&amp;#9;&amp;#10;&amp;#28155;&amp;#21152;&amp;#23436;&amp;#25104;&amp;#21518;&amp;#65292;&amp;#32487;&amp;#32493;&amp;#36755;&amp;#20837;&amp;#19968;&amp;#19979;&amp;#21629;&amp;#20196;&amp;#65306;&amp;#10;```bash&amp;#10;npm i # &amp;#23433;&amp;#35013;&amp;#21018;&amp;#25165;&amp;#28155;&amp;#21152;&amp;#30340;&amp;#39033;&amp;#30446;&amp;#10;npm install --save redux&amp;#10;npm install --save redux-thunk&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;3-_修改项目结构&quot;&gt;3. 修改项目结构&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;以下是我的目录结构
+├── &lt;span class=&quot;tag&quot;&gt;App&lt;/span&gt;
+│   ├── &lt;span class=&quot;tag&quot;&gt;Action&lt;/span&gt;
+│   ├── &lt;span class=&quot;tag&quot;&gt;Component&lt;/span&gt;
+│   ├── &lt;span class=&quot;tag&quot;&gt;Container&lt;/span&gt;
+│   ├── &lt;span class=&quot;tag&quot;&gt;Reducer&lt;/span&gt;
+│   ├── &lt;span class=&quot;tag&quot;&gt;Store&lt;/span&gt;
+│   └── &lt;span class=&quot;tag&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.js&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)&quot;&gt;4.创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;这里就不详细说了，简单说一下搭建时，编辑文件的顺序估计就可以了，详细的编写内容，到我的github上&lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt;一下示例项目就好了。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;新建Action –&amp;gt;&amp;gt; 新建Redicer –&amp;gt;&amp;gt; 新建Store –&amp;gt;&amp;gt; 新建Main.js入口 –&amp;gt;&amp;gt; 修改android和iOS的入口文件(即项目根目录的index.xxx.js)&lt;/p&gt;
+&lt;p&gt;基本就是这样子了~&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;最后附上详细代码的github地址: &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/skytoup/react-native_ReduxTest&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;本文参考:    &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;react-native的Redux示例: &lt;a href=&quot;https://github.com/chentsulin/react-native-counter-ios-android&quot;&gt;https://github.com/chentsulin/react-native-counter-ios-android&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+" data-url="http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By skytoup. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- busuanzi -->
+            <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <!-- busuanzi -->
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

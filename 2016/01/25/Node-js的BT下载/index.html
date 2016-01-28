@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>Node.js的BT下载 | skytoup的blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="skytoup的blog">
+    <meta name="author" content="skytoup">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="skytoup的blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Go/" class="animsition-link">Go<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/React/" class="animsition-link">React<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/node-js/" class="animsition-link">node.js<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/数据结构/" class="animsition-link">数据结构<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">关于</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">skytoup的blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">更多</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/bg.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>分享经验，共同进步</br><span>Wellcome</sapn></br></h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-01-25T02:58:42.000Z" itemprop="datePublished">
+          2016-01-25
+      </time>
+    
+</span>
+                <h1>Node.js的BT下载</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>近来想用Node.js做一个BT下载的程序，于是研究了一下BT下载相关的知识。</p>
+<h1 id="一、BT文件解析">一、BT文件解析</h1><pre><code>用了那么久的<span class="tag">bt</span>下载，都知道下载前，都是先解析种子文件(<span class="class">.torrent</span>)的吧。
+</code></pre><p>种子文件使用的是<code>BEncode(B编码)</code>保存数据，这种编码有四种数据结构：</p>
+<h3 id="1-string(字符串)">1.string(字符串)</h3><p>string的编码为 <code>&lt;string length&gt;:&lt;string&gt;</code></p>
+<pre><code>例<span class="symbol">:</span> <span class="number">7</span><span class="symbol">:example</span>, 表示字符串 <span class="string">'example'</span>
+</code></pre><h3 id="2-integer(整数)">2.integer(整数)</h3><p>integer的编码为 <code>i&lt;integer&gt;e</code></p>
+<pre><code>例: i123456e, 表示整数 <span class="number">123456</span>
+</code></pre><h3 id="3-list(列表)">3.list(列表)</h3><p>list的编码为 <code>l&lt;BEncode&gt;e</code></p>
+<pre><code>例: <span class="tag">l6</span><span class="pseudo">:stringi123ee</span>, 表示数组 <span class="attr_selector">['string', 123]</span>
+</code></pre><h3 id="4-dictionary(字典)">4.dictionary(字典)</h3><p>dictionary的编码为 <code>d&lt;BEcode的string&gt;&lt;BEncode&gt;e</code>,即<code>d&lt;key&gt;&lt;value&gt;e</code>,key为BEcode的string,value为BEncode</p>
+<pre><code>例<span class="pseudo">:d3</span><span class="pseudo">:key5</span><span class="pseudo">:value4</span><span class="pseudo">:testi123ee</span>, 表示<span class="rules">{<span class="rule"><span class="attribute">key</span>:<span class="value"><span class="string">'value'</span>, test:<span class="number">123</span></span></span></span>}
+</code></pre><blockquote>
+<p>注: list和dictionary可以相互嵌套</p>
+</blockquote>
+<p>解析基本思路，dictionary的key肯定为字符串，value和list的元素为任意类型，使用递归思路解析比较简单。</p>
+<blockquote>
+<p>附上一份自己写的简单解析代码: <a href="https://github.com/skytoup/node.js-BEncode" target="_blank" rel="external">node.js简单解析bencode</a></p>
+</blockquote>
+<h1 id="二、BT文件结构">二、BT文件结构</h1><p>参考别人的文章: <a href="http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html" target="_blank" rel="external">torrent文件分析</a></p>
+<h1 id="三、BT协议">三、BT协议</h1><p>还是参考别人的文章: </p>
+<ol>
+<li><a href="http://blog.chinaunix.net/uid-26548237-id-3056731.html" target="_blank" rel="external">BT（带中心Tracker）通信协议的分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-14408083-id-2814554.html" target="_blank" rel="external">BitTorrent协议规范</a></li>
+<li><p><a href="http://blog.csdn.net/wengpingbo/article/details/9174363" target="_blank" rel="external">常见P2P协议之BitTorrent 分析</a></p>
+<pre><code>发现<span class="keyword">BT</span>协议还是挺复杂的,下载的代码一时半刻写不出来。
+</code></pre></li>
+</ol>
+<h1 id="番外篇">番外篇</h1><h2 id="一、_关于info_hash">一、 关于info_hash</h2><p>网上的资料比较少，搜了好久，发现很多都是说得不是很清楚。</p>
+<p>1.BT协议中的info_hash</p>
+<blockquote>
+<p>info_hash是种子解析后的对象的info节点中的pieces，其长度为20的倍数，每20个字节对应一块文件。在BT协议中，下载文件需要一块一块下载，下载那一块，就是看你传过去的info_hash。</p>
+<p>但是BT文件里面的部分数据是ASCII码，不能直接传输过去，需要经过一定的编码。编码很简单，凡是ASCII码的数字、字母，都按数字、字母传输，其余的以它的16进制前面加一个<code>%</code>符号传输。</p>
+<p>例如: ASCII编码 <code>6D8875</code> 应该为 <code>m%88u</code></p>
+</blockquote>
+<p>2.BT种子转磁力链接的info_hash</p>
+<blockquote>
+<p>经过各种搜索、测试，最后看源码发现，BT种子是如何转磁力链接。<br>首先把种子的info节点以BEcode编码，将其sha1散列，最后把得到的结果拼接到这里的末尾: <code>magnet:?xt=urn:btih:</code>。多个文件的情况，好像是用<code>&amp;</code>符号拼接每一个文件。</p>
+<pre><code>原本想做一个测试测试的，谁知道<span class="keyword">node</span>.<span class="identifier"></span><span class="title">js</span>用buffer读取bt的部分<span class="type">string</span>后，length就变了......
+</code></pre></blockquote>
+<h2 id="二、node-js的BT下载库">二、node.js的BT下载库</h2><p>找了好久, 终于发现了一个node.js的BT下载库, 功能还是挺强大的，貌似还有其它的功能。</p>
+<p>上地址: <a href="https://github.com/feross/webtorrent" target="_blank" rel="external">webtorrent</a></p>
+<blockquote>
+<p>官方文档写得挺详细的，而且这个库简单易用。至于还有其它什么功能我也不太了解了。</p>
+</blockquote>
+<h2 id="文章参考">文章参考</h2><ol>
+<li><a href="http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html" target="_blank" rel="external">torrent文件分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-26548237-id-3056731.html" target="_blank" rel="external">BT（带中心Tracker）通信协议的分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-14408083-id-2814554.html" target="_blank" rel="external">BitTorrent协议规范</a></li>
+<li><a href="http://blog.csdn.net/wengpingbo/article/details/9174363" target="_blank" rel="external">常见P2P协议之BitTorrent 分析</a></li>
+</ol>
+
+            </br>
+            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2016/01/28/Webstorm使用babel6/" style="float: left;">
+        ← Webstorm使用babel6
+    </a>
+    
+    
+    <a class="pull-right" href="/2015/12/24/React-Native搭建Redux框架/">
+        React-Native搭建Redux框架 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-Node-js的BT下载" data-title="Node.js的BT下载" data-url="http://skytoup.wicp.net/2016/01/25/Node-js的BT下载/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-Node-js的BT下载" data-title="Node.js的BT下载" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;p&gt;近来想用Node.js做一个BT下载的程序，于是研究了一下BT下载相关的知识。&lt;/p&gt;
+&lt;h1 id=&quot;一、BT文件解析&quot;&gt;一、BT文件解析&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;用了那么久的&lt;span class=&quot;tag&quot;&gt;bt&lt;/span&gt;下载，都知道下载前，都是先解析种子文件(&lt;span class=&quot;class&quot;&gt;.torrent&lt;/span&gt;)的吧。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;种子文件使用的是&lt;code&gt;BEncode(B编码)&lt;/code&gt;保存数据，这种编码有四种数据结构：&lt;/p&gt;
+&lt;h3 id=&quot;1-string(字符串)&quot;&gt;1.string(字符串)&lt;/h3&gt;&lt;p&gt;string的编码为 &lt;code&gt;&amp;lt;string length&amp;gt;:&amp;lt;string&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:example&lt;/span&gt;, 表示字符串 &lt;span class=&quot;string&quot;&gt;&#39;example&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-integer(整数)&quot;&gt;2.integer(整数)&lt;/h3&gt;&lt;p&gt;integer的编码为 &lt;code&gt;i&amp;lt;integer&amp;gt;e&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例: i123456e, 表示整数 &lt;span class=&quot;number&quot;&gt;123456&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-list(列表)&quot;&gt;3.list(列表)&lt;/h3&gt;&lt;p&gt;list的编码为 &lt;code&gt;l&amp;lt;BEncode&amp;gt;e&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例: &lt;span class=&quot;tag&quot;&gt;l6&lt;/span&gt;&lt;span class=&quot;pseudo&quot;&gt;:stringi123ee&lt;/span&gt;, 表示数组 &lt;span class=&quot;attr_selector&quot;&gt;[&#39;string&#39;, 123]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-dictionary(字典)&quot;&gt;4.dictionary(字典)&lt;/h3&gt;&lt;p&gt;dictionary的编码为 &lt;code&gt;d&amp;lt;BEcode的string&amp;gt;&amp;lt;BEncode&amp;gt;e&lt;/code&gt;,即&lt;code&gt;d&amp;lt;key&amp;gt;&amp;lt;value&amp;gt;e&lt;/code&gt;,key为BEcode的string,value为BEncode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例&lt;span class=&quot;pseudo&quot;&gt;:d3&lt;/span&gt;&lt;span class=&quot;pseudo&quot;&gt;:key5&lt;/span&gt;&lt;span class=&quot;pseudo&quot;&gt;:value4&lt;/span&gt;&lt;span class=&quot;pseudo&quot;&gt;:testi123ee&lt;/span&gt;, 表示&lt;span class=&quot;rules&quot;&gt;{&lt;span class=&quot;rule&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;key&lt;/span&gt;:&lt;span class=&quot;value&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;value&#39;&lt;/span&gt;, test:&lt;span class=&quot;number&quot;&gt;123&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;注: list和dictionary可以相互嵌套&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解析基本思路，dictionary的key肯定为字符串，value和list的元素为任意类型，使用递归思路解析比较简单。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;附上一份自己写的简单解析代码: &lt;a href=&quot;https://github.com/skytoup/node.js-BEncode&quot;&gt;node.js简单解析bencode&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;二、BT文件结构&quot;&gt;二、BT文件结构&lt;/h1&gt;&lt;p&gt;参考别人的文章: &lt;a href=&quot;http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html&quot;&gt;torrent文件分析&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;三、BT协议&quot;&gt;三、BT协议&lt;/h1&gt;&lt;p&gt;还是参考别人的文章: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-26548237-id-3056731.html&quot;&gt;BT（带中心Tracker）通信协议的分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-14408083-id-2814554.html&quot;&gt;BitTorrent协议规范&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/wengpingbo/article/details/9174363&quot;&gt;常见P2P协议之BitTorrent 分析&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;发现&lt;span class=&quot;keyword&quot;&gt;BT&lt;/span&gt;协议还是挺复杂的,下载的代码一时半刻写不出来。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;番外篇&quot;&gt;番外篇&lt;/h1&gt;&lt;h2 id=&quot;一、_关于info_hash&quot;&gt;一、 关于info_hash&lt;/h2&gt;&lt;p&gt;网上的资料比较少，搜了好久，发现很多都是说得不是很清楚。&lt;/p&gt;
+&lt;p&gt;1.BT协议中的info_hash&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;info_hash是种子解析后的对象的info节点中的pieces，其长度为20的倍数，每20个字节对应一块文件。在BT协议中，下载文件需要一块一块下载，下载那一块，就是看你传过去的info_hash。&lt;/p&gt;
+&lt;p&gt;但是BT文件里面的部分数据是ASCII码，不能直接传输过去，需要经过一定的编码。编码很简单，凡是ASCII码的数字、字母，都按数字、字母传输，其余的以它的16进制前面加一个&lt;code&gt;%&lt;/code&gt;符号传输。&lt;/p&gt;
+&lt;p&gt;例如: ASCII编码 &lt;code&gt;6D8875&lt;/code&gt; 应该为 &lt;code&gt;m%88u&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;2.BT种子转磁力链接的info_hash&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;经过各种搜索、测试，最后看源码发现，BT种子是如何转磁力链接。&lt;br&gt;首先把种子的info节点以BEcode编码，将其sha1散列，最后把得到的结果拼接到这里的末尾: &lt;code&gt;magnet:?xt=urn:btih:&lt;/code&gt;。多个文件的情况，好像是用&lt;code&gt;&amp;amp;&lt;/code&gt;符号拼接每一个文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;原本想做一个测试测试的，谁知道&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;.&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;js&lt;/span&gt;用buffer读取bt的部分&lt;span class=&quot;type&quot;&gt;string&lt;/span&gt;后，length就变了......
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;h2 id=&quot;二、node-js的BT下载库&quot;&gt;二、node.js的BT下载库&lt;/h2&gt;&lt;p&gt;找了好久, 终于发现了一个node.js的BT下载库, 功能还是挺强大的，貌似还有其它的功能。&lt;/p&gt;
+&lt;p&gt;上地址: &lt;a href=&quot;https://github.com/feross/webtorrent&quot;&gt;webtorrent&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;官方文档写得挺详细的，而且这个库简单易用。至于还有其它什么功能我也不太了解了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;文章参考&quot;&gt;文章参考&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html&quot;&gt;torrent文件分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-26548237-id-3056731.html&quot;&gt;BT（带中心Tracker）通信协议的分析&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-14408083-id-2814554.html&quot;&gt;BitTorrent协议规范&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/wengpingbo/article/details/9174363&quot;&gt;常见P2P协议之BitTorrent 分析&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+" data-url="http://skytoup.wicp.net/2016/01/25/Node-js的BT下载/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By skytoup. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- busuanzi -->
+            <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <!-- busuanzi -->
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
