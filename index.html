@@ -111,7 +111,7 @@
 				    
 				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(8)</small></a></li>
 				    
 				    <li><a href="/categories/node-js/" class="animsition-link">node.js<small>(2)</small></a></li>
 				    
@@ -217,6 +217,36 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2016/02/02/iOS使用runtime监测UIViewController的dealloc/">iOS使用runtime监测UIViewController的dealloc</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-02-02T08:10:38.000Z" itemprop="datePublished">
+          2016-02-02
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        平时在iOS开发的时候，很多情况会导致内存泄露。有时候因为循环引用，导致了UIViewController不回收，还有其它好多原因。一般检测内存泄露都是使用Xcode的Instruments工具。但是这个工具有点复杂，新手入门还是有点难度。所以想到了使用runtime替换UIViewController的-(void)dealloc:方法的实现，检测ViewController是否被释放，从而知道ViewController里面有没有内
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/02/02/iOS使用runtime监测UIViewController的dealloc/">阅读全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2016/01/28/Webstorm使用babel6/">Webstorm使用babel6</a></h3>
                     <span>
                         <span class="post-meta">
@@ -275,40 +305,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2016/01/25/Node-js的BT下载/">阅读全文...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/24/React-Native搭建Redux框架/">React-Native搭建Redux框架</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-23T22:44:23.000Z" itemprop="datePublished">
-          2015-12-24
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。
-查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。
-选好框架之后，发现框架的介绍资料很少，而且没有搭建的教程，只好自己做一下实验了。经过无数次实验、踩坑，终于成功了……..
-注: 我是一个iOS程序员，不太懂大前端，为了学习react-native，react只是随便学习了一点
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/24/React-Native搭建Redux框架/">阅读全文...</a>
                     </p>
                     
                 </div>
