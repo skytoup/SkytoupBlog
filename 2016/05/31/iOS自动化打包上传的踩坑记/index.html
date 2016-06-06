@@ -224,7 +224,9 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<blockquote>
+      		<pre><code><span class="number">2016</span>-<span class="number">06</span>-<span class="number">06</span>:
+<span class="number">1.</span>经过一轮测试之后, 发现文章有点错漏, 小修改一下, 增加命令四
+</code></pre><blockquote>
 <p>每次要出包的时候, 总要打开<code>XCode</code>, 然后点击<code>Product-Archive</code>, 等待好几分钟的各种build, 然后还要手动上传到<code>AppStore</code>, 甚至还要上传到<code>蒲公英</code>、<code>fir</code>等…</p>
 </blockquote>
 <p>很久以前就看了很多关于<code>iOS</code>自动打包<code>ipa</code>的文章, 看着感觉很简单, 但是因为一直没有<code>AppleDeveloper</code>账号可以给我用, 到了真的要搞自动打包的时候, 才发现到处都是坑。</p>
@@ -233,31 +235,95 @@
 <li>xcrun: 把<code>*.app</code>打包成<code>ipa</code>, 还有其它功能…</li>
 </ol>
 <h1 id="基本使用">基本使用</h1><p>一. <code>xcedebuild</code>打包<code>Archive</code>文件</p>
-<pre><code>xcedebuild -workspace $<span class="list">{path to *.xcworkspace}</span> -scheme $<span class="list">{scheme}</span> -destination generic/platform=iOS archive -configuration <span class="keyword">Release</span> ONLY_ACTIVE_ARCH=NO -archivePath $<span class="list">{export path *.arichive}</span>
+<pre><code>xcedebuild -workspace $<span class="list">{path to *.xcworkspace}</span> -scheme $<span class="list">{scheme}</span> -destination generic/platform=iOS archive -configuration <span class="keyword">Release</span> ONLY_ACTIVE_ARCH=NO -archivePath $<span class="list">{export path *.xcarichive}</span>
 </code></pre><ul>
 <li>-workspace 你的<code>*.xcworkspace</code>文件    </li>
 <li>-scheme 项目文件里面的<code>scheme</code>    </li>
-<li>-archivePath 生成的<code>*.arichive</code>文件路径</li>
+<li>-archivePath 生成的<code>*.xcarichive</code>文件路径</li>
 </ul>
-<p>二. <code>xcedebuild</code>从<code>*.archive</code>导出<code>ipa</code></p>
-<pre><code><span class="title">xcedebuild</span> -exportArchive -exportFormat IPA -archivePath <span class="variable">${path to *.archive}</span> -exportPath <span class="variable">${export path *.ipa}</span> -exportProvisioningProfile <span class="variable">${ProvisioningProfileName}</span>
+<p>二. <code>xcedebuild</code>从<code>*.xcarchive</code>导出<code>ipa</code></p>
+<pre><code><span class="title">xcodebuild</span> -exportArchive -exportFormat IPA -archivePath <span class="variable">${path to *.xcarchive}</span> -exportPath <span class="variable">${export path *.ipa}</span> -exportProvisioningProfile <span class="variable">${ProvisioningProfileName}</span>
 </code></pre><ul>
-<li>-archivePath 你的<code>*.archive</code>文件, 可以使用上一个命令导出</li>
+<li>-archivePath 你的<code>*.xcarchive</code>文件, 可以使用上一个命令导出</li>
 <li>-exportPath 导出的<code>ipa</code>路径</li>
 <li>exportProvisioningProfile 你的Distribution发布证书的名称(只需要名称)</li>
 </ul>
 <p>三. <code>xcrun</code>打包<code>ipa</code></p>
-<pre><code><span class="string">"xcrun -sdk iphoneos PackageApplication -v <span class="subst">${path to *.app}</span> -o <span class="subst">${<span class="keyword">package</span> path *.ipa}</span>"</span>
+<pre><code><span class="title">xcrun</span> -sdk iphoneos PackageApplication -v <span class="variable">${path to *.app}</span> -o <span class="variable">${package path *.ipa}</span>
 </code></pre><ul>
-<li>-v 你的<code>*.app</code>文件, 生成的<code>*.archive</code>里面有</li>
+<li>-v 你的<code>*.app</code>文件, 生成的<code>*.xcarchive</code>里面有</li>
 <li>-o 打包生成的<code>*.ipa</code>文件路径, 注意！！！这里是不能填相对路径, 因为这里的路径环境变量不是当前执行命令的路径了</li>
 </ul>
+<p>四. 最新的正确<code>xcodebuild</code>导出ipa</p>
+<pre><code>xcodebuild -exportArchive -archivePath ${path <span class="keyword">to</span> *.xcarchive} -exportPath ${<span class="keyword">export</span> path <span class="keyword">to</span> dir} -exportOptionsPlist ${path <span class="keyword">to</span> <span class="keyword">export</span> options *.plist}
+</code></pre><ul>
+<li>-archivePath 你的<code>*.xcarchive</code>文件, 可以使用第二个命令导出</li>
+<li>-exportPath 导出的<code>ipa</code>目录, ipa的名称好像是scheme的名称</li>
+<li>-exportOptionsPlist 导出plist格式的配置文件</li>
+</ul>
+<p>exportOptionPlist: 新建一个plist文件, 里面是一个Dictionary, key-value如下, 都是可选值, 不需要全部填上</p>
+<blockquote>
+<ol>
+<li><p>compileBitcode: Bool</p>
+<blockquote>
+<p>For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.</p>
+</blockquote>
+</li>
+<li><p>embedOnDemandResourcesAssetPacksInBundle : Bool</p>
+<blockquote>
+<p>For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.</p>
+</blockquote>
+</li>
+<li><p>iCloudContainerEnvironment</p>
+<blockquote>
+<p>For non-App Store exports, if the app is using CloudKit, this configures the “com.apple.developer.icloud-container-environment” entitlement. Available options: Development and Production. Defaults to Development.</p>
+</blockquote>
+</li>
+<li><p>manifest : Dictionary</p>
+<blockquote>
+<p>For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.</p>
+</blockquote>
+</li>
+<li><p>method : String</p>
+<blockquote>
+<p>Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.</p>
+</blockquote>
+</li>
+<li><p>onDemandResourcesAssetPacksBaseURL : String</p>
+<blockquote>
+<p>For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn’t YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.</p>
+</blockquote>
+</li>
+<li><p>teamID : String</p>
+<blockquote>
+<p>The Developer Portal team to use for this export. Defaults to the team used to build the archive.</p>
+</blockquote>
+</li>
+<li><p>thinning : String</p>
+<blockquote>
+<p>For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: <none> (Xcode produces a non-thinned universal app), <thin-for-all-variants> (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. “iPhone7,1”). Defaults to <none>.</none></thin-for-all-variants></none></p>
+</blockquote>
+</li>
+<li><p>uploadBitcode : Bool</p>
+<blockquote>
+<pre><code><span class="keyword">For</span> App Store <span class="keyword">exports</span>, should the package include bitcode? Defaults <span class="keyword">to</span> YES.
+</code></pre></blockquote>
+</li>
+<li><p>uploadSymbols : Bool</p>
+<blockquote>
+<p>For App Store exports, should the package include symbols? Defaults to YES.</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
 <h1 id="踩坑">踩坑</h1><h2 id="坑一">坑一</h2><p>使用第一个命令前, 需要确保你的项目的签名配置好, 证书下好最新的</p>
 <h2 id="坑二">坑二</h2><p>第二个命令的<code>-exportProvisioningProfile</code>填的只是你的发布证书的名称, 不是那一串<code>id</code></p>
 <h2 id="坑三">坑三</h2><p>第二个命令打包出来的<code>*.ipa</code>不能用来上传到<code>AppStore</code>, 一直报CocoaPods里面的第三方库签名错误</p>
 <h2 id="坑四">坑四</h2><p>打包出来的<code>*.ipa</code>需要上传到<code>AppSotre</code>的话, 可以使用第三个命令, <code>xcrun</code>那一个</p>
 <h2 id="坑五">坑五</h2><p>使用第三个命令打包出来的<code>*.ipa</code>, 上传到<code>AppStore</code>之后, 登录到<code>iTunes Connect-APP-所有构建版本</code>查看到上传的<code>*.ipa</code>正在构建。但是过了一会儿, <code>AppleDeveloper</code>账号的邮箱就会收到一封报错的邮件, 大概是说你的<code>*.ipa</code>包里面, 缺少了一个<code>SwiftSupport</code>文件夹</p>
-<p>经过各种搜索之后, 原来需要把<code>xcrun</code>打包出来的<code>*.ipa</code>解压, 然后新建一个文件夹, <code>*.archive</code>里面的<code>SwiftSupport</code>文件夹<code>copy</code>进去, 还有把<code>ipa</code>解压出来的<code>move</code>进入, 最后打个zip包, 再改成<code>ipa</code>后缀就可以上传到<code>AppStore</code>了(应该吧, 还没测试😂)</p>
+<p>经过各种搜索之后, 原来需要把<code>xcrun</code>打包出来的<code>*.ipa</code>解压, 然后新建一个文件夹, <code>*.xcarchive</code>里面的<code>SwiftSupport</code>文件夹<code>copy</code>进去, 还有把<code>ipa</code>解压出来的<code>move</code>进入, 最后打个zip包, 再改成<code>ipa</code>后缀就可以上传到<code>AppStore</code>了(应该吧, 还没测试😂)</p>
+<h2 id="坑六">坑六</h2><p>经过一轮测试之后, 发现用这个<code>xcrun</code>这个命令打的包需要自己吧SwiftSupport文件加到压缩包, 其实有一个命令没有那么麻烦的…</p>
+<p>使用上面的第四个命令使用<code>*.xcarchive</code>把ipa导出, 导出的<code>*.ipa</code>里面会包含了<code>SwiftSupport</code>, 还不需要自己把它加进去</p>
 <h1 id="番外篇">番外篇</h1><p>在踩到了第五个坑之后, 在<code>github</code>发现了一个<code>iOS</code>的打包、发布库…<br>上地址: <a href="https://github.com/nomad/shenzhen" target="_blank" rel="external">https://github.com/nomad/shenzhen</a><br>懒得自己搞的可以使用这个库, 感觉还是挺不错的</p>
 
             </br>
@@ -293,7 +359,9 @@ var duoshuoQuery = {short_name:"skytoup"};
 
 
 <!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-iOS自动化打包上传的踩坑记" data-title="iOS自动化打包上传的踩坑记" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;blockquote&gt;
+<div class="ds-share flat" data-thread-key="post-iOS自动化打包上传的踩坑记" data-title="iOS自动化打包上传的踩坑记" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;:
+&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;经过一轮测试之后, 发现文章有点错漏, 小修改一下, 增加命令四
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;每次要出包的时候, 总要打开&lt;code&gt;XCode&lt;/code&gt;, 然后点击&lt;code&gt;Product-Archive&lt;/code&gt;, 等待好几分钟的各种build, 然后还要手动上传到&lt;code&gt;AppStore&lt;/code&gt;, 甚至还要上传到&lt;code&gt;蒲公英&lt;/code&gt;、&lt;code&gt;fir&lt;/code&gt;等…&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;很久以前就看了很多关于&lt;code&gt;iOS&lt;/code&gt;自动打包&lt;code&gt;ipa&lt;/code&gt;的文章, 看着感觉很简单, 但是因为一直没有&lt;code&gt;AppleDeveloper&lt;/code&gt;账号可以给我用, 到了真的要搞自动打包的时候, 才发现到处都是坑。&lt;/p&gt;
@@ -302,31 +370,95 @@ var duoshuoQuery = {short_name:"skytoup"};
 &lt;li&gt;xcrun: 把&lt;code&gt;*.app&lt;/code&gt;打包成&lt;code&gt;ipa&lt;/code&gt;, 还有其它功能…&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id=&quot;基本使用&quot;&gt;基本使用&lt;/h1&gt;&lt;p&gt;一. &lt;code&gt;xcedebuild&lt;/code&gt;打包&lt;code&gt;Archive&lt;/code&gt;文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;xcedebuild -workspace $&lt;span class=&quot;list&quot;&gt;{path to *.xcworkspace}&lt;/span&gt; -scheme $&lt;span class=&quot;list&quot;&gt;{scheme}&lt;/span&gt; -destination generic/platform=iOS archive -configuration &lt;span class=&quot;keyword&quot;&gt;Release&lt;/span&gt; ONLY_ACTIVE_ARCH=NO -archivePath $&lt;span class=&quot;list&quot;&gt;{export path *.arichive}&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;xcedebuild -workspace $&lt;span class=&quot;list&quot;&gt;{path to *.xcworkspace}&lt;/span&gt; -scheme $&lt;span class=&quot;list&quot;&gt;{scheme}&lt;/span&gt; -destination generic/platform=iOS archive -configuration &lt;span class=&quot;keyword&quot;&gt;Release&lt;/span&gt; ONLY_ACTIVE_ARCH=NO -archivePath $&lt;span class=&quot;list&quot;&gt;{export path *.xcarichive}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;-workspace 你的&lt;code&gt;*.xcworkspace&lt;/code&gt;文件    &lt;/li&gt;
 &lt;li&gt;-scheme 项目文件里面的&lt;code&gt;scheme&lt;/code&gt;    &lt;/li&gt;
-&lt;li&gt;-archivePath 生成的&lt;code&gt;*.arichive&lt;/code&gt;文件路径&lt;/li&gt;
+&lt;li&gt;-archivePath 生成的&lt;code&gt;*.xcarichive&lt;/code&gt;文件路径&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;二. &lt;code&gt;xcedebuild&lt;/code&gt;从&lt;code&gt;*.archive&lt;/code&gt;导出&lt;code&gt;ipa&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;xcedebuild&lt;/span&gt; -exportArchive -exportFormat IPA -archivePath &lt;span class=&quot;variable&quot;&gt;${path to *.archive}&lt;/span&gt; -exportPath &lt;span class=&quot;variable&quot;&gt;${export path *.ipa}&lt;/span&gt; -exportProvisioningProfile &lt;span class=&quot;variable&quot;&gt;${ProvisioningProfileName}&lt;/span&gt;
+&lt;p&gt;二. &lt;code&gt;xcedebuild&lt;/code&gt;从&lt;code&gt;*.xcarchive&lt;/code&gt;导出&lt;code&gt;ipa&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;xcodebuild&lt;/span&gt; -exportArchive -exportFormat IPA -archivePath &lt;span class=&quot;variable&quot;&gt;${path to *.xcarchive}&lt;/span&gt; -exportPath &lt;span class=&quot;variable&quot;&gt;${export path *.ipa}&lt;/span&gt; -exportProvisioningProfile &lt;span class=&quot;variable&quot;&gt;${ProvisioningProfileName}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;-archivePath 你的&lt;code&gt;*.archive&lt;/code&gt;文件, 可以使用上一个命令导出&lt;/li&gt;
+&lt;li&gt;-archivePath 你的&lt;code&gt;*.xcarchive&lt;/code&gt;文件, 可以使用上一个命令导出&lt;/li&gt;
 &lt;li&gt;-exportPath 导出的&lt;code&gt;ipa&lt;/code&gt;路径&lt;/li&gt;
 &lt;li&gt;exportProvisioningProfile 你的Distribution发布证书的名称(只需要名称)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;三. &lt;code&gt;xcrun&lt;/code&gt;打包&lt;code&gt;ipa&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;string&quot;&gt;&quot;xcrun -sdk iphoneos PackageApplication -v &lt;span class=&quot;subst&quot;&gt;${path to *.app}&lt;/span&gt; -o &lt;span class=&quot;subst&quot;&gt;${&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; path *.ipa}&lt;/span&gt;&quot;&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;xcrun&lt;/span&gt; -sdk iphoneos PackageApplication -v &lt;span class=&quot;variable&quot;&gt;${path to *.app}&lt;/span&gt; -o &lt;span class=&quot;variable&quot;&gt;${package path *.ipa}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;-v 你的&lt;code&gt;*.app&lt;/code&gt;文件, 生成的&lt;code&gt;*.archive&lt;/code&gt;里面有&lt;/li&gt;
+&lt;li&gt;-v 你的&lt;code&gt;*.app&lt;/code&gt;文件, 生成的&lt;code&gt;*.xcarchive&lt;/code&gt;里面有&lt;/li&gt;
 &lt;li&gt;-o 打包生成的&lt;code&gt;*.ipa&lt;/code&gt;文件路径, 注意！！！这里是不能填相对路径, 因为这里的路径环境变量不是当前执行命令的路径了&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;四. 最新的正确&lt;code&gt;xcodebuild&lt;/code&gt;导出ipa&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xcodebuild -exportArchive -archivePath ${path &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; *.xcarchive} -exportPath ${&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; path &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; dir} -exportOptionsPlist ${path &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; options *.plist}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;-archivePath 你的&lt;code&gt;*.xcarchive&lt;/code&gt;文件, 可以使用第二个命令导出&lt;/li&gt;
+&lt;li&gt;-exportPath 导出的&lt;code&gt;ipa&lt;/code&gt;目录, ipa的名称好像是scheme的名称&lt;/li&gt;
+&lt;li&gt;-exportOptionsPlist 导出plist格式的配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;exportOptionPlist: 新建一个plist文件, 里面是一个Dictionary, key-value如下, 都是可选值, 不需要全部填上&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;compileBitcode: Bool&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;embedOnDemandResourcesAssetPacksInBundle : Bool&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;iCloudContainerEnvironment&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, if the app is using CloudKit, this configures the “com.apple.developer.icloud-container-environment” entitlement. Available options: Development and Production. Defaults to Development.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;manifest : Dictionary&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;method : String&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;onDemandResourcesAssetPacksBaseURL : String&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn’t YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;teamID : String&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Developer Portal team to use for this export. Defaults to the team used to build the archive.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;thinning : String&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: &lt;none&gt; (Xcode produces a non-thinned universal app), &lt;thin-for-all-variants&gt; (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. “iPhone7,1”). Defaults to &lt;none&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;uploadBitcode : Bool&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;For&lt;/span&gt; App Store &lt;span class=&quot;keyword&quot;&gt;exports&lt;/span&gt;, should the package include bitcode? Defaults &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; YES.
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;uploadSymbols : Bool&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For App Store exports, should the package include symbols? Defaults to YES.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 &lt;h1 id=&quot;踩坑&quot;&gt;踩坑&lt;/h1&gt;&lt;h2 id=&quot;坑一&quot;&gt;坑一&lt;/h2&gt;&lt;p&gt;使用第一个命令前, 需要确保你的项目的签名配置好, 证书下好最新的&lt;/p&gt;
 &lt;h2 id=&quot;坑二&quot;&gt;坑二&lt;/h2&gt;&lt;p&gt;第二个命令的&lt;code&gt;-exportProvisioningProfile&lt;/code&gt;填的只是你的发布证书的名称, 不是那一串&lt;code&gt;id&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;坑三&quot;&gt;坑三&lt;/h2&gt;&lt;p&gt;第二个命令打包出来的&lt;code&gt;*.ipa&lt;/code&gt;不能用来上传到&lt;code&gt;AppStore&lt;/code&gt;, 一直报CocoaPods里面的第三方库签名错误&lt;/p&gt;
 &lt;h2 id=&quot;坑四&quot;&gt;坑四&lt;/h2&gt;&lt;p&gt;打包出来的&lt;code&gt;*.ipa&lt;/code&gt;需要上传到&lt;code&gt;AppSotre&lt;/code&gt;的话, 可以使用第三个命令, &lt;code&gt;xcrun&lt;/code&gt;那一个&lt;/p&gt;
 &lt;h2 id=&quot;坑五&quot;&gt;坑五&lt;/h2&gt;&lt;p&gt;使用第三个命令打包出来的&lt;code&gt;*.ipa&lt;/code&gt;, 上传到&lt;code&gt;AppStore&lt;/code&gt;之后, 登录到&lt;code&gt;iTunes Connect-APP-所有构建版本&lt;/code&gt;查看到上传的&lt;code&gt;*.ipa&lt;/code&gt;正在构建。但是过了一会儿, &lt;code&gt;AppleDeveloper&lt;/code&gt;账号的邮箱就会收到一封报错的邮件, 大概是说你的&lt;code&gt;*.ipa&lt;/code&gt;包里面, 缺少了一个&lt;code&gt;SwiftSupport&lt;/code&gt;文件夹&lt;/p&gt;
-&lt;p&gt;经过各种搜索之后, 原来需要把&lt;code&gt;xcrun&lt;/code&gt;打包出来的&lt;code&gt;*.ipa&lt;/code&gt;解压, 然后新建一个文件夹, &lt;code&gt;*.archive&lt;/code&gt;里面的&lt;code&gt;SwiftSupport&lt;/code&gt;文件夹&lt;code&gt;copy&lt;/code&gt;进去, 还有把&lt;code&gt;ipa&lt;/code&gt;解压出来的&lt;code&gt;move&lt;/code&gt;进入, 最后打个zip包, 再改成&lt;code&gt;ipa&lt;/code&gt;后缀就可以上传到&lt;code&gt;AppStore&lt;/code&gt;了(应该吧, 还没测试😂)&lt;/p&gt;
+&lt;p&gt;经过各种搜索之后, 原来需要把&lt;code&gt;xcrun&lt;/code&gt;打包出来的&lt;code&gt;*.ipa&lt;/code&gt;解压, 然后新建一个文件夹, &lt;code&gt;*.xcarchive&lt;/code&gt;里面的&lt;code&gt;SwiftSupport&lt;/code&gt;文件夹&lt;code&gt;copy&lt;/code&gt;进去, 还有把&lt;code&gt;ipa&lt;/code&gt;解压出来的&lt;code&gt;move&lt;/code&gt;进入, 最后打个zip包, 再改成&lt;code&gt;ipa&lt;/code&gt;后缀就可以上传到&lt;code&gt;AppStore&lt;/code&gt;了(应该吧, 还没测试😂)&lt;/p&gt;
+&lt;h2 id=&quot;坑六&quot;&gt;坑六&lt;/h2&gt;&lt;p&gt;经过一轮测试之后, 发现用这个&lt;code&gt;xcrun&lt;/code&gt;这个命令打的包需要自己吧SwiftSupport文件加到压缩包, 其实有一个命令没有那么麻烦的…&lt;/p&gt;
+&lt;p&gt;使用上面的第四个命令使用&lt;code&gt;*.xcarchive&lt;/code&gt;把ipa导出, 导出的&lt;code&gt;*.ipa&lt;/code&gt;里面会包含了&lt;code&gt;SwiftSupport&lt;/code&gt;, 还不需要自己把它加进去&lt;/p&gt;
 &lt;h1 id=&quot;番外篇&quot;&gt;番外篇&lt;/h1&gt;&lt;p&gt;在踩到了第五个坑之后, 在&lt;code&gt;github&lt;/code&gt;发现了一个&lt;code&gt;iOS&lt;/code&gt;的打包、发布库…&lt;br&gt;上地址: &lt;a href=&quot;https://github.com/nomad/shenzhen&quot;&gt;https://github.com/nomad/shenzhen&lt;/a&gt;&lt;br&gt;懒得自己搞的可以使用这个库, 感觉还是挺不错的&lt;/p&gt;
 " data-url="http://skytoup.wicp.net/2016/05/31/iOS自动化打包上传的踩坑记/">
     <div class="ds-share-aside-left">
