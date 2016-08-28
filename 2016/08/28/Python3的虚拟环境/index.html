@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>IntelliJ IDEA开发golang环境配置 | skytoup blog</title>
+  <title>Python3的虚拟环境 | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -217,44 +217,26 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2015-11-26T14:50:00.000Z" itemprop="datePublished">
-          2015-11-26
+      <time datetime="2016-08-28T13:26:57.000Z" itemprop="datePublished">
+          2016-08-28
       </time>
     
 </span>
-                <h1>IntelliJ IDEA开发golang环境配置</h1>
+                <h1>Python3的虚拟环境</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
-<p>好了下面开始了</p>
-<ol>
-<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/">MAC安装GO</a>）</li>
-<li>安装<code>IntelliJ IDEA</code>，下载地址: <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="external">https://www.jetbrains.com/idea/download/</a>。</li>
-<li>下载<code>go-lang-idea-plugin</code>这个插件，下载地址: <a href="https://plugins.jetbrains.com/plugin/5047" target="_blank" rel="external">https://plugins.jetbrains.com/plugin/5047</a>。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)</li>
-<li><p>下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开<code>Preferences-&gt;Plugins</code>，点击<code>Install plugin from disk...</code>，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg" alt="install plugin"></p>
-</li>
-<li><p>打开<code>File-&gt;Project Structure...</code>，找不到的随便打开一个项目就能看到。点击<code>SDKS</code>，新建一个<code>GO SDK</code>，填上<code>GO</code>的安装目录。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221854291.jpg" alt="SDKS"></p>
-</li>
-</ol>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221922557.jpg" alt="Setting SDKS"></p>
-<p>使用:随便新建一个Go项目，点击<code>Edit Configurations...</code>，新建一个<code>Go Application</code>，右边<code>File</code>你的<code>pack main</code>包含<code>func main</code>的文件，<code>Output directory</code>为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222007589.jpg" alt="img"></p>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222027329.jpg" alt="img"></p>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222042301.jpg" alt="img"></p>
-<p>接下来来点IntelliJ IDEA的快捷键吧(我的是Mac OSX) :</p>
-<ol>
-<li>CMD+Shift+O    查找跳转文件</li>
-<li>CMD+Shift+L    代码对齐</li>
-<li>CMD+Shift+Alt+F    go fmt 一个文件</li>
-<li>CMD+Shift+Alt+P    go fmt整个项目</li>
-<li>CMD+Alt+O    自动import</li>
-<li>CMD+F12    显示当前文件的结构</li>
-<li>按住CMD点击结构体可以源码跳转</li>
-<li>CMD+P    显示函数参数</li>
-<li>CMD+E    显示最近编辑文件</li>
-<li>Alt+Enter    自动修复错误</li>
-<li>Shift+F6    重构</li>
-</ol>
+      		<h1 id="背景">背景</h1><p>Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。</p>
+<h1 id="pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)">pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)</h1><p>pyvenv是Python3安装时自带的创建一个虚拟环境工具(tip: Python3.4版本前的pyven创建的虚拟环境不带pip)</p>
+<p>用这个工具就能创建出多个Python的虚拟环境, 把第三方模块安装到不同的虚拟环境, 就能让不同的项目使用不同的Python环境, 互相不会受到影响。</p>
+<h1 id="基本使用(Mac、Linux,_Win很久没用了)">基本使用(Mac、Linux, Win很久没用了)</h1><p>创建虚拟环境命令:</p>
+<pre><code>pyvenv /path/<span class="keyword">to</span>/<span class="keyword">new</span>/<span class="keyword">virtual</span>/environment
+</code></pre><p>激活虚拟环境命令:</p>
+<pre><code><span class="keyword">source</span> <span class="regexp">/path/</span>to<span class="regexp">/virtual/</span>environment<span class="regexp">/bin/</span>activate
+</code></pre><p>退出虚拟环境命令:</p>
+<pre><code>deactivate
+</code></pre><p>例子:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pyvenv py_1-evn <span class="comment"># 当前目录创建一个虚拟环境叫py_1-evn</span></div><div class="line">source py_1-evn/bin/<span class="built_in">activate</span> <span class="comment"># 在本终端激活这个虚拟环境(没有激活虚拟环境时是使用全局的环境)</span></div><div class="line">pip install 。。。。 <span class="comment"># 可以安装各种第三方模块, 都会安装到激活的虚拟环境</span></div><div class="line">python xxx.py <span class="comment"># 在激活的虚拟环境运行py脚本</span></div><div class="line">deactivate <span class="comment"># 退出激活的虚拟环境</span></div></pre></td></tr></table></figure></p>
+<h1 id="更高级的使用(Python_API)">更高级的使用(Python API)</h1><p>请参考官方文档: <a href="https://docs.python.org/3/library/venv.html" target="_blank" rel="external">https://docs.python.org/3/library/venv.html</a></p>
 
             </br>
             <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
@@ -263,19 +245,15 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/28/iOS9-ATS-设置/" style="float: left;">
-        ← iOS9 ATS 设置
-    </a>
     
-    
-    <a class="pull-right" href="/2015/10/03/MacOs下安装go-lang/">
-        MacOs下安装go lang →
+    <a class="pull-right" href="/2016/05/31/iOS自动化打包上传的踩坑记/">
+        iOS自动化打包上传的踩坑记 →
     </a>
     
 </nav>
 
         <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-IntelliJ-IDEA开发golang环境配置" data-title="IntelliJ IDEA开发golang环境配置" data-url="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/"></div>
+	<div class="ds-thread" data-thread-key="post-Python3的虚拟环境" data-title="Python3的虚拟环境" data-url="http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -293,36 +271,18 @@ var duoshuoQuery = {short_name:"skytoup"};
 
 
 <!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-IntelliJ-IDEA开发golang环境配置" data-title="IntelliJ IDEA开发golang环境配置" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;p&gt;看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。&lt;br&gt;谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。&lt;/p&gt;
-&lt;p&gt;好了下面开始了&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;首先把&lt;code&gt;GO&lt;/code&gt;安装好。。。（自行安装，附上一篇我之前写的&lt;a href=&quot;http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/&quot;&gt;MAC安装GO&lt;/a&gt;）&lt;/li&gt;
-&lt;li&gt;安装&lt;code&gt;IntelliJ IDEA&lt;/code&gt;，下载地址: &lt;a href=&quot;https://www.jetbrains.com/idea/download/&quot;&gt;https://www.jetbrains.com/idea/download/&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;下载&lt;code&gt;go-lang-idea-plugin&lt;/code&gt;这个插件，下载地址: &lt;a href=&quot;https://plugins.jetbrains.com/plugin/5047&quot;&gt;https://plugins.jetbrains.com/plugin/5047&lt;/a&gt;。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开&lt;code&gt;Preferences-&amp;gt;Plugins&lt;/code&gt;，点击&lt;code&gt;Install plugin from disk...&lt;/code&gt;，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg&quot; alt=&quot;install plugin&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;打开&lt;code&gt;File-&amp;gt;Project Structure...&lt;/code&gt;，找不到的随便打开一个项目就能看到。点击&lt;code&gt;SDKS&lt;/code&gt;，新建一个&lt;code&gt;GO SDK&lt;/code&gt;，填上&lt;code&gt;GO&lt;/code&gt;的安装目录。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221854291.jpg&quot; alt=&quot;SDKS&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221922557.jpg&quot; alt=&quot;Setting SDKS&quot;&gt;&lt;/p&gt;
-&lt;p&gt;使用:随便新建一个Go项目，点击&lt;code&gt;Edit Configurations...&lt;/code&gt;，新建一个&lt;code&gt;Go Application&lt;/code&gt;，右边&lt;code&gt;File&lt;/code&gt;你的&lt;code&gt;pack main&lt;/code&gt;包含&lt;code&gt;func main&lt;/code&gt;的文件，&lt;code&gt;Output directory&lt;/code&gt;为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222007589.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222027329.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222042301.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;接下来来点IntelliJ IDEA的快捷键吧(我的是Mac OSX) :&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;CMD+Shift+O    查找跳转文件&lt;/li&gt;
-&lt;li&gt;CMD+Shift+L    代码对齐&lt;/li&gt;
-&lt;li&gt;CMD+Shift+Alt+F    go fmt 一个文件&lt;/li&gt;
-&lt;li&gt;CMD+Shift+Alt+P    go fmt整个项目&lt;/li&gt;
-&lt;li&gt;CMD+Alt+O    自动import&lt;/li&gt;
-&lt;li&gt;CMD+F12    显示当前文件的结构&lt;/li&gt;
-&lt;li&gt;按住CMD点击结构体可以源码跳转&lt;/li&gt;
-&lt;li&gt;CMD+P    显示函数参数&lt;/li&gt;
-&lt;li&gt;CMD+E    显示最近编辑文件&lt;/li&gt;
-&lt;li&gt;Alt+Enter    自动修复错误&lt;/li&gt;
-&lt;li&gt;Shift+F6    重构&lt;/li&gt;
-&lt;/ol&gt;
-" data-url="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/">
+<div class="ds-share flat" data-thread-key="post-Python3的虚拟环境" data-title="Python3的虚拟环境" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;&lt;p&gt;Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。&lt;/p&gt;
+&lt;h1 id=&quot;pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)&quot;&gt;pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)&lt;/h1&gt;&lt;p&gt;pyvenv是Python3安装时自带的创建一个虚拟环境工具(tip: Python3.4版本前的pyven创建的虚拟环境不带pip)&lt;/p&gt;
+&lt;p&gt;用这个工具就能创建出多个Python的虚拟环境, 把第三方模块安装到不同的虚拟环境, 就能让不同的项目使用不同的Python环境, 互相不会受到影响。&lt;/p&gt;
+&lt;h1 id=&quot;基本使用(Mac、Linux,_Win很久没用了)&quot;&gt;基本使用(Mac、Linux, Win很久没用了)&lt;/h1&gt;&lt;p&gt;创建虚拟环境命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pyvenv /path/&lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt;/environment
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;激活虚拟环境命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;regexp&quot;&gt;/path/&lt;/span&gt;to&lt;span class=&quot;regexp&quot;&gt;/virtual/&lt;/span&gt;environment&lt;span class=&quot;regexp&quot;&gt;/bin/&lt;/span&gt;activate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;退出虚拟环境命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;deactivate
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例子:&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;pyvenv py_1-evn &lt;span class=&quot;comment&quot;&gt;# 当前目录创建一个虚拟环境叫py_1-evn&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;source py_1-evn/bin/&lt;span class=&quot;built_in&quot;&gt;activate&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;# 在本终端激活这个虚拟环境(没有激活虚拟环境时是使用全局的环境)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pip install 。。。。 &lt;span class=&quot;comment&quot;&gt;# 可以安装各种第三方模块, 都会安装到激活的虚拟环境&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python xxx.py &lt;span class=&quot;comment&quot;&gt;# 在激活的虚拟环境运行py脚本&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deactivate &lt;span class=&quot;comment&quot;&gt;# 退出激活的虚拟环境&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;更高级的使用(Python_API)&quot;&gt;更高级的使用(Python API)&lt;/h1&gt;&lt;p&gt;请参考官方文档: &lt;a href=&quot;https://docs.python.org/3/library/venv.html&quot;&gt;https://docs.python.org/3/library/venv.html&lt;/a&gt;&lt;/p&gt;
+" data-url="http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/">
     <div class="ds-share-aside-left">
       <div class="ds-share-aside-inner">
       </div>
