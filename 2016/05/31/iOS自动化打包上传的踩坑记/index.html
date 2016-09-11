@@ -226,7 +226,9 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<pre><code><span class="number">2016</span>-<span class="number">06</span>-<span class="number">06</span>:
+      		<pre><code><span class="number">2016</span>-<span class="number">09</span>-<span class="number">11</span>:
+<span class="number">1.</span>添加使用Python封装打包命令的开源库(最下面~)
+<span class="number">2016</span>-<span class="number">06</span>-<span class="number">06</span>:
 <span class="number">1.</span>经过一轮测试之后, 发现文章有点错漏, 小修改一下, 增加命令四
 </code></pre><blockquote>
 <p>每次要出包的时候, 总要打开<code>XCode</code>, 然后点击<code>Product-Archive</code>, 等待好几分钟的各种build, 然后还要手动上传到<code>AppStore</code>, 甚至还要上传到<code>蒲公英</code>、<code>fir</code>等…</p>
@@ -327,6 +329,7 @@
 <h2 id="坑六">坑六</h2><p>经过一轮测试之后, 发现用这个<code>xcrun</code>这个命令打的包需要自己吧SwiftSupport文件加到压缩包, 其实有一个命令没有那么麻烦的…</p>
 <p>使用上面的第四个命令使用<code>*.xcarchive</code>把ipa导出, 导出的<code>*.ipa</code>里面会包含了<code>SwiftSupport</code>, 还不需要自己把它加进去</p>
 <h1 id="番外篇">番外篇</h1><p>在踩到了第五个坑之后, 在<code>github</code>发现了一个<code>iOS</code>的打包、发布库…<br>上地址: <a href="https://github.com/nomad/shenzhen" target="_blank" rel="external">https://github.com/nomad/shenzhen</a><br>懒得自己搞的可以使用这个库, 感觉还是挺不错的</p>
+<h1 id="Python封装打包命令">Python封装打包命令</h1><p>github: <a href="https://github.com/skytoup/package-ipa" target="_blank" rel="external">package-ipa</a></p>
 
             </br>
             <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
@@ -365,7 +368,9 @@ var duoshuoQuery = {short_name:"skytoup"};
 
 
 <!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-iOS自动化打包上传的踩坑记" data-title="iOS自动化打包上传的踩坑记" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;:
+<div class="ds-share flat" data-thread-key="post-iOS自动化打包上传的踩坑记" data-title="iOS自动化打包上传的踩坑记" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;09&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;:
+&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;添加使用Python封装打包命令的开源库(最下面~)
+&lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;06&lt;/span&gt;:
 &lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;经过一轮测试之后, 发现文章有点错漏, 小修改一下, 增加命令四
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;每次要出包的时候, 总要打开&lt;code&gt;XCode&lt;/code&gt;, 然后点击&lt;code&gt;Product-Archive&lt;/code&gt;, 等待好几分钟的各种build, 然后还要手动上传到&lt;code&gt;AppStore&lt;/code&gt;, 甚至还要上传到&lt;code&gt;蒲公英&lt;/code&gt;、&lt;code&gt;fir&lt;/code&gt;等…&lt;/p&gt;
@@ -466,6 +471,7 @@ var duoshuoQuery = {short_name:"skytoup"};
 &lt;h2 id=&quot;坑六&quot;&gt;坑六&lt;/h2&gt;&lt;p&gt;经过一轮测试之后, 发现用这个&lt;code&gt;xcrun&lt;/code&gt;这个命令打的包需要自己吧SwiftSupport文件加到压缩包, 其实有一个命令没有那么麻烦的…&lt;/p&gt;
 &lt;p&gt;使用上面的第四个命令使用&lt;code&gt;*.xcarchive&lt;/code&gt;把ipa导出, 导出的&lt;code&gt;*.ipa&lt;/code&gt;里面会包含了&lt;code&gt;SwiftSupport&lt;/code&gt;, 还不需要自己把它加进去&lt;/p&gt;
 &lt;h1 id=&quot;番外篇&quot;&gt;番外篇&lt;/h1&gt;&lt;p&gt;在踩到了第五个坑之后, 在&lt;code&gt;github&lt;/code&gt;发现了一个&lt;code&gt;iOS&lt;/code&gt;的打包、发布库…&lt;br&gt;上地址: &lt;a href=&quot;https://github.com/nomad/shenzhen&quot;&gt;https://github.com/nomad/shenzhen&lt;/a&gt;&lt;br&gt;懒得自己搞的可以使用这个库, 感觉还是挺不错的&lt;/p&gt;
+&lt;h1 id=&quot;Python封装打包命令&quot;&gt;Python封装打包命令&lt;/h1&gt;&lt;p&gt;github: &lt;a href=&quot;https://github.com/skytoup/package-ipa&quot;&gt;package-ipa&lt;/a&gt;&lt;/p&gt;
 " data-url="http://skytoup.wicp.net/2016/05/31/iOS自动化打包上传的踩坑记/">
     <div class="ds-share-aside-left">
       <div class="ds-share-aside-inner">
