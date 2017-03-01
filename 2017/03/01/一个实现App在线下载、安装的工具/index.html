@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2015/11 | skytoup blog</title>
+  <title>一个实现App在线下载、安装的工具 | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -214,50 +214,118 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/11/28/iOS9-ATS-设置/">iOS9 ATS 设置</a></h4>
-                            
-                            <p><time datetime="2015-11-28T03:07:01.000Z"><a href="/2015/11/28/iOS9-ATS-设置/">2015-11-28</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/11/26/IntelliJ-IDEA开发golang环境配置/">IntelliJ IDEA开发golang环境配置</a></h4>
-                            
-                            <p><time datetime="2015-11-26T14:50:00.000Z"><a href="/2015/11/26/IntelliJ-IDEA开发golang环境配置/">2015-11-26</a></time></p>
-                        </div>
-                    
-                </div>
-                <nav class="pagination" role="pagination">
-                  
-                  
-                </nav>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-03-01T07:48:31.000Z" itemprop="datePublished">
+          2017-03-01
+      </time>
+    
+</span>
+                <h1>一个实现App在线下载、安装的工具</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="废话">废话</h2><p>平时都在使用<code>fir</code>, 但是公司网速有时候很蛋疼, 安装包体积一大, 就安装个10多分钟都搞不定。而且<code>fir</code>开始有点点收费了, 所以干脆自己做一个简单的工具。断断续续地做了一个月, 终于完成了一些基本功能。</p>
+<h2 id="效果图">效果图</h2><p><strong>首页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/home.png" alt="pic"></p>
+<p><strong>上传App</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/upload.png" alt="pic"></p>
+<p><strong>App详情页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/app_detail.png" alt="pic"></p>
+<p><strong>App编辑页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/app_edit.png" alt="pic"></p>
+<h2 id="基本思路">基本思路</h2><ol>
+<li>上传安装包, 然后区分<code>apk</code>和<code>ipa</code>安装包来进行解析, 获取各种包信息, 最后存到数据库</li>
+<li><code>apk</code>可以直接下载点击安装, <code>ipa</code>则需要一个plist文件来在线安装(详情请参考: <a href="http://help.apple.com/deployment/ios/#/apda0e3426d7" target="_blank" rel="external">http://help.apple.com/deployment/ios/#/apda0e3426d7</a>)</li>
+<li>省略各种增删改查……</li>
+</ol>
+<h2 id="使用技术">使用技术</h2><h3 id="服务端">服务端</h3><ul>
+<li>使用<code>python</code>3.5以上的版本</li>
+<li>选择了一个比较新的框架👉<a href="https://github.com/channelcat/sanic" target="_blank" rel="external">Sanic</a></li>
+<li>数据库简单使用了<code>sqlite3</code>, ORM使用了<a href="https://github.com/zzzeek/sqlalchemy" target="_blank" rel="external">sqlalchemy</a></li>
+</ul>
+<p><strong>源码传送门</strong> 👉 <a href="https://github.com/skytoup/AppServer" target="_blank" rel="external">AppServer</a></p>
+<h3 id="前端(基本没做过,_很简陋)">前端(基本没做过, 很简陋)</h3><ul>
+<li>直接选用了<code>React</code></li>
+<li>看到<a href="https://github.com/dvajs/dva" target="_blank" rel="external">dva</a>这个<code>React</code>框架比较简单, 就选了这个</li>
+<li>在<code>dva</code>哪里看到<a href="https://github.com/ant-design/ant-design" target="_blank" rel="external">antd</a>这个UI框架, 感觉还不错</li>
+</ul>
+<p><strong>源码传送门</strong> 👉 <a href="https://github.com/skytoup/AppServerHTML" target="_blank" rel="external">AppServerHTML</a></p>
+<pre><code>喜欢的就给两个<span class="literal">start</span>吧😁
+</code></pre>
+            </br>
+            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2016/08/28/Python3的虚拟环境/">
+        Python3的虚拟环境 →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>永无止境</p>
-        </div>
+        <div class="duoshuo"><!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-一个实现App在线下载、安装的工具" data-title="一个实现App在线下载、安装的工具" data-url="http://skytoup.wicp.net/2017/03/01/一个实现App在线下载、安装的工具/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"skytoup"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+<!-- 多说分享 悬浮 扁平 start -->
+<div class="ds-share flat" data-thread-key="post-一个实现App在线下载、安装的工具" data-title="一个实现App在线下载、安装的工具" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h2 id=&quot;废话&quot;&gt;废话&lt;/h2&gt;&lt;p&gt;平时都在使用&lt;code&gt;fir&lt;/code&gt;, 但是公司网速有时候很蛋疼, 安装包体积一大, 就安装个10多分钟都搞不定。而且&lt;code&gt;fir&lt;/code&gt;开始有点点收费了, 所以干脆自己做一个简单的工具。断断续续地做了一个月, 终于完成了一些基本功能。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;效果图&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;首页&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/home.png&quot; alt=&quot;pic&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上传App&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/upload.png&quot; alt=&quot;pic&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;App详情页&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/app_detail.png&quot; alt=&quot;pic&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;App编辑页&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/app_edit.png&quot; alt=&quot;pic&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;基本思路&quot;&gt;基本思路&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;上传安装包, 然后区分&lt;code&gt;apk&lt;/code&gt;和&lt;code&gt;ipa&lt;/code&gt;安装包来进行解析, 获取各种包信息, 最后存到数据库&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apk&lt;/code&gt;可以直接下载点击安装, &lt;code&gt;ipa&lt;/code&gt;则需要一个plist文件来在线安装(详情请参考: &lt;a href=&quot;http://help.apple.com/deployment/ios/#/apda0e3426d7&quot;&gt;http://help.apple.com/deployment/ios/#/apda0e3426d7&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;省略各种增删改查……&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;使用技术&quot;&gt;使用技术&lt;/h2&gt;&lt;h3 id=&quot;服务端&quot;&gt;服务端&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;python&lt;/code&gt;3.5以上的版本&lt;/li&gt;
+&lt;li&gt;选择了一个比较新的框架👉&lt;a href=&quot;https://github.com/channelcat/sanic&quot;&gt;Sanic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;数据库简单使用了&lt;code&gt;sqlite3&lt;/code&gt;, ORM使用了&lt;a href=&quot;https://github.com/zzzeek/sqlalchemy&quot;&gt;sqlalchemy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;源码传送门&lt;/strong&gt; 👉 &lt;a href=&quot;https://github.com/skytoup/AppServer&quot;&gt;AppServer&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前端(基本没做过,_很简陋)&quot;&gt;前端(基本没做过, 很简陋)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;直接选用了&lt;code&gt;React&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;看到&lt;a href=&quot;https://github.com/dvajs/dva&quot;&gt;dva&lt;/a&gt;这个&lt;code&gt;React&lt;/code&gt;框架比较简单, 就选了这个&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;dva&lt;/code&gt;哪里看到&lt;a href=&quot;https://github.com/ant-design/ant-design&quot;&gt;antd&lt;/a&gt;这个UI框架, 感觉还不错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;源码传送门&lt;/strong&gt; 👉 &lt;a href=&quot;https://github.com/skytoup/AppServerHTML&quot;&gt;AppServerHTML&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;喜欢的就给两个&lt;span class=&quot;literal&quot;&gt;start&lt;/span&gt;吧😁
+&lt;/code&gt;&lt;/pre&gt;" data-url="http://skytoup.wicp.net/2017/03/01/一个实现App在线下载、安装的工具/">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+<!-- 多说分享 悬浮 扁平 end -->
+
+
+<!-- 多说最近访客 start -->
+<div>最近访客:</div>
+<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
+<!-- 多说最近访客 end --></div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 

@@ -44,15 +44,15 @@
     <![endif]-->
 
     <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
-    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 
     <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
     <!--[if IE]>
-    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
     <![endif]-->
 
     <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
@@ -110,6 +110,8 @@
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/React/" class="animsition-link">React<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Tool/" class="animsition-link">Tool<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
 				    
@@ -215,6 +217,39 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/06/20/数据结构-链表/">数据结构-链表</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-06-20T07:54:00.000Z" itemprop="datePublished">
+          2015-06-20
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        1.链表基础链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。
+链表的结构如下图（画得不是很好）：
+这是一个双向链表，可以通过每一个节点，找到它的上一个节点，或者下一个节点。如果为单向链表，则节点没有pre这个成员变量。
+节点的结构体定义：struct link_node {    struct link_node next; // 前一个节点    struct link_node p
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/06/20/数据结构-链表/">阅读全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
