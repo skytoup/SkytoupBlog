@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>skytoup blog</title>
+  <subtitle>分享个人经验</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://skytoup.wicp.net/"/>
+  <updated>2017-03-01T08:26:51.000Z</updated>
+  <id>http://skytoup.wicp.net/</id>
+  
+  <author>
+    <name>skytoup</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个实现App在线下载、安装的工具</title>
+    <link href="http://skytoup.wicp.net/2017/03/01/%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0App%E5%9C%A8%E7%BA%BF%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%B7%A5%E5%85%B7/"/>
+    <id>http://skytoup.wicp.net/2017/03/01/一个实现App在线下载、安装的工具/</id>
+    <published>2017-03-01T07:48:31.000Z</published>
+    <updated>2017-03-01T08:26:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="废话">废话</h2><p>平时都在使用<code>fir</code>, 但是公司网速有时候很蛋疼, 安装包体积一大, 就安装个10多分钟都搞不定。而且<code>fir</code>开始有点点收费了, 所以干脆自己做一个简单的工具。断断续续地做了一个月, 终于完成了一些基本功能。</p>
+<h2 id="效果图">效果图</h2><p><strong>首页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/home.png" alt="pic"></p>
+<p><strong>上传App</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/upload.png" alt="pic"></p>
+<p><strong>App详情页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/app_detail.png" alt="pic"></p>
+<p><strong>App编辑页</strong><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/app_edit.png" alt="pic"></p>
+<h2 id="基本思路">基本思路</h2><ol>
+<li>上传安装包, 然后区分<code>apk</code>和<code>ipa</code>安装包来进行解析, 获取各种包信息, 最后存到数据库</li>
+<li><code>apk</code>可以直接下载点击安装, <code>ipa</code>则需要一个plist文件来在线安装(详情请参考: <a href="http://help.apple.com/deployment/ios/#/apda0e3426d7" target="_blank" rel="external">http://help.apple.com/deployment/ios/#/apda0e3426d7</a>)</li>
+<li>省略各种增删改查……</li>
+</ol>
+<h2 id="使用技术">使用技术</h2><h3 id="服务端">服务端</h3><ul>
+<li>使用<code>python</code>3.5以上的版本</li>
+<li>选择了一个比较新的框架👉<a href="https://github.com/channelcat/sanic" target="_blank" rel="external">Sanic</a></li>
+<li>数据库简单使用了<code>sqlite3</code>, ORM使用了<a href="https://github.com/zzzeek/sqlalchemy" target="_blank" rel="external">sqlalchemy</a></li>
+</ul>
+<p><strong>源码传送门</strong> 👉 <a href="https://github.com/skytoup/AppServer" target="_blank" rel="external">AppServer</a></p>
+<h3 id="前端(基本没做过,_很简陋)">前端(基本没做过, 很简陋)</h3><ul>
+<li>直接选用了<code>React</code></li>
+<li>看到<a href="https://github.com/dvajs/dva" target="_blank" rel="external">dva</a>这个<code>React</code>框架比较简单, 就选了这个</li>
+<li>在<code>dva</code>哪里看到<a href="https://github.com/ant-design/ant-design" target="_blank" rel="external">antd</a>这个UI框架, 感觉还不错</li>
+</ul>
+<p><strong>源码传送门</strong> 👉 <a href="https://github.com/skytoup/AppServerHTML" target="_blank" rel="external">AppServerHTML</a></p>
+<pre><code>喜欢的就给两个<span class="literal">start</span>吧😁
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;废话&quot;&gt;废话&lt;/h2&gt;&lt;p&gt;平时都在使用&lt;code&gt;fir&lt;/code&gt;, 但是公司网速有时候很蛋疼, 安装包体积一大, 就安装个10多分钟都搞不定。而且&lt;code&gt;fir&lt;/code&gt;开始有点点收费了, 所以干脆自己做一个简单的工具。断断续续地做了一个月, 终于
+    
+    </summary>
+    
+      <category term="Tool" scheme="http://skytoup.wicp.net/categories/Tool/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python3的虚拟环境</title>
+    <link href="http://skytoup.wicp.net/2016/08/28/Python3%E7%9A%84%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/"/>
+    <id>http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/</id>
+    <published>2016-08-28T13:26:57.000Z</published>
+    <updated>2016-08-28T14:04:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景">背景</h1><p>Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。</p>
+<h1 id="pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)">pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)</h1><p>pyvenv是Python3安装时自带的创建一个虚拟环境工具(tip: Python3.4版本前的pyven创建的虚拟环境不带pip)</p>
+<p>用这个工具就能创建出多个Python的虚拟环境, 把第三方模块安装到不同的虚拟环境, 就能让不同的项目使用不同的Python环境, 互相不会受到影响。</p>
+<h1 id="基本使用(Mac、Linux,_Win很久没用了)">基本使用(Mac、Linux, Win很久没用了)</h1><p>创建虚拟环境命令:</p>
+<pre><code>pyvenv /path/<span class="keyword">to</span>/<span class="keyword">new</span>/<span class="keyword">virtual</span>/environment
+</code></pre><p>激活虚拟环境命令:</p>
+<pre><code><span class="keyword">source</span> <span class="regexp">/path/</span>to<span class="regexp">/virtual/</span>environment<span class="regexp">/bin/</span>activate
+</code></pre><p>退出虚拟环境命令:</p>
+<pre><code>deactivate
+</code></pre><p>例子:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pyvenv py_1-evn <span class="comment"># 当前目录创建一个虚拟环境叫py_1-evn</span></div><div class="line">source py_1-evn/bin/<span class="built_in">activate</span> <span class="comment"># 在本终端激活这个虚拟环境(没有激活虚拟环境时是使用全局的环境)</span></div><div class="line">pip install 。。。。 <span class="comment"># 可以安装各种第三方模块, 都会安装到激活的虚拟环境</span></div><div class="line">python xxx.py <span class="comment"># 在激活的虚拟环境运行py脚本</span></div><div class="line">deactivate <span class="comment"># 退出激活的虚拟环境</span></div></pre></td></tr></table></figure></p>
+<h1 id="更高级的使用(Python_API)">更高级的使用(Python API)</h1><p>请参考官方文档: <a href="https://docs.python.org/3/library/venv.html" target="_blank" rel="external">https://docs.python.org/3/library/venv.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;&lt;p&gt;Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。&lt;/p&gt;
+&lt;h1 id=&quot;pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)&quot;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://skytoup.wicp.net/categories/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS自动化打包上传的踩坑记</title>
+    <link href="http://skytoup.wicp.net/2016/05/31/iOS%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    <id>http://skytoup.wicp.net/2016/05/31/iOS自动化打包上传的踩坑记/</id>
+    <published>2016-05-31T11:38:57.000Z</published>
+    <updated>2016-09-11T14:26:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code><span class="number">2016</span>-<span class="number">09</span>-<span class="number">11</span>:
+<span class="number">1.</span>添加使用Python封装打包命令的开源库(最下面~)
+<span class="number">2016</span>-<span class="number">06</span>-<span class="number">06</span>:
+<span class="number">1.</span>经过一轮测试之后, 发现文章有点错漏, 小修改一下, 增加命令四
+</code></pre><blockquote>
+<p>每次要出包的时候, 总要打开<code>XCode</code>, 然后点击<code>Product-Archive</code>, 等待好几分钟的各种build, 然后还要手动上传到<code>AppStore</code>, 甚至还要上传到<code>蒲公英</code>、<code>fir</code>等…</p>
+</blockquote>
+<p>很久以前就看了很多关于<code>iOS</code>自动打包<code>ipa</code>的文章, 看着感觉很简单, 但是因为一直没有<code>AppleDeveloper</code>账号可以给我用, 到了真的要搞自动打包的时候, 才发现到处都是坑。</p>
+<h1 id="基本命令">基本命令</h1><ol>
+<li>xcedebuild: 生成<code>Archive</code>、导出<code>ipa</code>, 还有其它功能…</li>
+<li>xcrun: 把<code>*.app</code>打包成<code>ipa</code>, 还有其它功能…</li>
+</ol>
+<h1 id="基本使用">基本使用</h1><p>一. <code>xcedebuild</code>打包<code>Archive</code>文件</p>
+<pre><code>xcedebuild -workspace $<span class="list">{path to *.xcworkspace}</span> -scheme $<span class="list">{scheme}</span> -destination generic/platform=iOS archive -configuration <span class="keyword">Release</span> ONLY_ACTIVE_ARCH=NO -archivePath $<span class="list">{export path *.xcarichive}</span>
+</code></pre><ul>
+<li>-workspace 你的<code>*.xcworkspace</code>文件    </li>
+<li>-scheme 项目文件里面的<code>scheme</code>    </li>
+<li>-archivePath 生成的<code>*.xcarichive</code>文件路径</li>
+</ul>
+<p>二. <code>xcedebuild</code>从<code>*.xcarchive</code>导出<code>ipa</code></p>
+<pre><code><span class="title">xcodebuild</span> -exportArchive -exportFormat IPA -archivePath <span class="variable">${path to *.xcarchive}</span> -exportPath <span class="variable">${export path *.ipa}</span> -exportProvisioningProfile <span class="variable">${ProvisioningProfileName}</span>
+</code></pre><ul>
+<li>-archivePath 你的<code>*.xcarchive</code>文件, 可以使用上一个命令导出</li>
+<li>-exportPath 导出的<code>ipa</code>路径</li>
+<li>exportProvisioningProfile 你的Distribution发布证书的名称(只需要名称)</li>
+</ul>
+<p>三. <code>xcrun</code>打包<code>ipa</code></p>
+<pre><code><span class="title">xcrun</span> -sdk iphoneos PackageApplication -v <span class="variable">${path to *.app}</span> -o <span class="variable">${package path *.ipa}</span>
+</code></pre><ul>
+<li>-v 你的<code>*.app</code>文件, 生成的<code>*.xcarchive</code>里面有</li>
+<li>-o 打包生成的<code>*.ipa</code>文件路径, 注意！！！这里是不能填相对路径, 因为这里的路径环境变量不是当前执行命令的路径了</li>
+</ul>
+<p>四. 最新的正确<code>xcodebuild</code>导出ipa</p>
+<pre><code>xcodebuild -exportArchive -archivePath ${path <span class="keyword">to</span> *.xcarchive} -exportPath ${<span class="keyword">export</span> path <span class="keyword">to</span> dir} -exportOptionsPlist ${path <span class="keyword">to</span> <span class="keyword">export</span> options *.plist}
+</code></pre><ul>
+<li>-archivePath 你的<code>*.xcarchive</code>文件, 可以使用第二个命令导出</li>
+<li>-exportPath 导出的<code>ipa</code>目录, ipa的名称好像是scheme的名称</li>
+<li>-exportOptionsPlist 导出plist格式的配置文件</li>
+</ul>
+<p>exportOptionPlist: 新建一个plist文件, 里面是一个Dictionary, key-value如下, 都是可选值, 不需要全部填上</p>
+<blockquote>
+<ol>
+<li><p>compileBitcode: Bool</p>
+<blockquote>
+<p>For non-App Store exports, should Xcode re-compile the app from bitcode? Defaults to YES.</p>
+</blockquote>
+</li>
+<li><p>embedOnDemandResourcesAssetPacksInBundle : Bool</p>
+<blockquote>
+<p>For non-App Store exports, if the app uses On Demand Resources and this is YES, asset packs are embedded in the app bundle so that the app can be tested without a server to host asset packs. Defaults to YES unless onDemandResourcesAssetPacksBaseURL is specified.</p>
+</blockquote>
+</li>
+<li><p>iCloudContainerEnvironment</p>
+<blockquote>
+<p>For non-App Store exports, if the app is using CloudKit, this configures the “com.apple.developer.icloud-container-environment” entitlement. Available options: Development and Production. Defaults to Development.</p>
+</blockquote>
+</li>
+<li><p>manifest : Dictionary</p>
+<blockquote>
+<p>For non-App Store exports, users can download your app over the web by opening your distribution manifest file in a web browser. To generate a distribution manifest, the value of this key should be a dictionary with three sub-keys: appURL, displayImageURL, fullSizeImageURL. The additional sub-key assetPackManifestURL is required when using on demand resources.</p>
+</blockquote>
+</li>
+<li><p>method : String</p>
+<blockquote>
+<p>Describes how Xcode should export the archive. Available options: app-store, ad-hoc, package, enterprise, development, and developer-id. The list of options varies based on the type of archive. Defaults to development.</p>
+</blockquote>
+</li>
+<li><p>onDemandResourcesAssetPacksBaseURL : String</p>
+<blockquote>
+<p>For non-App Store exports, if the app uses On Demand Resources and embedOnDemandResourcesAssetPacksInBundle isn’t YES, this should be a base URL specifying where asset packs are going to be hosted. This configures the app to download asset packs from the specified URL.</p>
+</blockquote>
+</li>
+<li><p>teamID : String</p>
+<blockquote>
+<p>The Developer Portal team to use for this export. Defaults to the team used to build the archive.</p>
+</blockquote>
+</li>
+<li><p>thinning : String</p>
+<blockquote>
+<p>For non-App Store exports, should Xcode thin the package for one or more device variants? Available options: <none> (Xcode produces a non-thinned universal app), <thin-for-all-variants> (Xcode produces a universal app and all available thinned variants), or a model identifier for a specific device (e.g. “iPhone7,1”). Defaults to <none>.</none></thin-for-all-variants></none></p>
+</blockquote>
+</li>
+<li><p>uploadBitcode : Bool</p>
+<blockquote>
+<pre><code><span class="keyword">For</span> App Store <span class="keyword">exports</span>, should the package include bitcode? Defaults <span class="keyword">to</span> YES.
+</code></pre></blockquote>
+</li>
+<li><p>uploadSymbols : Bool</p>
+<blockquote>
+<p>For App Store exports, should the package include symbols? Defaults to YES.</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<h1 id="踩坑">踩坑</h1><h2 id="坑一">坑一</h2><p>使用第一个命令前, 需要确保你的项目的签名配置好, 证书下好最新的</p>
+<h2 id="坑二">坑二</h2><p>第二个命令的<code>-exportProvisioningProfile</code>填的只是你的发布证书的名称, 不是那一串<code>id</code></p>
+<h2 id="坑三">坑三</h2><p>第二个命令打包出来的<code>*.ipa</code>不能用来上传到<code>AppStore</code>, 一直报CocoaPods里面的第三方库签名错误</p>
+<h2 id="坑四">坑四</h2><p>打包出来的<code>*.ipa</code>需要上传到<code>AppSotre</code>的话, 可以使用第三个命令, <code>xcrun</code>那一个</p>
+<h2 id="坑五">坑五</h2><p>使用第三个命令打包出来的<code>*.ipa</code>, 上传到<code>AppStore</code>之后, 登录到<code>iTunes Connect-APP-所有构建版本</code>查看到上传的<code>*.ipa</code>正在构建。但是过了一会儿, <code>AppleDeveloper</code>账号的邮箱就会收到一封报错的邮件, 大概是说你的<code>*.ipa</code>包里面, 缺少了一个<code>SwiftSupport</code>文件夹</p>
+<p>经过各种搜索之后, 原来需要把<code>xcrun</code>打包出来的<code>*.ipa</code>解压, 然后新建一个文件夹, <code>*.xcarchive</code>里面的<code>SwiftSupport</code>文件夹<code>copy</code>进去, 还有把<code>ipa</code>解压出来的<code>move</code>进入, 最后打个zip包, 再改成<code>ipa</code>后缀就可以上传到<code>AppStore</code>了(应该吧, 还没测试😂)</p>
+<h2 id="坑六">坑六</h2><p>经过一轮测试之后, 发现用这个<code>xcrun</code>这个命令打的包需要自己吧SwiftSupport文件加到压缩包, 其实有一个命令没有那么麻烦的…</p>
+<p>使用上面的第四个命令使用<code>*.xcarchive</code>把ipa导出, 导出的<code>*.ipa</code>里面会包含了<code>SwiftSupport</code>, 还不需要自己把它加进去</p>
+<h1 id="番外篇">番外篇</h1><p>在踩到了第五个坑之后, 在<code>github</code>发现了一个<code>iOS</code>的打包、发布库…<br>上地址: <a href="https://github.com/nomad/shenzhen" target="_blank" rel="external">https://github.com/nomad/shenzhen</a><br>懒得自己搞的可以使用这个库, 感觉还是挺不错的</p>
+<h1 id="Python封装打包命令">Python封装打包命令</h1><p>github: <a href="https://github.com/skytoup/package-ipa" target="_blank" rel="external">package-ipa</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;09&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;:
+&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;添加使
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2016 CocosPods安装教程</title>
+    <link href="http://skytoup.wicp.net/2016/05/16/2016-CocosPods%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>http://skytoup.wicp.net/2016/05/16/2016-CocosPods安装教程/</id>
+    <published>2016-05-16T12:57:03.000Z</published>
+    <updated>2016-06-01T11:46:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>2016-06-01<br>修改安装的第四个命令多写了一个’o’</p>
+</blockquote>
+<h1 id="CocoaPods简介">CocoaPods简介</h1><blockquote>
+<p><code>CocoaPods</code>是一个管理<code>Swift</code>和<code>Objective-C</code>的<code>Cocoa</code>项目的依赖工具。它现在有超过一万八千多个库，可以优雅地帮助你扩展你的项目。简单的说，就是替你管理<code>Swift</code>和<code>Objective-C</code>的Cocoa项目的第三方库引入。</p>
+<p>官网地址: <a href="https://cocoapods.org/" target="_blank" rel="external">https://cocoapods.org/</a></p>
+</blockquote>
+<h1 id="安装">安装</h1><ol>
+<li>Mac上面本来就自带了ruby，所有就不用自己安装了(除非你卸载了)。</li>
+<li><p>打开<code>Terminal</code>(终端)，输入以下命令(第二个命令可能会需要稍等一会儿)</p>
+<pre><code>gem sources --<span class="built_in">remove</span> http<span class="variable">s:</span>//rubygems.org/
+gem <span class="keyword">source</span> -<span class="keyword">a</span> http<span class="variable">s:</span>//gems.<span class="keyword">ruby</span>-china.org
+</code></pre></li>
+<li><p>第一个命令是移除官方源，因为在不翻墙的情况下，使用起来比较慢；第二个命令是添加<code>ruby-china</code>的<code>RubyGems</code>镜像(很多旧教程都是说使用taobao的gem源，但是taobao的gem源已经停止维护了，原文: <a href="https://ruby-china.org/topics/29250" target="_blank" rel="external">https://ruby-china.org/topics/29250</a>)。</p>
+<p> 接下来运行一个命令查看是否成功添加了<code>ruby-china</code>的<code>gem</code>源:</p>
+<pre><code>gem <span class="built_in">source</span>
+</code></pre><p> 出现下图这样子，则代表成功添加~<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/2016-05-16_1.png" alt="gem source"></p>
+</li>
+<li><p>然后就可以开始真正安装<code>CocoaPods</code>了，输入一下命令:</p>
+<pre><code>sudo gem <span class="keyword">install</span> cocoapods
+</code></pre><p> 等一会儿就能安装完成~~~</p>
+</li>
+<li><p>安装结束后，需要运行一下命令初始化<code>CocoaPods</code>: </p>
+<pre><code><span class="title">pod</span> setup
+</code></pre><p> 没有什么错误的话，就算了安装结束了。</p>
+</li>
+</ol>
+<h1 id="基本使用">基本使用</h1><ol>
+<li><p>打开<code>Terminal</code>(终端)，<code>cd</code>到你的Project目录，输入一下命令:</p>
+<pre><code><span class="title">pod</span> init
+</code></pre><p> 运行结束后，该目录下，会生成了一个<code>Podfile</code>文件</p>
+</li>
+<li><p>使用文本编辑器(vim、Sublime Text2、等等…)打开它(<code>Podfile</code>)，大概会看到以下的东西</p>
+<pre><code>platform <span class="symbol">:ios</span>, <span class="string">'xxx'</span> <span class="comment"># 目标平台及其版本</span>
+use_frameworks! <span class="comment"># swift项目需要这句话，是Objective-C项目的话，请在前面加个`#`注释掉</span>
+target <span class="string">'xxxx'</span> <span class="keyword">do</span>
+    <span class="comment"># 在这里添加你的依赖库说明，如pod xxx</span>
+    pod <span class="string">'Alamofire'</span>, <span class="string">'~&gt; 3.1’ # 例如这是引入Alamofire这个第三方库
+end</span>
+</code></pre></li>
+<li><p>编辑完<code>Podfile</code>后，使用<code>Terminal</code>(终端)输入其中一个命令(需要cd到项目的根目录，即<code>Podfile</code>所在目录): </p>
+<pre><code>pod <span class="operator"><span class="keyword">install</span> <span class="comment">--no-repo-update</span>
+<span class="keyword">or</span>
+pod <span class="keyword">install</span></span>
+</code></pre><p> 第一个命令是不更新本地库信息进行安装，速度会快一点，毕竟不需要更新。但是会有一点点问题，当有一个新的库发布的时候，就会无法安装成功。如果不嫌麻烦，可以定时执行以下命令更新<code>CocoaPods</code>的库，然后就可以在一段时间使用以上的第一个命令进行安装:</p>
+<pre><code><span class="title">pod</span> repo update
+</code></pre></li>
+<li><p>安装完成之后，打开项目就需要打开<code>xxx.xcworkspace</code>，而不是<code>xxx.xcodeproj</code>了</p>
+</li>
+<li><p>如果在安装之后，修改了<code>Podfile</code>文件，可以执行以下的其中一个命令进行库的更新(两个命令的区别和上面说的一样):</p>
+<pre><code>pod <span class="keyword">update</span> --<span class="keyword">no</span>-repo-<span class="keyword">update</span>
+<span class="built_in">or</span>
+pod <span class="keyword">update</span>
+</code></pre></li>
+</ol>
+<h1 id="安装CocoaPods的可能失败原因">安装CocoaPods的可能失败原因</h1><p>gem过旧，使用以下命令更新一下，再进行安装(先切换到了<code>ruby-china</code>的<code>gem</code>源再运行一下命令更新):</p>
+<pre><code><span class="title">sudo</span> gem update
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;2016-06-01&lt;br&gt;修改安装的第四个命令多写了一个’o’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;CocoaPods简介&quot;&gt;CocoaPods简介&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;CocoaPods&lt;/cod
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS使用runtime监测UIViewController的dealloc</title>
+    <link href="http://skytoup.wicp.net/2016/02/02/iOS%E4%BD%BF%E7%94%A8runtime%E7%9B%91%E6%B5%8BUIViewController%E7%9A%84dealloc/"/>
+    <id>http://skytoup.wicp.net/2016/02/02/iOS使用runtime监测UIViewController的dealloc/</id>
+    <published>2016-02-02T08:10:38.000Z</published>
+    <updated>2016-02-02T09:00:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时在iOS开发的时候，很多情况会导致内存泄露。有时候因为循环引用，导致了<code>UIViewController</code>不回收，还有其它好多原因。一般检测内存泄露都是使用<code>Xcode</code>的<code>Instruments</code>工具。但是这个工具有点复杂，新手入门还是有点难度。所以想到了使用runtime替换<code>UIViewController</code>的<code>-(void)dealloc:</code>方法的实现，检测<code>ViewController</code>是否被释放，从而知道<code>ViewController</code>里面有没有内存泄露。</p>
+<pre><code><span class="keyword">runtime</span>的相关细节就不说了，不理解也能用，复制放到项目里面就好了。
+</code></pre><h1 id="一、思路">一、思路</h1><ol>
+<li>需要被替换的方法是<code>UIViewController</code>的<code>-(void)dealloc:</code>，所以新建一个<code>UIViewController</code>的<code>Category</code>，在其<code>+(void)load</code>里面执行方法替换。</li>
+<li>替换的新方法里面做一个简单地log一下当前<code>UIViewController</code>的类名就好了就好了，即当UIViewController被回收的时候，log其类名。</li>
+</ol>
+<h1 id="二、实现">二、实现</h1><p>1.新建一个UIViewController的<code>Category</code>，编写新的dealloc方法。代码如下(可自行修改):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (void)skyLogInDealloc &#123;</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    NSLog(@&quot;-------------start-------------&quot;);</div><div class="line">    NSLog(@&quot;Dealloc : %@&quot;, NSStringFromClass([self class]));</div><div class="line">    NSLog(@&quot;--------------end--------------&quot;);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    [self skyLogInDealloc];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.重写<code>+(void)onLoad:</code>方法。代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">+ (void)load &#123;</div><div class="line">    [super load];</div><div class="line">    </div><div class="line">    SEL originSEL  = NSSelectorFromString(@&quot;dealloc&quot;);</div><div class="line">    SEL swapSEL = @selector(skyLogInDealloc);</div><div class="line">    </div><div class="line">    Method originMethod = class_getInstanceMethod(self, originSEL);</div><div class="line">    Method swapMethod = class_getInstanceMethod(self, swapSEL);</div><div class="line">    </div><div class="line">    IMP originIMP = method_getImplementation(originMethod);</div><div class="line">    IMP swapIMP = method_getImplementation(swapMethod);</div><div class="line"></div><div class="line">    BOOL didAddMethod = class_addMethod(self, originSEL, swapIMP, method_getTypeEncoding(originMethod));</div><div class="line">    </div><div class="line">    if(didAddMethod) &#123;</div><div class="line">        class_replaceMethod(self, swapSEL, originIMP, method_getTypeEncoding(originMethod));</div><div class="line">    &#125; else &#123;</div><div class="line">        method_exchangeImplementations(originMethod, swapMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整的m文件实现代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#if DEBUG</div><div class="line">+ (void)load &#123;</div><div class="line">    [super load];</div><div class="line"></div><div class="line">    SEL originSEL  = NSSelectorFromString(@&quot;dealloc&quot;);</div><div class="line">    SEL swapSEL = @selector(skyLogInDealloc);</div><div class="line">    </div><div class="line">    Method originMethod = class_getInstanceMethod(self, originSEL);</div><div class="line">    Method swapMethod = class_getInstanceMethod(self, swapSEL);</div><div class="line">    </div><div class="line">    IMP originIMP = method_getImplementation(originMethod);</div><div class="line">    IMP swapIMP = method_getImplementation(swapMethod);</div><div class="line"></div><div class="line">    BOOL didAddMethod = class_addMethod(self, originSEL, swapIMP, method_getTypeEncoding(originMethod));</div><div class="line">    </div><div class="line">    if(didAddMethod) &#123;</div><div class="line">        class_replaceMethod(self, swapSEL, originIMP, method_getTypeEncoding(originMethod));</div><div class="line">    &#125; else &#123;</div><div class="line">        method_exchangeImplementations(originMethod, swapMethod);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)skyLogInDealloc &#123;</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    NSLog(@&quot;-------------start-------------&quot;);</div><div class="line">    NSLog(@&quot;Dealloc : %@&quot;, NSStringFromClass([self class]));</div><div class="line">    NSLog(@&quot;--------------end--------------&quot;);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    [self skyLogInDealloc];</div><div class="line">&#125;</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h1 id="三、部分细节">三、部分细节</h1><ol>
+<li>在ARC下，使用<code>@selector(dealloc:)</code>会报错，所以只好这样子获取它的SEL: <code>NSSelectorFromString(@&quot;dealloc&quot;)</code></li>
+<li><code>DEBUG</code>是一个宏，当构建项目使用Debug的时候，其值会为YES，当使用Release的时候，其值会是NO。加上去就是为了发布的时候，也不需要担心忘记将其移除功能。</li>
+</ol>
+<p>附上github地址: <a href="https://github.com/skytoup/SkyLogInDealloc" target="_blank" rel="external">https://github.com/skytoup/SkyLogInDealloc</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时在iOS开发的时候，很多情况会导致内存泄露。有时候因为循环引用，导致了&lt;code&gt;UIViewController&lt;/code&gt;不回收，还有其它好多原因。一般检测内存泄露都是使用&lt;code&gt;Xcode&lt;/code&gt;的&lt;code&gt;Instruments&lt;/code&gt;工具。
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Webstorm使用babel6</title>
+    <link href="http://skytoup.wicp.net/2016/01/28/Webstorm%E4%BD%BF%E7%94%A8babel6/"/>
+    <id>http://skytoup.wicp.net/2016/01/28/Webstorm使用babel6/</id>
+    <published>2016-01-28T00:43:45.000Z</published>
+    <updated>2016-01-28T00:54:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、初始化工程">一、初始化工程</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init <span class="string">'project name'</span></div></pre></td></tr></table></figure>
+<p>输入各种信息之后，新建工程完毕。</p>
+<h1 id="二、安装babel">二、安装babel</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-cli</div></pre></td></tr></table></figure>
+<h1 id="三、修改Webstorm配置">三、修改Webstorm配置</h1><p>打开Setting -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; JavaScript language version，选择ECMAScript6。</p>
+<h1 id="四、安装babel预插件">四、安装babel预插件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install babel-preset-es2015 --save-dev</div></pre></td></tr></table></figure>
+<h1 id="五、创建-babelrc配置文件">五、创建.babelrc配置文件</h1><figure class="highlight openscad"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> '&#123; <span class="string">"presets"</span>: [<span class="string">"es2015"</span>] &#125;' &gt; .babelrc</div></pre></td></tr></table></figure>
+<p>或自行在项目根目录创建<code>.babelrc</code>文件，并输入<code>{ &quot;presets&quot;: [&quot;es2015&quot;] }</code>，保存、退出。</p>
+<h1 id="END">END</h1><pre><code><span class="attribute">tip</span>: <span class="string">运行的时候选择转换好的文件，别选原文件！！！</span>
+</code></pre><p>更详细请参考官方说明: <a href="http://babeljs.io/docs/setup/#webstorm" target="_blank" rel="external">Babel_Webstorm</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、初始化工程&quot;&gt;一、初始化工程&lt;/h1&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://skytoup.wicp.net/categories/node-js/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js的BT下载</title>
+    <link href="http://skytoup.wicp.net/2016/01/25/Node-js%E7%9A%84BT%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://skytoup.wicp.net/2016/01/25/Node-js的BT下载/</id>
+    <published>2016-01-25T02:58:42.000Z</published>
+    <updated>2016-01-25T07:35:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>近来想用Node.js做一个BT下载的程序，于是研究了一下BT下载相关的知识。</p>
+<h1 id="一、BT文件解析">一、BT文件解析</h1><pre><code>用了那么久的<span class="tag">bt</span>下载，都知道下载前，都是先解析种子文件(<span class="class">.torrent</span>)的吧。
+</code></pre><p>种子文件使用的是<code>BEncode(B编码)</code>保存数据，这种编码有四种数据结构：</p>
+<h3 id="1-string(字符串)">1.string(字符串)</h3><p>string的编码为 <code>&lt;string length&gt;:&lt;string&gt;</code></p>
+<pre><code>例<span class="symbol">:</span> <span class="number">7</span><span class="symbol">:example</span>, 表示字符串 <span class="string">'example'</span>
+</code></pre><h3 id="2-integer(整数)">2.integer(整数)</h3><p>integer的编码为 <code>i&lt;integer&gt;e</code></p>
+<pre><code>例: i123456e, 表示整数 <span class="number">123456</span>
+</code></pre><h3 id="3-list(列表)">3.list(列表)</h3><p>list的编码为 <code>l&lt;BEncode&gt;e</code></p>
+<pre><code>例: <span class="tag">l6</span><span class="pseudo">:stringi123ee</span>, 表示数组 <span class="attr_selector">['string', 123]</span>
+</code></pre><h3 id="4-dictionary(字典)">4.dictionary(字典)</h3><p>dictionary的编码为 <code>d&lt;BEcode的string&gt;&lt;BEncode&gt;e</code>,即<code>d&lt;key&gt;&lt;value&gt;e</code>,key为BEcode的string,value为BEncode</p>
+<pre><code>例<span class="pseudo">:d3</span><span class="pseudo">:key5</span><span class="pseudo">:value4</span><span class="pseudo">:testi123ee</span>, 表示<span class="rules">{<span class="rule"><span class="attribute">key</span>:<span class="value"><span class="string">'value'</span>, test:<span class="number">123</span></span></span></span>}
+</code></pre><blockquote>
+<p>注: list和dictionary可以相互嵌套</p>
+</blockquote>
+<p>解析基本思路，dictionary的key肯定为字符串，value和list的元素为任意类型，使用递归思路解析比较简单。</p>
+<blockquote>
+<p>附上一份自己写的简单解析代码: <a href="https://github.com/skytoup/node.js-BEncode" target="_blank" rel="external">node.js简单解析bencode</a></p>
+</blockquote>
+<h1 id="二、BT文件结构">二、BT文件结构</h1><p>参考别人的文章: <a href="http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html" target="_blank" rel="external">torrent文件分析</a></p>
+<h1 id="三、BT协议">三、BT协议</h1><p>还是参考别人的文章: </p>
+<ol>
+<li><a href="http://blog.chinaunix.net/uid-26548237-id-3056731.html" target="_blank" rel="external">BT（带中心Tracker）通信协议的分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-14408083-id-2814554.html" target="_blank" rel="external">BitTorrent协议规范</a></li>
+<li><p><a href="http://blog.csdn.net/wengpingbo/article/details/9174363" target="_blank" rel="external">常见P2P协议之BitTorrent 分析</a></p>
+<pre><code>发现<span class="keyword">BT</span>协议还是挺复杂的,下载的代码一时半刻写不出来。
+</code></pre></li>
+</ol>
+<h1 id="番外篇">番外篇</h1><h2 id="一、_关于info_hash">一、 关于info_hash</h2><p>网上的资料比较少，搜了好久，发现很多都是说得不是很清楚。</p>
+<p>1.BT协议中的info_hash</p>
+<blockquote>
+<p>info_hash是种子解析后的对象的info节点中的pieces，其长度为20的倍数，每20个字节对应一块文件。在BT协议中，下载文件需要一块一块下载，下载那一块，就是看你传过去的info_hash。</p>
+<p>但是BT文件里面的部分数据是ASCII码，不能直接传输过去，需要经过一定的编码。编码很简单，凡是ASCII码的数字、字母，都按数字、字母传输，其余的以它的16进制前面加一个<code>%</code>符号传输。</p>
+<p>例如: ASCII编码 <code>6D8875</code> 应该为 <code>m%88u</code></p>
+</blockquote>
+<p>2.BT种子转磁力链接的info_hash</p>
+<blockquote>
+<p>经过各种搜索、测试，最后看源码发现，BT种子是如何转磁力链接。<br>首先把种子的info节点以BEcode编码，将其sha1散列，最后把得到的结果拼接到这里的末尾: <code>magnet:?xt=urn:btih:</code>。多个文件的情况，好像是用<code>&amp;</code>符号拼接每一个文件。</p>
+<pre><code>原本想做一个测试测试的，谁知道<span class="keyword">node</span>.<span class="identifier"></span><span class="title">js</span>用buffer读取bt的部分<span class="type">string</span>后，length就变了......
+</code></pre></blockquote>
+<h2 id="二、node-js的BT下载库">二、node.js的BT下载库</h2><p>找了好久, 终于发现了一个node.js的BT下载库, 功能还是挺强大的，貌似还有其它的功能。</p>
+<p>上地址: <a href="https://github.com/feross/webtorrent" target="_blank" rel="external">webtorrent</a></p>
+<blockquote>
+<p>官方文档写得挺详细的，而且这个库简单易用。至于还有其它什么功能我也不太了解了。</p>
+</blockquote>
+<h2 id="文章参考">文章参考</h2><ol>
+<li><a href="http://www.cnblogs.com/hnrainll/archive/2011/07/21/2112809.html" target="_blank" rel="external">torrent文件分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-26548237-id-3056731.html" target="_blank" rel="external">BT（带中心Tracker）通信协议的分析</a></li>
+<li><a href="http://blog.chinaunix.net/uid-14408083-id-2814554.html" target="_blank" rel="external">BitTorrent协议规范</a></li>
+<li><a href="http://blog.csdn.net/wengpingbo/article/details/9174363" target="_blank" rel="external">常见P2P协议之BitTorrent 分析</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;近来想用Node.js做一个BT下载的程序，于是研究了一下BT下载相关的知识。&lt;/p&gt;
+&lt;h1 id=&quot;一、BT文件解析&quot;&gt;一、BT文件解析&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;用了那么久的&lt;span class=&quot;tag&quot;&gt;bt&lt;/span&gt;下载，都知道下载前，都是先解析种子文
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://skytoup.wicp.net/categories/node-js/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React-Native搭建Redux框架</title>
+    <link href="http://skytoup.wicp.net/2015/12/24/React-Native%E6%90%AD%E5%BB%BARedux%E6%A1%86%E6%9E%B6/"/>
+    <id>http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/</id>
+    <published>2015-12-23T22:44:23.000Z</published>
+    <updated>2016-01-25T07:40:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。</p>
+<p>查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。</p>
+<p>选好框架之后，发现框架的介绍资料很少，而且没有搭建的教程，只好自己做一下实验了。经过无数次实验、踩坑，终于成功了……..</p>
+<p>注: 我是一个iOS程序员，不太懂大前端，为了学习react-native，react只是随便学习了一点基础，若本文有错，望你能指出    </p>
+</blockquote>
+<p>下面分享一下成果:</p>
+<h3 id="1-_搭建基本React-Native项目">1. 搭建基本React-Native项目</h3><p>很简单，大家都会，一句命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native init 你的项目名称</div></pre></td></tr></table></figure></p>
+<h3 id="2-_添加框架模块">2. 添加框架模块</h3><p>新建完成基本项目后，打开package.json，在dependencies下，添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&quot;react-redux&quot;: &quot;^3.1.2&quot;</div><div class="line">```	</div><div class="line"></div><div class="line">	有人或许想问，最新的`react-redux`最新版不是4.x么？为什么不用最新的。	</div><div class="line">	这是一个坑，到github的项目主页看下面的文档，里面说4.x不支持`react-native`，请使用3.x的。</div><div class="line">	</div><div class="line">添加完成后，继续输入一下命令：</div><div class="line">```bash</div><div class="line">npm i # 安装刚才添加的项目</div><div class="line">npm install --save redux</div><div class="line">npm install --save redux-thunk</div></pre></td></tr></table></figure></p>
+<h3 id="3-_修改项目结构">3. 修改项目结构</h3><pre><code>以下是我的目录结构
+├── <span class="tag">App</span>
+│   ├── <span class="tag">Action</span>
+│   ├── <span class="tag">Component</span>
+│   ├── <span class="tag">Container</span>
+│   ├── <span class="tag">Reducer</span>
+│   ├── <span class="tag">Store</span>
+│   └── <span class="tag">Main</span><span class="class">.js</span>
+</code></pre><h3 id="4-创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)">4.创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)</h3><pre><code>这里就不详细说了，简单说一下搭建时，编辑文件的顺序估计就可以了，详细的编写内容，到我的github上<span class="built_in">clone</span>一下示例项目就好了。
+</code></pre><p>新建Action –&gt;&gt; 新建Redicer –&gt;&gt; 新建Store –&gt;&gt; 新建Main.js入口 –&gt;&gt; 修改android和iOS的入口文件(即项目根目录的index.xxx.js)</p>
+<p>基本就是这样子了~</p>
+<pre><code>最后附上详细代码的github地址: <span class="string">https:</span><span class="comment">//github.com/skytoup/react-native_ReduxTest</span>
+</code></pre><p>本文参考:    </p>
+<ol>
+<li>react-native的Redux示例: <a href="https://github.com/chentsulin/react-native-counter-ios-android" target="_blank" rel="external">https://github.com/chentsulin/react-native-counter-ios-android</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。&lt;/p&gt;
+&lt;p&gt;查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。&lt;/p&gt;
+&lt;p&gt;选好框架
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React Native 之 Atom配置nuclide插件</title>
+    <link href="http://skytoup.wicp.net/2015/12/09/React-Native-%E4%B9%8B-Atom%E9%85%8D%E7%BD%AEnuclide%E6%8F%92%E4%BB%B6/"/>
+    <id>http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/</id>
+    <published>2015-12-09T15:45:36.000Z</published>
+    <updated>2015-12-09T15:53:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>首先下载<a href="https://atom.io" target="_blank" rel="external">Atom</a>，下载地址:<a href="https://atom.io" target="_blank" rel="external">https://atom.io</a></li>
+<li>打开<code>Atom</code>，在右上角<code>Atom</code>的菜单处选择<code>Install Shell Comments</code>(安装apm)<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png" alt="shell"></li>
+<li><p>到github下载一下<code>nuclide</code>，直接用git或者下载zip文件解压。</p>
+<pre><code>项目地址: <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+git命令: git clone <span class="string">https:</span><span class="comment">//github.com/facebook/nuclide</span>
+</code></pre></li>
+<li><p>安装<code>nuclide</code>前，需要电脑有以下环境</p>
+<pre><code>- python <span class="number">2.6</span> <span class="operator">or</span> later
+- Atom <span class="number">0.209</span>.<span class="number">0</span> <span class="operator">or</span> later
+- <span class="keyword">Node</span><span class="identifier"> </span><span class="title">0</span>.<span class="number">12.0</span> <span class="operator">or</span> latr
+- <span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>、apm、git在你的$PATH
+(<span class="keyword">node</span><span class="identifier"></span><span class="title">、npm</span>可通过安装<span class="keyword">node</span>.<span class="identifier"></span><span class="title">js</span>来安装)
+</code></pre><p>执行一下命令</p>
+<pre><code>cd nuclide
+./script/dev/setup
+<span class="preprocessor"># 上面的命令会通过npm下载东西，可能比较久</span>
+apm link
+<span class="preprocessor"># 注意，上面的命令是把当前目录 软链接 到 ~/.atom/packages 目录下，所以安装完了之后，别把nuclide这个文件夹删了！！！</span>
+</code></pre><p> 搞定之后，打开Atom试一下是否安装成功，如果不成功，<code>Atom</code>会提示你rebuild插件，我也不知道什么问题，我安装的时候失败了，点了几次rebuild就突然成功了。</p>
+</li>
+<li><p>配置一下<code>nuclide-flow</code>吧，这个插件可以检测语法错误，<code>CMD+左键点击</code>跳转。</p>
+<p> 使用这个插件之前，请先安装<code>flow</code>，安装完之后，到<code>Atom</code>的<code>Setting-Packages</code>，找到<code>nuclide</code>的插件，进入设置里面，滚动到<code>nuclide-flow</code>插件的设置，把flow的位置填上，根据个人喜好打上几个选项的钩。<br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.13.png" alt="flow_1"><br> <img src="http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.33.png" alt="flow_1"></p>
+</li>
+<li><p>另外有几个插件也不错</p>
+<pre><code>-<span class="ruby"> atom-beautify 代码格式化
+</span>-<span class="ruby"> atomerminal 打开终端，pwd为当前文件所在路径
+</span>-<span class="ruby"> docblockr 写注释的插件</span>
+</code></pre><p> 可以通过<code>apm install xxx</code>来安装，如<code>apm install atom-beautify</code>。</p>
+</li>
+</ol>
+<p>接下来就可以好好享受Atom了~~~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;首先下载&lt;a href=&quot;https://atom.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Atom&lt;/a&gt;，下载地址:&lt;a href=&quot;https://atom.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;
+    
+    </summary>
+    
+      <category term="React" scheme="http://skytoup.wicp.net/categories/React/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS9 ATS 设置</title>
+    <link href="http://skytoup.wicp.net/2015/11/28/iOS9-ATS-%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://skytoup.wicp.net/2015/11/28/iOS9-ATS-设置/</id>
+    <published>2015-11-28T03:07:01.000Z</published>
+    <updated>2015-11-28T10:32:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iOS9有一个新特性–ATS(App Transport Security)，加强了一下App网络传输安全。</p>
+<h2 id="官方文档描述:"><a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14" target="_blank" rel="external">官方文档描述</a>:</h2><blockquote>
+<p>App Transport Security (ATS) enforces best practices in the secure connections between an app and its back end. ATS prevents accidental disclosure, provides secure default behavior, and is easy to adopt; it is also on by default in iOS 9 and OS X v10.11. You should adopt ATS as soon as possible, regardless of whether you’re creating a new app or updating an existing one.</p>
+<p>If you’re developing a new app, you should use HTTPS exclusively. If you have an existing app, you should use HTTPS as much as you can right now, and create a plan for migrating the rest of your app as soon as possible. In addition, your communication through higher-level APIs needs to be encrypted using TLS version 1.2 with forward secrecy. If you try to make a connection that doesn’t follow this requirement, an error is thrown. If your app needs to make a request to an insecure domain, you have to specify this domain in your app’s Info.plist file.</p>
+</blockquote>
+<pre><code>大概意思就是iOS9和OS X <span class="number">10.11</span>不能直接使用HTTP，只能使用HTTPS，现在开始，最好计划好迁移工作。
+</code></pre><p>实际上，没有强制一定要使用HTTPS，如果需要使用HTTP，可以到Info.plist文件配置一下。</p>
+<h3 id="ATS基本使用(大概用Json格式表示)">ATS基本使用(大概用Json格式表示)</h3><ol>
+<li>在Info.plist的Information Property List下添加NSAppTransportSecurity，类型是Dictionary。</li>
+<li>在NSAppTransportSecurity下添加NSAllowsArbitraryLoads，类型是Boolean，值是YES。</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attribute">NSAppTransportSecurity</span>: &#123;</div><div class="line">		NSAllowsArbitraryLoads : YES</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>大概意思就是，配置ATS，设置为允许使用任意的HTTP/HTTPS。
+</code></pre><h3 id="ATS进阶使用(大概用Json格式表示)">ATS进阶使用(大概用Json格式表示)</h3><p>1、允许单个服务器的HTTP连接:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	AppTransportSecurity: &#123;</div><div class="line">		NSExceptionDomains: &#123;</div><div class="line">			允许HTTP访问的地址: &#123;</div><div class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2、允许单个服务器的HTTPS使用较低的安全协议</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	AppTransportSecurity: &#123;</div><div class="line">		NSExceptionDomains: &#123;</div><div class="line">			允许HTTP访问的地址: &#123;</div><div class="line">				NSExceptionRequiresForwardSecrecy : NO,</div><div class="line">				NSExceptionMinimumTLSVersion : TLSv1.0</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3、使用ATS，且允许使用HTTP访问指定的服务器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	AppTransportSecurity: &#123;</div><div class="line">		NSExceptionDomains: &#123;</div><div class="line">			允许HTTP访问的地址: &#123;</div><div class="line">				NSExceptionAllowsInsecureHTTPLoads : YES</div><div class="line">			&#125;</div><div class="line">		&#125;,</div><div class="line">		NSAllowsArbitraryLoads : YES</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4、指定服务器使用ATS，其余的不使用<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	NSAppTransportSecurity: &#123;</div><div class="line">		NSAllowsArbitraryLoads = YES,</div><div class="line">		NSExceptionDomains: &#123;</div><div class="line">			使用HTTPS访问的地址: &#123;</div><div class="line">				NSExceptionAllowsInsecureHTTPLoads : NO</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS9有一个新特性–ATS(App Transport Security)，加强了一下App网络传输安全。&lt;/p&gt;
+&lt;h2 id=&quot;官方文档描述:&quot;&gt;&lt;a href=&quot;https://developer.apple.com/library/prerelease/ios/r
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA开发golang环境配置</title>
+    <link href="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA%E5%BC%80%E5%8F%91golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/</id>
+    <published>2015-11-26T14:50:00.000Z</published>
+    <updated>2015-11-28T03:37:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
+<p>好了下面开始了</p>
+<ol>
+<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/">MAC安装GO</a>）</li>
+<li>安装<code>IntelliJ IDEA</code>，下载地址: <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="external">https://www.jetbrains.com/idea/download/</a>。</li>
+<li>下载<code>go-lang-idea-plugin</code>这个插件，下载地址: <a href="https://plugins.jetbrains.com/plugin/5047" target="_blank" rel="external">https://plugins.jetbrains.com/plugin/5047</a>。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)</li>
+<li><p>下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开<code>Preferences-&gt;Plugins</code>，点击<code>Install plugin from disk...</code>，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg" alt="install plugin"></p>
+</li>
+<li><p>打开<code>File-&gt;Project Structure...</code>，找不到的随便打开一个项目就能看到。点击<code>SDKS</code>，新建一个<code>GO SDK</code>，填上<code>GO</code>的安装目录。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221854291.jpg" alt="SDKS"></p>
+</li>
+</ol>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221922557.jpg" alt="Setting SDKS"></p>
+<p>使用:随便新建一个Go项目，点击<code>Edit Configurations...</code>，新建一个<code>Go Application</code>，右边<code>File</code>你的<code>pack main</code>包含<code>func main</code>的文件，<code>Output directory</code>为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222007589.jpg" alt="img"></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222027329.jpg" alt="img"></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126222042301.jpg" alt="img"></p>
+<p>接下来来点IntelliJ IDEA的快捷键吧(我的是Mac OSX) :</p>
+<ol>
+<li>CMD+Shift+O    查找跳转文件</li>
+<li>CMD+Shift+L    代码对齐</li>
+<li>CMD+Shift+Alt+F    go fmt 一个文件</li>
+<li>CMD+Shift+Alt+P    go fmt整个项目</li>
+<li>CMD+Alt+O    自动import</li>
+<li>CMD+F12    显示当前文件的结构</li>
+<li>按住CMD点击结构体可以源码跳转</li>
+<li>CMD+P    显示函数参数</li>
+<li>CMD+E    显示最近编辑文件</li>
+<li>Alt+Enter    自动修复错误</li>
+<li>Shift+F6    重构</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。&lt;br&gt;谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。&lt;/p&gt;
+&lt;p&gt;好了下面开始了&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先把&lt;code&gt;GO&lt;/code&gt;安装好
+    
+    </summary>
+    
+      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MacOs下安装go lang</title>
+    <link href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
+    <id>http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/</id>
+    <published>2015-10-03T05:15:00.000Z</published>
+    <updated>2015-11-28T03:41:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-下载安装包">1.下载安装包</h2><blockquote>
+<p>由于官网被墙了，所以到国内的一个go论坛下载:<a href="http://golangtc.com/download" target="_blank" rel="external">点击进入下载</a><br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131401247.jpg" alt="download"><br>下载后，双击进行安装。</p>
+</blockquote>
+<h2 id="2-配置环境变量">2.配置环境变量</h2><blockquote>
+<p>$GOROOT:go lang 安装目录<br>  $GOPATH:go lang 工作目录，有点像Eclipse那样子    </p>
+</blockquote>
+<p>下面开始配置<br>到终端输入以下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim ~/.bash_profile # 打开环境变量配置</div></pre></td></tr></table></figure></p>
+<p>在最下面添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export GOPATH=/Users/(用户名/路径) # 改成你喜欢的路径</div><div class="line">export GOROOT=/usr/local/go # 默认安装都市这个路径</div></pre></td></tr></table></figure></p>
+<p>添加完毕后，退出vim<br>到终端输入以下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.bash_profile # 让环境变量配置生效</div></pre></td></tr></table></figure></p>
+<p>完成后，到$GOPATH的目录下，新建三个文件夹<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131439905.jpg" alt="new dir"></p>
+<pre><code><span class="attribute">bin</span>:存放编译后的可执行文件;
+<span class="attribute">pkg</span>:存放编译后的包文件;
+<span class="attribute">src</span>:存放项目源文件;
+</code></pre><p>最后，到终端输入以下命令验证时候安装成功:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go version</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131454906.jpg" alt="go version"><br>出现类似图中则为成功，若不成功，请检测一下你的环境变量配置。</p>
+<h2 id="3-IDE">3.IDE</h2><blockquote>
+<p>一.Sublime Text(个人比较喜欢)<br>安装好SublimeText后，再安装插件管理器，到插件管理器安装处，输入GoSublime，回车安装<br>安装完成后，还要安装一个语法提示插件:<br>到终端输入一下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">go get github.com/nsf/gocode</div><div class="line">go install github.com/nsf/gocode</div></pre></td></tr></table></figure></p>
+<p>二.LiteIDE<br>下载地址:<a href="http://www.golangtc.com/download/liteide" target="_blank" rel="external">LiteIDE</a></p>
+<blockquote>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151003131512470.jpg" alt="LiteIDE"><br>  下载其中一个即可<br>  解压即可用</p>
+</blockquote>
+<p>三.Wide<br>项目地址:<a href="https://github.com/b3log/wide" target="_blank" rel="external">Wide项目</a><br>官网地址:<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a><br>下载后，使用go来运行，在浏览器打开指定的ip和端口即可使用(详情请参考<a href="https://wide.b3log.org/login" title="wide" target="_blank" rel="external">官网</a>)</p>
+</blockquote>
+<h2 id="4-学习Go_lang">4.学习Go lang</h2><ul>
+<li>官方教程:<a href="http://tour.studygolang.com/welcome/1" target="_blank" rel="external">免翻墙</a></li>
+<li>Go语言中文网:<a href="http://studygolang.com/" target="_blank" rel="external">Go语言中文网</a></li>
+<li>GoLang中国:<a href="http://www.golangtc.com/" target="_blank" rel="external">GoLang中国</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-下载安装包&quot;&gt;1.下载安装包&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;由于官网被墙了，所以到国内的一个go论坛下载:&lt;a href=&quot;http://golangtc.com/download&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击
+    
+    </summary>
+    
+      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS metaio虚拟现实-位置 demo</title>
+    <link href="http://skytoup.wicp.net/2015/08/27/iOS-metaio%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E-%E4%BD%8D%E7%BD%AE-demo/"/>
+    <id>http://skytoup.wicp.net/2015/08/27/iOS-metaio虚拟现实-位置-demo/</id>
+    <published>2015-08-27T04:13:00.000Z</published>
+    <updated>2015-11-27T09:29:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="LocationARTest">LocationARTest</h1><h3 id="测试环境：Xcode_6，iOS_7-0(真机)以上。">测试环境：Xcode 6，iOS 7.0(真机)以上。</h3><p>基于Metaio的demo修改出来的，查看周边的美食</p>
+<p>github链接 : <a href="https://github.com/skytoup/LocationARTest" target="_blank" rel="external">https://github.com/skytoup/LocationARTest</a></p>
+<p><img src="https://github.com/skytoup/LocationARTest/raw/master/1.gif" alt="GIF"></p>
+<h2 id="注意">注意</h2><p>本demo不能直接运行</p>
+<ul>
+<li><p>需要修改JHKey.h中的JH_ID(修改为你的聚合id，并到聚合数据网站申请数据)</p>
+<pre><code>聚合数据账号注册：<span class="string">http:</span><span class="comment">//www.juhe.cn/</span>
+数据申请：<span class="string">http:</span><span class="comment">//www.juhe.cn/docs/api/id/45</span>
+</code></pre></li>
+<li><p>需要修改Info.plist中的MetaioLicenseString</p>
+<pre><code>MetaioLicense申请：<span class="string">http:</span><span class="comment">//metaio.com/</span>
+</code></pre></li>
+<li><p>由于MetaioSDK.framework有300+M，github限制单文件100M，所以无法上传</p>
+<pre><code>请自行到Metaio官网下载<span class="string">http:</span><span class="comment">//metaio.com/</span>
+</code></pre></li>
+</ul>
+<h3 id="用到的其他工具">用到的其他工具</h3><p><a href="https://github.com/skytoup/JsonToModule" target="_blank" rel="external">JsonToModule</a>:一个命令行工具，能把json文件转换成java或者objc的模型类</p>
+<h3 id="用到的第三方库">用到的第三方库</h3><ul>
+<li><a href="http://metaio.com/" target="_blank" rel="external">metaioSDK.framework</a></li>
+<li><a href="http://www.juhe.cn/" target="_blank" rel="external">JuheApisSDK</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;LocationARTest&quot;&gt;LocationARTest&lt;/h1&gt;&lt;h3 id=&quot;测试环境：Xcode_6，iOS_7-0(真机)以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0(真机)以上。&lt;/h3&gt;&lt;p&gt;基于Metaio的demo修改出来的，查看周边的美
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS价格日历</title>
+    <link href="http://skytoup.wicp.net/2015/08/27/iOS%E4%BB%B7%E6%A0%BC%E6%97%A5%E5%8E%86/"/>
+    <id>http://skytoup.wicp.net/2015/08/27/iOS价格日历/</id>
+    <published>2015-08-27T02:17:00.000Z</published>
+    <updated>2015-11-27T09:29:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SkyCalendarPriceView">SkyCalendarPriceView</h1><hr>
+<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p>github地址 : <a href="https://github.com/skytoup/SkyCalendarPriceView" target="_blank" rel="external">https://github.com/skytoup/SkyCalendarPriceView</a></p>
+<p><img src="https://github.com/skytoup/SkyCalendarPriceView/raw/master/1.gif" alt="GIF"></p>
+<h2 id="简介">简介</h2><p>一个可以自定义样式的价格日历</p>
+<ul>
+<li>高度封装，简单使用，传入对应的数据模型即可显示</li>
+<li>灵活度高，大部分view的样式可调整</li>
+<li>显示的文字可自定义处理，也可以自定义和系统处理一起使用</li>
+<li>可在Xib或StoryBoard中拖拽使用，也支持自动布局，也可以手写固定的Frame</li>
+<li>支持旋屏</li>
+</ul>
+<hr>
+<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyCalendarPriceView.h</code> 导入项目。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"SkyCalendarPriceView.h"</span></span></div></pre></td></tr></table></figure></p>
+<h3 id="基本使用">基本使用</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建价格日历</span></div><div class="line">SkyCalendarPriceView *v = [SkyCalendarPriceView calendarPriceView];</div><div class="line">   <span class="comment">// 创建数据模型</span></div><div class="line">   SkyCalendarPriceModel *model = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">3</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">30</span>) withCount:@(<span class="number">10</span>)];</div><div class="line">   SkyCalendarPriceModel *model2 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">9</span>) withDay:@(<span class="number">22</span>) withPrice:@(<span class="number">10</span>) withCount:@(<span class="number">10</span>)];</div><div class="line">   SkyCalendarPriceModel *model3 = [SkyCalendarPriceModel calendarPriceModelWithYear:@(<span class="number">2015</span>) withMonth:@(<span class="number">7</span>) withDay:@(<span class="number">24</span>) withPrice:@(<span class="number">20</span>) withCount:@(<span class="number">10</span>)];</div><div class="line">   <span class="comment">// 导入数据模型</span></div><div class="line">   _v.datas = @[model, model2, model3];</div><div class="line">   <span class="comment">// 设置今天的时间，可不设置</span></div><div class="line">   _v.today = [<span class="built_in">NSDate</span> date];</div></pre></td></tr></table></figure>
+<h3 id="定制样式">定制样式</h3><p>详情请看<a href="SkyCalendarPriceView/SkyCalendarPriceViewConfig.h">SkyCalendarPriceViewConfig.h</a></p>
+<h3 id="代码修改部分view样式">代码修改部分view样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 可通过调用以下几个方法</span></div><div class="line"></div><div class="line">SkyCalendarHeader</div><div class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfYearMonthViewStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UIView</span> *view))block</div><div class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitHeaderViewOfWeekLabelsStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">NSArray</span> *labels))block;</div><div class="line"></div><div class="line">SkyCalendarCell</div><div class="line">+ (<span class="keyword">void</span>)SkyCalendarPriceViewInitCellStyleWithBlock:(<span class="keyword">void</span>(^)(<span class="built_in">UICollectionViewCell</span> *cell))block;</div></pre></td></tr></table></figure>
+<h3 id="自定义显示的数据样式">自定义显示的数据样式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行显示自定义的数据样式</span></div><div class="line">- (<span class="built_in">NSDictionary</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDataStringDictionaryWithIndexPath:(<span class="built_in">NSIndexPath</span>*)indexPath withYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withPrice:(<span class="built_in">NSString</span>*)price withCount:(<span class="built_in">NSString</span>*)count withIsToday:(<span class="built_in">BOOL</span>)isToady;</div><div class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView*)cview cellDayStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month withDay:(<span class="built_in">NSString</span>*)day withIsToday:(<span class="built_in">BOOL</span>)isToday;</div><div class="line">- (<span class="built_in">NSString</span>*)skyCalendarPriceView:(SkyCalendarPriceView *)cview headerLabelStringWithYear:(<span class="built_in">NSString</span>*)year withMonth:(<span class="built_in">NSString</span>*)month;</div></pre></td></tr></table></figure>
+<h3 id="若不需要header停留在顶部">若不需要header停留在顶部</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更换默认布局（注:Xib或StoryBoard中，需手动在代码或面板里设置Layout，设置的Layout需要为UICollectionViewFlowLayout的子类）</span></div><div class="line">skyCalendarPriceView.collectionViewLayout = [<span class="built_in">UICollectionViewFlowLayout</span> new];</div></pre></td></tr></table></figure>
+<h3 id="监听选中/取消选中日期">监听选中/取消选中日期</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过实现SkyCalendarPriceViewDelegate的方法进行监听</span></div><div class="line">- (<span class="built_in">BOOL</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview shouldSelectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</div><div class="line">- (<span class="keyword">void</span>)skyCalendarPriceView:(SkyCalendarPriceView*)cview didUnselectIndexWithPriceModel:(SkyCalendarPriceModel*)model;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;SkyCalendarPriceView&quot;&gt;SkyCalendarPriceView&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;测试环境：Xcode_6，iOS_7-0以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0以上。&lt;/h2&gt;&lt;p&gt;github地址 : &lt;a hr
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS UIView自定义四个边角的圆角</title>
+    <link href="http://skytoup.wicp.net/2015/08/12/UIView%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9B%E4%B8%AA%E8%BE%B9%E8%A7%92%E7%9A%84%E5%9C%86%E8%A7%92/"/>
+    <id>http://skytoup.wicp.net/2015/08/12/UIView自定义四个边角的圆角/</id>
+    <published>2015-08-11T23:28:00.000Z</published>
+    <updated>2016-05-16T13:58:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>UIView背景色的四个边角自定义成圆角</p>
+<p>比较简单，没什么好介绍的</p>
+<p>GitHub链接：<a href="https://github.com/skytoup/SkyRadiusView" target="_blank" rel="external">https://github.com/skytoup/SkyRadiusView</a></p>
+<p>测试环境：Xcode 6，iOS 7.0以上 </p>
+<p>已添加CocoaPods支持</p>
+<pre><code><span class="title">pod</span> <span class="string">'SkyRaduisView'</span>, <span class="string">'~&gt; 1.0.0'</span>
+</code></pre><p><img src="http://img.blog.csdn.net/20150812072718059" alt="gif"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;UIView背景色的四个边角自定义成圆角&lt;/p&gt;
+&lt;p&gt;比较简单，没什么好介绍的&lt;/p&gt;
+&lt;p&gt;GitHub链接：&lt;a href=&quot;https://github.com/skytoup/SkyRadiusView&quot; target=&quot;_blank&quot; rel=&quot;external
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>把json转成java、objc的module的小工具</title>
+    <link href="http://skytoup.wicp.net/2015/08/06/%E6%8A%8Ajson%E8%BD%AC%E6%88%90java%E3%80%81objc%E7%9A%84module%E7%9A%84%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
+    <id>http://skytoup.wicp.net/2015/08/06/把json转成java、objc的module的小工具/</id>
+    <published>2015-08-06T12:31:00.000Z</published>
+    <updated>2015-11-27T09:29:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简介">简介</h3><pre><code>一个把json文件，转换为java、objcetive-c的<span class="class"><span class="keyword">module</span>文件。</span>
+暂不支持一个array的下一级，还是array
+简单方便地处理后台返回的json数据，不必要一个一个字段复制到<span class="class"><span class="keyword">module</span>类上。</span>
+</code></pre><h3 id="github">github</h3><pre><code>[<span class="link_label">json2module</span>](<span class="link_url">https://github.com/skytoup/JsonToModule</span>)
+</code></pre><h3 id="用到的第三方开源库">用到的第三方开源库</h3><pre><code><span class="title">cJSON</span> c语言的json解析库
+</code></pre><h3 id="基本的实现逻辑">基本的实现逻辑</h3><p><img src="http://img.blog.csdn.net/20150806202839772" alt="实现逻辑"></p>
+<h3 id="编译">编译</h3><pre><code>命令行进入到项目根目录后
+<span class="built_in">make</span>
+
+测试:
+    <span class="built_in">make</span> test
+    测试生成的文件在项目目录下的out_file里面
+</code></pre><h3 id="使用说明(English不是很好):">使用说明(English不是很好):</h3><pre><code>json2moudle &lt;json <span class="keyword">file</span> path&gt; [-n] [-o] [-p] [-h] [--java] [--objc]
+
+option:
+-n &lt;<span class="keyword">module</span> <span class="keyword">name</span>&gt;          <span class="keyword">default</span> is json <span class="keyword">file</span> <span class="keyword">name</span>
+-o &lt;<span class="type">out</span> path&gt;              <span class="keyword">default</span> is run path
+-p &lt;java <span class="built_in">pack</span> <span class="keyword">name</span>&gt;     <span class="keyword">default</span> is <span class="string">""</span>
+-h                          help
+--java                      <span class="type">out</span> java <span class="keyword">module</span> <span class="keyword">file</span>
+--objc                      <span class="type">out</span> objective-c <span class="keyword">module</span> <span class="keyword">file</span>
+
+<span class="keyword">if</span> not have --java or --objective-c, <span class="keyword">default</span> is java
+</code></pre><h3 id="使用事例：">使用事例：</h3><pre><code>json2moudle t<span class="class">.json</span>
+json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span class="tag">p</span> test<span class="class">.com</span><span class="class">.hehe</span>
+json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test
+json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span class="tag">p</span> test<span class="class">.com</span><span class="class">.hehe</span> --objc --java
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;简介&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;一个把json文件，转换为java、objcetive-c的&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;module&lt;/span&gt;文件。&lt;/span&gt;
+暂不支持一个array的下一
+    
+    </summary>
+    
+      <category term="c" scheme="http://skytoup.wicp.net/categories/c/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记录一下iOS的几个UIView的方法</title>
+    <link href="http://skytoup.wicp.net/2015/08/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8BiOS%E7%9A%84%E5%87%A0%E4%B8%AAUIView%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://skytoup.wicp.net/2015/08/04/记录一下iOS的几个UIView的方法/</id>
+    <published>2015-08-04T13:42:00.000Z</published>
+    <updated>2015-11-27T09:29:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。<br>如果出现错误的地方，希望大家指出，谢谢。</p>
+<h3 id="UIView:">UIView:</h3><p>`// 重写此方法，当约束更新时，可更新你的特殊约束，别忘记调用super方法</p>
+<ul>
+<li>(void)updateConstraints;`</li>
+</ul>
+<p>`// 调用这个方法，会触发update Constraints的操作，即更新约束。在needsUpdateConstraints返回YES时，才能成功触发update Constraints的操作。我们不应该重写这个方法。</p>
+<ul>
+<li>(void)updateConstraintsIfNeeded;`</li>
+</ul>
+<p>`// 会调用drawRect方法</p>
+<ul>
+<li>(void)setNeedsDisplay;`</li>
+</ul>
+<p>`// 会默认调用layoutSubViews</p>
+<ul>
+<li>(void)setNeedsLayout;`</li>
+</ul>
+<p>`// 当一个自定义的View某一个属性的改变可能影响到界面布局，我们应该调用这个方法来告诉布局系统在未来某个时刻需要更新。系统会调用updateConstraints去更新布局。</p>
+<ul>
+<li>(void)setNeedsUpdateConstraints;`</li>
+</ul>
+<p>`// 布局系统使用这个返回值来确定是否调用updateConstraints</p>
+<ul>
+<li>(void)needsUpdateConstraints;`</li>
+</ul>
+<p><code>// 如果有刷新的标记(应该是指调用过-(void) setNeedsLayout这个方法吧)，立即调用layoutSubviews进行布局
+-(void) layoutIfNeeded;</code></p>
+<p>`// 自动调用layoutIfNeeded，当使用基于约束的布局基本实现适用于基于约束的布局，否则什么也不做。</p>
+<ul>
+<li>(void)layoutSubviews;`</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。&lt;br&gt;如果出现错误的地方，希望大家指出，谢谢。&lt;/p&gt;
+&lt;h3 id=&quot;UIView:&quot;&gt;UIView:&lt;/h3&gt;&lt;p&gt;`// 重写此方法，当约束更新时，可更新你的特殊约束
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS一个带动画的等待指示器</title>
+    <link href="http://skytoup.wicp.net/2015/07/06/iOS%E4%B8%80%E4%B8%AA%E5%B8%A6%E5%8A%A8%E7%94%BB%E7%9A%84%E7%AD%89%E5%BE%85%E6%8C%87%E7%A4%BA%E5%99%A8/"/>
+    <id>http://skytoup.wicp.net/2015/07/06/iOS一个带动画的等待指示器/</id>
+    <published>2015-07-06T07:59:00.000Z</published>
+    <updated>2016-09-08T12:18:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接</a>）</h1><hr>
+<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p><img src="https://raw.githubusercontent.com/skytoup/SkyWaitingView/master/1.gif" alt="GIF"></p>
+<h2 id="简介">简介</h2><p>一个简单的等待指示器</p>
+<ul>
+<li>可自定义圆弧粗细、颜色、旋转速率</li>
+<li>可自定义标签显示</li>
+</ul>
+<hr>
+<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyWaitingView.h</code> 导入项目，然后设置各属性，具体使用方法请参考示例项目。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SkyCircleWatingView *v = [SkyCircleWatingView new];</div><div class="line">v.frame = <span class="built_in">CGRectMake</span>(<span class="number">50</span>, baseY, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">[v sizeToFit];</div><div class="line">[<span class="keyword">self</span>.view addSubview:v];</div><div class="line">v.rate = <span class="number">1.</span>f;</div><div class="line">[v start];</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式">联系方式</h2><ul>
+<li>QQ：875766917，请备注</li>
+<li>QQMail：875766917@qq.com</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;SkyWaitingView（github链接）&quot;&gt;SkyWaitingView（&lt;a href=&quot;https://github.com/skytoup/SkyWaitingView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github链接
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构-链表</title>
+    <link href="http://skytoup.wicp.net/2015/06/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/"/>
+    <id>http://skytoup.wicp.net/2015/06/20/数据结构-链表/</id>
+    <published>2015-06-20T07:54:00.000Z</published>
+    <updated>2015-11-27T09:29:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。</p>
+<p><code>链表的结构如下图（画得不是很好）：</code><br><img src="http://img.blog.csdn.net/20150620152944636" alt="链表示意图"></p>
+<p>这是一个双向链表，可以通过每一个节点，找到它的上一个节点，或者下一个节点。<br>如果为单向链表，则节点没有pre这个成员变量。</p>
+<p>节点的结构体定义：<br>struct link_node {<br>    struct link_node <em>next; // 前一个节点<br>    struct link_node </em>pre; // 后一个节点<br>    void *val; // 节点值<br>};</p>
+<p>一般来说，都会有一个存储链表头节点的结构体，如上图的第一个圆角矩形。</p>
+<p>可以新建一个结构体来存储链表首节点，或者新建一个不存储数值的节点来存储首节点。</p>
+<h1 id="2-优缺点">2.优缺点</h1><ul>
+<li>动态创建节点来存储数据</li>
+<li>插入节点快</li>
+<li>读取指定位置节点慢</li>
+<li>结构较简单</li>
+</ul>
+<h1 id="3-扩展">3.扩展</h1><ul>
+<li>栈</li>
+<li>循环链表</li>
+<li>队列（双向队列、单向队列）</li>
+<li>树、图、链地址法的哈希表 结构的基础</li>
+<li>。。。。。（还有很多吧）</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20150620155207116" alt="栈"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-链表基础&quot;&gt;1.链表基础&lt;/h1&gt;&lt;p&gt;链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;链表的结构如下图（画得不是很好）：&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;http://i
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://skytoup.wicp.net/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS三级联想菜单（SkyAssociationMenuView）</title>
+    <link href="http://skytoup.wicp.net/2015/06/19/iOS%E4%B8%89%E7%BA%A7%E8%81%94%E6%83%B3%E8%8F%9C%E5%8D%95%EF%BC%88SkyAssociationMenuView%EF%BC%89/"/>
+    <id>http://skytoup.wicp.net/2015/06/19/iOS三级联想菜单（SkyAssociationMenuView）/</id>
+    <published>2015-06-19T06:14:00.000Z</published>
+    <updated>2015-11-27T09:29:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="三级联想菜单（SkyAssociationMenuView）">三级联想菜单（SkyAssociationMenuView）</h1><h3 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h3><p>以前做一个项目准备用来当做地区选择用的，后来没用上。。。。。</p>
+<p>只是粗略的实现了一下，写得不是很好，望大家见谅。。。。。</p>
+<p>github：<a href="https://github.com/skytoup/SkyAssociationMenuView" target="_blank" rel="external">https://github.com/skytoup/SkyAssociationMenuView</a></p>
+<p>效果图：</p>
+<p><img src="https://raw.githubusercontent.com/skytoup/SkyAssociationMenuView/master/1.gif" alt="GIF"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;三级联想菜单（SkyAssociationMenuView）&quot;&gt;三级联想菜单（SkyAssociationMenuView）&lt;/h1&gt;&lt;h3 id=&quot;测试环境：Xcode_6，iOS_7-0以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0以上。&lt;/h3&gt;&lt;p&gt;以
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+    
+    
+  </entry>
+  
+</feed>
