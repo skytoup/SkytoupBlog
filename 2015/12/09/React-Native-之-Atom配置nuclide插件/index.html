@@ -281,71 +281,28 @@ apm link
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-React-Native-之-Atom配置nuclide插件" data-title="React Native 之 Atom配置nuclide插件" data-url="http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-React-Native-之-Atom配置nuclide插件"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-React-Native-之-Atom配置nuclide插件" data-title="React Native 之 Atom配置nuclide插件" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;ol&gt;
-&lt;li&gt;首先下载&lt;a href=&quot;https://atom.io&quot;&gt;Atom&lt;/a&gt;，下载地址:&lt;a href=&quot;https://atom.io&quot;&gt;https://atom.io&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;打开&lt;code&gt;Atom&lt;/code&gt;，在右上角&lt;code&gt;Atom&lt;/code&gt;的菜单处选择&lt;code&gt;Install Shell Comments&lt;/code&gt;(安装apm)&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.37.56.png&quot; alt=&quot;shell&quot;&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;到github下载一下&lt;code&gt;nuclide&lt;/code&gt;，直接用git或者下载zip文件解压。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;项目地址: &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/facebook/nuclide&lt;/span&gt;
-git命令: git clone &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/facebook/nuclide&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装&lt;code&gt;nuclide&lt;/code&gt;前，需要电脑有以下环境&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- python &lt;span class=&quot;number&quot;&gt;2.6&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; later
-- Atom &lt;span class=&quot;number&quot;&gt;0.209&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; later
-- &lt;span class=&quot;keyword&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt; &lt;/span&gt;&lt;span class=&quot;title&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;12.0&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;or&lt;/span&gt; latr
-- &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;、npm&lt;/span&gt;、apm、git在你的$PATH
-(&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;、npm&lt;/span&gt;可通过安装&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;.&lt;span class=&quot;identifier&quot;&gt;&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;js&lt;/span&gt;来安装)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行一下命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;cd nuclide
-./script/dev/setup
-&lt;span class=&quot;preprocessor&quot;&gt;# 上面的命令会通过npm下载东西，可能比较久&lt;/span&gt;
-apm link
-&lt;span class=&quot;preprocessor&quot;&gt;# 注意，上面的命令是把当前目录 软链接 到 ~/.atom/packages 目录下，所以安装完了之后，别把nuclide这个文件夹删了！！！&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 搞定之后，打开Atom试一下是否安装成功，如果不成功，&lt;code&gt;Atom&lt;/code&gt;会提示你rebuild插件，我也不知道什么问题，我安装的时候失败了，点了几次rebuild就突然成功了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置一下&lt;code&gt;nuclide-flow&lt;/code&gt;吧，这个插件可以检测语法错误，&lt;code&gt;CMD+左键点击&lt;/code&gt;跳转。&lt;/p&gt;
-&lt;p&gt; 使用这个插件之前，请先安装&lt;code&gt;flow&lt;/code&gt;，安装完之后，到&lt;code&gt;Atom&lt;/code&gt;的&lt;code&gt;Setting-Packages&lt;/code&gt;，找到&lt;code&gt;nuclide&lt;/code&gt;的插件，进入设置里面，滚动到&lt;code&gt;nuclide-flow&lt;/code&gt;插件的设置，把flow的位置填上，根据个人喜好打上几个选项的钩。&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.13.png&quot; alt=&quot;flow_1&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/屏幕快照%202015-12-09%2023.38.33.png&quot; alt=&quot;flow_1&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;另外有几个插件也不错&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-&lt;span class=&quot;ruby&quot;&gt; atom-beautify 代码格式化
-&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; atomerminal 打开终端，pwd为当前文件所在路径
-&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt; docblockr 写注释的插件&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 可以通过&lt;code&gt;apm install xxx&lt;/code&gt;来安装，如&lt;code&gt;apm install atom-beautify&lt;/code&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;接下来就可以好好享受Atom了~~~&lt;/p&gt;
-" data-url="http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

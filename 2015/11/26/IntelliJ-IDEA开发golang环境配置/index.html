@@ -278,68 +278,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-IntelliJ-IDEA开发golang环境配置" data-title="IntelliJ IDEA开发golang环境配置" data-url="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-IntelliJ-IDEA开发golang环境配置"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-IntelliJ-IDEA开发golang环境配置" data-title="IntelliJ IDEA开发golang环境配置" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;p&gt;看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。&lt;br&gt;谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。&lt;/p&gt;
-&lt;p&gt;好了下面开始了&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;首先把&lt;code&gt;GO&lt;/code&gt;安装好。。。（自行安装，附上一篇我之前写的&lt;a href=&quot;http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/&quot;&gt;MAC安装GO&lt;/a&gt;）&lt;/li&gt;
-&lt;li&gt;安装&lt;code&gt;IntelliJ IDEA&lt;/code&gt;，下载地址: &lt;a href=&quot;https://www.jetbrains.com/idea/download/&quot;&gt;https://www.jetbrains.com/idea/download/&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;下载&lt;code&gt;go-lang-idea-plugin&lt;/code&gt;这个插件，下载地址: &lt;a href=&quot;https://plugins.jetbrains.com/plugin/5047&quot;&gt;https://plugins.jetbrains.com/plugin/5047&lt;/a&gt;。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开&lt;code&gt;Preferences-&amp;gt;Plugins&lt;/code&gt;，点击&lt;code&gt;Install plugin from disk...&lt;/code&gt;，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg&quot; alt=&quot;install plugin&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;打开&lt;code&gt;File-&amp;gt;Project Structure...&lt;/code&gt;，找不到的随便打开一个项目就能看到。点击&lt;code&gt;SDKS&lt;/code&gt;，新建一个&lt;code&gt;GO SDK&lt;/code&gt;，填上&lt;code&gt;GO&lt;/code&gt;的安装目录。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221854291.jpg&quot; alt=&quot;SDKS&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126221922557.jpg&quot; alt=&quot;Setting SDKS&quot;&gt;&lt;/p&gt;
-&lt;p&gt;使用:随便新建一个Go项目，点击&lt;code&gt;Edit Configurations...&lt;/code&gt;，新建一个&lt;code&gt;Go Application&lt;/code&gt;，右边&lt;code&gt;File&lt;/code&gt;你的&lt;code&gt;pack main&lt;/code&gt;包含&lt;code&gt;func main&lt;/code&gt;的文件，&lt;code&gt;Output directory&lt;/code&gt;为编译后的文件输出目录。新建完毕后，选择新建的Debug选项就可以编译、运行程序了。&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222007589.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222027329.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151126222042301.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;接下来来点IntelliJ IDEA的快捷键吧(我的是Mac OSX) :&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;CMD+Shift+O    查找跳转文件&lt;/li&gt;
-&lt;li&gt;CMD+Shift+L    代码对齐&lt;/li&gt;
-&lt;li&gt;CMD+Shift+Alt+F    go fmt 一个文件&lt;/li&gt;
-&lt;li&gt;CMD+Shift+Alt+P    go fmt整个项目&lt;/li&gt;
-&lt;li&gt;CMD+Alt+O    自动import&lt;/li&gt;
-&lt;li&gt;CMD+F12    显示当前文件的结构&lt;/li&gt;
-&lt;li&gt;按住CMD点击结构体可以源码跳转&lt;/li&gt;
-&lt;li&gt;CMD+P    显示函数参数&lt;/li&gt;
-&lt;li&gt;CMD+E    显示最近编辑文件&lt;/li&gt;
-&lt;li&gt;Alt+Enter    自动修复错误&lt;/li&gt;
-&lt;li&gt;Shift+F6    重构&lt;/li&gt;
-&lt;/ol&gt;
-" data-url="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

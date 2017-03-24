@@ -260,50 +260,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-Python3的虚拟环境" data-title="Python3的虚拟环境" data-url="http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-Python3的虚拟环境"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-Python3的虚拟环境" data-title="Python3的虚拟环境" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;&lt;p&gt;Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。&lt;/p&gt;
-&lt;h1 id=&quot;pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)&quot;&gt;pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)&lt;/h1&gt;&lt;p&gt;pyvenv是Python3安装时自带的创建一个虚拟环境工具(tip: Python3.4版本前的pyven创建的虚拟环境不带pip)&lt;/p&gt;
-&lt;p&gt;用这个工具就能创建出多个Python的虚拟环境, 把第三方模块安装到不同的虚拟环境, 就能让不同的项目使用不同的Python环境, 互相不会受到影响。&lt;/p&gt;
-&lt;h1 id=&quot;基本使用(Mac、Linux,_Win很久没用了)&quot;&gt;基本使用(Mac、Linux, Win很久没用了)&lt;/h1&gt;&lt;p&gt;创建虚拟环境命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pyvenv /path/&lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;virtual&lt;/span&gt;/environment
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;激活虚拟环境命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;regexp&quot;&gt;/path/&lt;/span&gt;to&lt;span class=&quot;regexp&quot;&gt;/virtual/&lt;/span&gt;environment&lt;span class=&quot;regexp&quot;&gt;/bin/&lt;/span&gt;activate
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;退出虚拟环境命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;deactivate
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例子:&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;pyvenv py_1-evn &lt;span class=&quot;comment&quot;&gt;# 当前目录创建一个虚拟环境叫py_1-evn&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;source py_1-evn/bin/&lt;span class=&quot;built_in&quot;&gt;activate&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;# 在本终端激活这个虚拟环境(没有激活虚拟环境时是使用全局的环境)&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pip install 。。。。 &lt;span class=&quot;comment&quot;&gt;# 可以安装各种第三方模块, 都会安装到激活的虚拟环境&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python xxx.py &lt;span class=&quot;comment&quot;&gt;# 在激活的虚拟环境运行py脚本&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;deactivate &lt;span class=&quot;comment&quot;&gt;# 退出激活的虚拟环境&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h1 id=&quot;更高级的使用(Python_API)&quot;&gt;更高级的使用(Python API)&lt;/h1&gt;&lt;p&gt;请参考官方文档: &lt;a href=&quot;https://docs.python.org/3/library/venv.html&quot;&gt;https://docs.python.org/3/library/venv.html&lt;/a&gt;&lt;/p&gt;
-" data-url="http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

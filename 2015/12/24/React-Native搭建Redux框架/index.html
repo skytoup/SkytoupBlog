@@ -274,64 +274,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-React-Native搭建Redux框架" data-title="React-Native搭建Redux框架" data-url="http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-React-Native搭建Redux框架"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-React-Native搭建Redux框架" data-title="React-Native搭建Redux框架" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;blockquote&gt;
-&lt;p&gt;近段时间在学习React-Native，发现了还可以用flux思想进行开发，于是便想试一试。&lt;/p&gt;
-&lt;p&gt;查了各种关于flux的资料之后，有好几个这类型的框架。但是Redux这个框架貌似比较多人使用，所以就选择这个框架了。&lt;/p&gt;
-&lt;p&gt;选好框架之后，发现框架的介绍资料很少，而且没有搭建的教程，只好自己做一下实验了。经过无数次实验、踩坑，终于成功了……..&lt;/p&gt;
-&lt;p&gt;注: 我是一个iOS程序员，不太懂大前端，为了学习react-native，react只是随便学习了一点基础，若本文有错，望你能指出    &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;下面分享一下成果:&lt;/p&gt;
-&lt;h3 id=&quot;1-_搭建基本React-Native项目&quot;&gt;1. 搭建基本React-Native项目&lt;/h3&gt;&lt;p&gt;很简单，大家都会，一句命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;react-native init 你的项目名称&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-_添加框架模块&quot;&gt;2. 添加框架模块&lt;/h3&gt;&lt;p&gt;新建完成基本项目后，打开package.json，在dependencies下，添加&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;react-redux&amp;quot;: &amp;quot;^3.1.2&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;```	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	有人或许想问，最新的`react-redux`最新版不是4.x么？为什么不用最新的。	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	这是一个坑，到github的项目主页看下面的文档，里面说4.x不支持`react-native`，请使用3.x的。&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;添加完成后，继续输入一下命令：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;```bash&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm i # 安装刚才添加的项目&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm install --save redux&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm install --save redux-thunk&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-_修改项目结构&quot;&gt;3. 修改项目结构&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;以下是我的目录结构
-├── &lt;span class=&quot;tag&quot;&gt;App&lt;/span&gt;
-│   ├── &lt;span class=&quot;tag&quot;&gt;Action&lt;/span&gt;
-│   ├── &lt;span class=&quot;tag&quot;&gt;Component&lt;/span&gt;
-│   ├── &lt;span class=&quot;tag&quot;&gt;Container&lt;/span&gt;
-│   ├── &lt;span class=&quot;tag&quot;&gt;Reducer&lt;/span&gt;
-│   ├── &lt;span class=&quot;tag&quot;&gt;Store&lt;/span&gt;
-│   └── &lt;span class=&quot;tag&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.js&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)&quot;&gt;4.创建Redux项目框架(相关名词不解析了，请自行学习Redux框架了解)&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;这里就不详细说了，简单说一下搭建时，编辑文件的顺序估计就可以了，详细的编写内容，到我的github上&lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt;一下示例项目就好了。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;新建Action –&amp;gt;&amp;gt; 新建Redicer –&amp;gt;&amp;gt; 新建Store –&amp;gt;&amp;gt; 新建Main.js入口 –&amp;gt;&amp;gt; 修改android和iOS的入口文件(即项目根目录的index.xxx.js)&lt;/p&gt;
-&lt;p&gt;基本就是这样子了~&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;最后附上详细代码的github地址: &lt;span class=&quot;string&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//github.com/skytoup/react-native_ReduxTest&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;本文参考:    &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;react-native的Redux示例: &lt;a href=&quot;https://github.com/chentsulin/react-native-counter-ios-android&quot;&gt;https://github.com/chentsulin/react-native-counter-ios-android&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-" data-url="http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

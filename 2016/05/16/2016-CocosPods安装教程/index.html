@@ -306,96 +306,28 @@ pod <span class="keyword">update</span>
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-2016-CocosPods安装教程" data-title="2016 CocosPods安装教程" data-url="http://skytoup.wicp.net/2016/05/16/2016-CocosPods安装教程/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2016/05/16/2016-CocosPods安装教程/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-2016-CocosPods安装教程"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-2016-CocosPods安装教程" data-title="2016 CocosPods安装教程" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;blockquote&gt;
-&lt;p&gt;2016-06-01&lt;br&gt;修改安装的第四个命令多写了一个’o’&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;CocoaPods简介&quot;&gt;CocoaPods简介&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;CocoaPods&lt;/code&gt;是一个管理&lt;code&gt;Swift&lt;/code&gt;和&lt;code&gt;Objective-C&lt;/code&gt;的&lt;code&gt;Cocoa&lt;/code&gt;项目的依赖工具。它现在有超过一万八千多个库，可以优雅地帮助你扩展你的项目。简单的说，就是替你管理&lt;code&gt;Swift&lt;/code&gt;和&lt;code&gt;Objective-C&lt;/code&gt;的Cocoa项目的第三方库引入。&lt;/p&gt;
-&lt;p&gt;官网地址: &lt;a href=&quot;https://cocoapods.org/&quot;&gt;https://cocoapods.org/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;安装&quot;&gt;安装&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;Mac上面本来就自带了ruby，所有就不用自己安装了(除非你卸载了)。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;打开&lt;code&gt;Terminal&lt;/code&gt;(终端)，输入以下命令(第二个命令可能会需要稍等一会儿)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gem sources --&lt;span class=&quot;built_in&quot;&gt;remove&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//rubygems.org/
-gem &lt;span class=&quot;keyword&quot;&gt;source&lt;/span&gt; -&lt;span class=&quot;keyword&quot;&gt;a&lt;/span&gt; http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//gems.&lt;span class=&quot;keyword&quot;&gt;ruby&lt;/span&gt;-china.org
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;第一个命令是移除官方源，因为在不翻墙的情况下，使用起来比较慢；第二个命令是添加&lt;code&gt;ruby-china&lt;/code&gt;的&lt;code&gt;RubyGems&lt;/code&gt;镜像(很多旧教程都是说使用taobao的gem源，但是taobao的gem源已经停止维护了，原文: &lt;a href=&quot;https://ruby-china.org/topics/29250&quot;&gt;https://ruby-china.org/topics/29250&lt;/a&gt;)。&lt;/p&gt;
-&lt;p&gt; 接下来运行一个命令查看是否成功添加了&lt;code&gt;ruby-china&lt;/code&gt;的&lt;code&gt;gem&lt;/code&gt;源:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gem &lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 出现下图这样子，则代表成功添加~&lt;br&gt; &lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/2016-05-16_1.png&quot; alt=&quot;gem source&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;然后就可以开始真正安装&lt;code&gt;CocoaPods&lt;/code&gt;了，输入一下命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo gem &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; cocoapods
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 等一会儿就能安装完成~~~&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装结束后，需要运行一下命令初始化&lt;code&gt;CocoaPods&lt;/code&gt;: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;pod&lt;/span&gt; setup
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 没有什么错误的话，就算了安装结束了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;基本使用&quot;&gt;基本使用&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;打开&lt;code&gt;Terminal&lt;/code&gt;(终端)，&lt;code&gt;cd&lt;/code&gt;到你的Project目录，输入一下命令:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;pod&lt;/span&gt; init
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 运行结束后，该目录下，会生成了一个&lt;code&gt;Podfile&lt;/code&gt;文件&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用文本编辑器(vim、Sublime Text2、等等…)打开它(&lt;code&gt;Podfile&lt;/code&gt;)，大概会看到以下的东西&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;platform &lt;span class=&quot;symbol&quot;&gt;:ios&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;xxx&#39;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;# 目标平台及其版本&lt;/span&gt;
-use_frameworks! &lt;span class=&quot;comment&quot;&gt;# swift项目需要这句话，是Objective-C项目的话，请在前面加个`#`注释掉&lt;/span&gt;
-target &lt;span class=&quot;string&quot;&gt;&#39;xxxx&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;comment&quot;&gt;# 在这里添加你的依赖库说明，如pod xxx&lt;/span&gt;
-    pod &lt;span class=&quot;string&quot;&gt;&#39;Alamofire&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;~&amp;gt; 3.1’ # 例如这是引入Alamofire这个第三方库
-end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;编辑完&lt;code&gt;Podfile&lt;/code&gt;后，使用&lt;code&gt;Terminal&lt;/code&gt;(终端)输入其中一个命令(需要cd到项目的根目录，即&lt;code&gt;Podfile&lt;/code&gt;所在目录): &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pod &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--no-repo-update&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;or&lt;/span&gt;
-pod &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 第一个命令是不更新本地库信息进行安装，速度会快一点，毕竟不需要更新。但是会有一点点问题，当有一个新的库发布的时候，就会无法安装成功。如果不嫌麻烦，可以定时执行以下命令更新&lt;code&gt;CocoaPods&lt;/code&gt;的库，然后就可以在一段时间使用以上的第一个命令进行安装:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;pod&lt;/span&gt; repo update
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装完成之后，打开项目就需要打开&lt;code&gt;xxx.xcworkspace&lt;/code&gt;，而不是&lt;code&gt;xxx.xcodeproj&lt;/code&gt;了&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果在安装之后，修改了&lt;code&gt;Podfile&lt;/code&gt;文件，可以执行以下的其中一个命令进行库的更新(两个命令的区别和上面说的一样):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pod &lt;span class=&quot;keyword&quot;&gt;update&lt;/span&gt; --&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;-repo-&lt;span class=&quot;keyword&quot;&gt;update&lt;/span&gt;
-&lt;span class=&quot;built_in&quot;&gt;or&lt;/span&gt;
-pod &lt;span class=&quot;keyword&quot;&gt;update&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;安装CocoaPods的可能失败原因&quot;&gt;安装CocoaPods的可能失败原因&lt;/h1&gt;&lt;p&gt;gem过旧，使用以下命令更新一下，再进行安装(先切换到了&lt;code&gt;ruby-china&lt;/code&gt;的&lt;code&gt;gem&lt;/code&gt;源再运行一下命令更新):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;title&quot;&gt;sudo&lt;/span&gt; gem update
-&lt;/code&gt;&lt;/pre&gt;" data-url="http://skytoup.wicp.net/2016/05/16/2016-CocosPods安装教程/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

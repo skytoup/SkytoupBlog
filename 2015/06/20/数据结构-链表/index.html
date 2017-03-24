@@ -269,59 +269,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-数据结构-链表" data-title="数据结构-链表" data-url="http://skytoup.wicp.net/2015/06/20/数据结构-链表/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2015/06/20/数据结构-链表/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-数据结构-链表"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-数据结构-链表" data-title="数据结构-链表" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;1-链表基础&quot;&gt;1.链表基础&lt;/h1&gt;&lt;p&gt;链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;链表的结构如下图（画得不是很好）：&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150620152944636&quot; alt=&quot;链表示意图&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这是一个双向链表，可以通过每一个节点，找到它的上一个节点，或者下一个节点。&lt;br&gt;如果为单向链表，则节点没有pre这个成员变量。&lt;/p&gt;
-&lt;p&gt;节点的结构体定义：&lt;br&gt;struct link_node {&lt;br&gt;    struct link_node &lt;em&gt;next; // 前一个节点&lt;br&gt;    struct link_node &lt;/em&gt;pre; // 后一个节点&lt;br&gt;    void *val; // 节点值&lt;br&gt;};&lt;/p&gt;
-&lt;p&gt;一般来说，都会有一个存储链表头节点的结构体，如上图的第一个圆角矩形。&lt;/p&gt;
-&lt;p&gt;可以新建一个结构体来存储链表首节点，或者新建一个不存储数值的节点来存储首节点。&lt;/p&gt;
-&lt;h1 id=&quot;2-优缺点&quot;&gt;2.优缺点&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;动态创建节点来存储数据&lt;/li&gt;
-&lt;li&gt;插入节点快&lt;/li&gt;
-&lt;li&gt;读取指定位置节点慢&lt;/li&gt;
-&lt;li&gt;结构较简单&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;3-扩展&quot;&gt;3.扩展&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;栈&lt;/li&gt;
-&lt;li&gt;循环链表&lt;/li&gt;
-&lt;li&gt;队列（双向队列、单向队列）&lt;/li&gt;
-&lt;li&gt;树、图、链地址法的哈希表 结构的基础&lt;/li&gt;
-&lt;li&gt;。。。。。（还有很多吧）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20150620155207116&quot; alt=&quot;栈&quot;&gt;&lt;/p&gt;
-" data-url="http://skytoup.wicp.net/2015/06/20/数据结构-链表/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

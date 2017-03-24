@@ -277,67 +277,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-MacOs下安装go-lang" data-title="MacOs下安装go lang" data-url="http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-MacOs下安装go-lang"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-MacOs下安装go-lang" data-title="MacOs下安装go lang" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h2 id=&quot;1-下载安装包&quot;&gt;1.下载安装包&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;由于官网被墙了，所以到国内的一个go论坛下载:&lt;a href=&quot;http://golangtc.com/download&quot;&gt;点击进入下载&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151003131401247.jpg&quot; alt=&quot;download&quot;&gt;&lt;br&gt;下载后，双击进行安装。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;2-配置环境变量&quot;&gt;2.配置环境变量&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;$GOROOT:go lang 安装目录&lt;br&gt;  $GOPATH:go lang 工作目录，有点像Eclipse那样子    &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;下面开始配置&lt;br&gt;到终端输入以下命令:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;vim ~/.bash_profile # 打开环境变量配置&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;在最下面添加&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export GOPATH=/Users/(用户名/路径) # 改成你喜欢的路径&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;export GOROOT=/usr/local/go # 默认安装都市这个路径&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;添加完毕后，退出vim&lt;br&gt;到终端输入以下命令:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;source ~/.bash_profile # 让环境变量配置生效&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;完成后，到$GOPATH的目录下，新建三个文件夹&lt;br&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151003131439905.jpg&quot; alt=&quot;new dir&quot;&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;attribute&quot;&gt;bin&lt;/span&gt;:存放编译后的可执行文件;
-&lt;span class=&quot;attribute&quot;&gt;pkg&lt;/span&gt;:存放编译后的包文件;
-&lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;:存放项目源文件;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最后，到终端输入以下命令验证时候安装成功:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;go version&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151003131454906.jpg&quot; alt=&quot;go version&quot;&gt;&lt;br&gt;出现类似图中则为成功，若不成功，请检测一下你的环境变量配置。&lt;/p&gt;
-&lt;h2 id=&quot;3-IDE&quot;&gt;3.IDE&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;一.Sublime Text(个人比较喜欢)&lt;br&gt;安装好SublimeText后，再安装插件管理器，到插件管理器安装处，输入GoSublime，回车安装&lt;br&gt;安装完成后，还要安装一个语法提示插件:&lt;br&gt;到终端输入一下命令:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;go get github.com/nsf/gocode&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;go install github.com/nsf/gocode&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;二.LiteIDE&lt;br&gt;下载地址:&lt;a href=&quot;http://www.golangtc.com/download/liteide&quot;&gt;LiteIDE&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xoq5y.com1.z0.glb.clouddn.com/20151003131512470.jpg&quot; alt=&quot;LiteIDE&quot;&gt;&lt;br&gt;  下载其中一个即可&lt;br&gt;  解压即可用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;三.Wide&lt;br&gt;项目地址:&lt;a href=&quot;https://github.com/b3log/wide&quot;&gt;Wide项目&lt;/a&gt;&lt;br&gt;官网地址:&lt;a href=&quot;https://wide.b3log.org/login&quot; title=&quot;wide&quot;&gt;官网&lt;/a&gt;&lt;br&gt;下载后，使用go来运行，在浏览器打开指定的ip和端口即可使用(详情请参考&lt;a href=&quot;https://wide.b3log.org/login&quot; title=&quot;wide&quot;&gt;官网&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;4-学习Go_lang&quot;&gt;4.学习Go lang&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;官方教程:&lt;a href=&quot;http://tour.studygolang.com/welcome/1&quot;&gt;免翻墙&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Go语言中文网:&lt;a href=&quot;http://studygolang.com/&quot;&gt;Go语言中文网&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;GoLang中国:&lt;a href=&quot;http://www.golangtc.com/&quot;&gt;GoLang中国&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-" data-url="http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

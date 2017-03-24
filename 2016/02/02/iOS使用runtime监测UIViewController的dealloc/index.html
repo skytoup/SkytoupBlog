@@ -266,56 +266,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-iOS使用runtime监测UIViewController的dealloc" data-title="iOS使用runtime监测UIViewController的dealloc" data-url="http://skytoup.wicp.net/2016/02/02/iOS使用runtime监测UIViewController的dealloc/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2016/02/02/iOS使用runtime监测UIViewController的dealloc/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-iOS使用runtime监测UIViewController的dealloc"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-iOS使用runtime监测UIViewController的dealloc" data-title="iOS使用runtime监测UIViewController的dealloc" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;p&gt;平时在iOS开发的时候，很多情况会导致内存泄露。有时候因为循环引用，导致了&lt;code&gt;UIViewController&lt;/code&gt;不回收，还有其它好多原因。一般检测内存泄露都是使用&lt;code&gt;Xcode&lt;/code&gt;的&lt;code&gt;Instruments&lt;/code&gt;工具。但是这个工具有点复杂，新手入门还是有点难度。所以想到了使用runtime替换&lt;code&gt;UIViewController&lt;/code&gt;的&lt;code&gt;-(void)dealloc:&lt;/code&gt;方法的实现，检测&lt;code&gt;ViewController&lt;/code&gt;是否被释放，从而知道&lt;code&gt;ViewController&lt;/code&gt;里面有没有内存泄露。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;runtime&lt;/span&gt;的相关细节就不说了，不理解也能用，复制放到项目里面就好了。
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;一、思路&quot;&gt;一、思路&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;需要被替换的方法是&lt;code&gt;UIViewController&lt;/code&gt;的&lt;code&gt;-(void)dealloc:&lt;/code&gt;，所以新建一个&lt;code&gt;UIViewController&lt;/code&gt;的&lt;code&gt;Category&lt;/code&gt;，在其&lt;code&gt;+(void)load&lt;/code&gt;里面执行方法替换。&lt;/li&gt;
-&lt;li&gt;替换的新方法里面做一个简单地log一下当前&lt;code&gt;UIViewController&lt;/code&gt;的类名就好了就好了，即当UIViewController被回收的时候，log其类名。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;二、实现&quot;&gt;二、实现&lt;/h1&gt;&lt;p&gt;1.新建一个UIViewController的&lt;code&gt;Category&lt;/code&gt;，编写新的dealloc方法。代码如下(可自行修改):&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- (void)skyLogInDealloc &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    printf(&amp;quot;\n&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;-------------start-------------&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;Dealloc : %@&amp;quot;, NSStringFromClass([self class]));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;--------------end--------------&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    printf(&amp;quot;\n&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [self skyLogInDealloc];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;2.重写&lt;code&gt;+(void)onLoad:&lt;/code&gt;方法。代码如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;+ (void)load &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [super load];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SEL originSEL  = NSSelectorFromString(@&amp;quot;dealloc&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SEL swapSEL = @selector(skyLogInDealloc);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method originMethod = class_getInstanceMethod(self, originSEL);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method swapMethod = class_getInstanceMethod(self, swapSEL);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    IMP originIMP = method_getImplementation(originMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    IMP swapIMP = method_getImplementation(swapMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    BOOL didAddMethod = class_addMethod(self, originSEL, swapIMP, method_getTypeEncoding(originMethod));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if(didAddMethod) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        class_replaceMethod(self, swapSEL, originIMP, method_getTypeEncoding(originMethod));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125; else &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        method_exchangeImplementations(originMethod, swapMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;完整的m文件实现代码&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;#if DEBUG&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;+ (void)load &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [super load];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SEL originSEL  = NSSelectorFromString(@&amp;quot;dealloc&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    SEL swapSEL = @selector(skyLogInDealloc);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method originMethod = class_getInstanceMethod(self, originSEL);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Method swapMethod = class_getInstanceMethod(self, swapSEL);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    IMP originIMP = method_getImplementation(originMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    IMP swapIMP = method_getImplementation(swapMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    BOOL didAddMethod = class_addMethod(self, originSEL, swapIMP, method_getTypeEncoding(originMethod));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if(didAddMethod) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        class_replaceMethod(self, swapSEL, originIMP, method_getTypeEncoding(originMethod));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125; else &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        method_exchangeImplementations(originMethod, swapMethod);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- (void)skyLogInDealloc &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    printf(&amp;quot;\n&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;-------------start-------------&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;Dealloc : %@&amp;quot;, NSStringFromClass([self class]));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    NSLog(@&amp;quot;--------------end--------------&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    printf(&amp;quot;\n&amp;quot;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [self skyLogInDealloc];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;#endif&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;三、部分细节&quot;&gt;三、部分细节&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;在ARC下，使用&lt;code&gt;@selector(dealloc:)&lt;/code&gt;会报错，所以只好这样子获取它的SEL: &lt;code&gt;NSSelectorFromString(@&amp;quot;dealloc&amp;quot;)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;DEBUG&lt;/code&gt;是一个宏，当构建项目使用Debug的时候，其值会为YES，当使用Release的时候，其值会是NO。加上去就是为了发布的时候，也不需要担心忘记将其移除功能。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;附上github地址: &lt;a href=&quot;https://github.com/skytoup/SkyLogInDealloc&quot;&gt;https://github.com/skytoup/SkyLogInDealloc&lt;/a&gt;&lt;/p&gt;
-" data-url="http://skytoup.wicp.net/2016/02/02/iOS使用runtime监测UIViewController的dealloc/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 

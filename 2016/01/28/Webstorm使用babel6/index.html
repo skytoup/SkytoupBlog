@@ -258,48 +258,28 @@
     
 </nav>
 
-        <div class="duoshuo"><!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-Webstorm使用babel6" data-title="Webstorm使用babel6" data-url="http://skytoup.wicp.net/2016/01/28/Webstorm使用babel6/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"skytoup"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2016/01/28/Webstorm使用babel6/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-Webstorm使用babel6"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-
-<!-- 多说分享 悬浮 扁平 start -->
-<div class="ds-share flat" data-thread-key="post-Webstorm使用babel6" data-title="Webstorm使用babel6" data-images="http://skytoup.wicp.net/img/logo.png" data-content="&lt;h1 id=&quot;一、初始化工程&quot;&gt;一、初始化工程&lt;/h1&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm init &lt;span class=&quot;string&quot;&gt;&#39;project name&#39;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;输入各种信息之后，新建工程完毕。&lt;/p&gt;
-&lt;h1 id=&quot;二、安装babel&quot;&gt;二、安装babel&lt;/h1&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install --save-dev babel-cli&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;三、修改Webstorm配置&quot;&gt;三、修改Webstorm配置&lt;/h1&gt;&lt;p&gt;打开Setting -&amp;gt; Languages &amp;amp; Frameworks -&amp;gt; JavaScript -&amp;gt; JavaScript language version，选择ECMAScript6。&lt;/p&gt;
-&lt;h1 id=&quot;四、安装babel预插件&quot;&gt;四、安装babel预插件&lt;/h1&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install babel-preset-es2015 --save-dev&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;五、创建-babelrc配置文件&quot;&gt;五、创建.babelrc配置文件&lt;/h1&gt;&lt;figure class=&quot;highlight openscad&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &#39;&amp;#123; &lt;span class=&quot;string&quot;&gt;&quot;presets&quot;&lt;/span&gt;: [&lt;span class=&quot;string&quot;&gt;&quot;es2015&quot;&lt;/span&gt;] &amp;#125;&#39; &amp;gt; .babelrc&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;或自行在项目根目录创建&lt;code&gt;.babelrc&lt;/code&gt;文件，并输入&lt;code&gt;{ &amp;quot;presets&amp;quot;: [&amp;quot;es2015&amp;quot;] }&lt;/code&gt;，保存、退出。&lt;/p&gt;
-&lt;h1 id=&quot;END&quot;&gt;END&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;attribute&quot;&gt;tip&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;运行的时候选择转换好的文件，别选原文件！！！&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;更详细请参考官方说明: &lt;a href=&quot;http://babeljs.io/docs/setup/#webstorm&quot;&gt;Babel_Webstorm&lt;/a&gt;&lt;/p&gt;
-" data-url="http://skytoup.wicp.net/2016/01/28/Webstorm使用babel6/">
-    <div class="ds-share-aside-left">
-      <div class="ds-share-aside-inner">
-      </div>
-      <div class="ds-share-aside-toggle">分享到</div>
-    </div>
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<!-- 多说分享 悬浮 扁平 end -->
-
-
-<!-- 多说最近访客 start -->
-<div>最近访客:</div>
-<div class="ds-recent-visitors" data-num-items="5" data-avatar-size="40" id="ds-recent-visitors"></div>
-<!-- 多说最近访客 end --></div>
     </div>
 </section>
 
