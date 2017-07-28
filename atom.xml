@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2017-03-01T08:26:51.000Z</updated>
+  <updated>2017-07-28T02:00:03.000Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pypy3安装和基本使用</title>
+    <link href="http://skytoup.wicp.net/2017/07/28/pypy3%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>http://skytoup.wicp.net/2017/07/28/pypy3安装和基本使用/</id>
+    <published>2017-07-28T01:27:10.000Z</published>
+    <updated>2017-07-28T02:00:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装">安装</h2><h3 id="MacOS">MacOS</h3><ol>
+<li>先安装<code>brewhome</code>, 官网: <a href="https://brew.sh/" target="_blank" rel="external">brewhome</a>(已安装的跳过)</li>
+<li>打开终端, 输入命令<code>brew install pypy3</code>(没翻墙的可能比较慢)</li>
+<li>安装pypy的pip, 在终端输入<code>curl -O https://bootstrap.pypa.io/get-pip.py &amp;&amp; pypy3 get-pip.py</code></li>
+</ol>
+<h3 id="CentOS">CentOS</h3><p>待测试…</p>
+<h2 id="基本使用">基本使用</h2><h3 id="基本命令">基本命令</h3><ul>
+<li><code>pypy3</code>: 运行脚本, 相当于<code>python3</code><ul>
+<li><code>pypy3 xxx.py</code> # 运行脚本xxx.py</li>
+<li><code>pypy3 -m pip install xxx</code> # 安装依赖xxx</li>
+<li><code>pypy3 -m venv xxx</code> # 创建一个虚拟环境到xxx目录<ul>
+<li>切换到该虚拟环境: <code>source xxx/bin/activate</code>, 退出虚拟环境: <code>deactivate</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pip_pypy3</code>: 安装依赖库, 相当于 <code>pip3</code><ul>
+<li><code>pip_pypy3 install xxx</code> # 安装依赖xxx</li>
+<li><code>pip_pypy3 install -r requirement.txt</code> # 递归安装requirement.txt里面的依赖</li>
+</ul>
+</li>
+<li><code>easy_install_pypy3</code>: 安装依赖库, 相当于<code>easy_install3</code><ul>
+<li><code>easy_install_pypy3 xxx</code> # 安装依赖xxx</li>
+</ul>
+</li>
+</ul>
+<h3 id="测试性能">测试性能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># test.py</div><div class="line">from time import time</div><div class="line"></div><div class="line">times = 10</div><div class="line">start_time = time()</div><div class="line"></div><div class="line">for t in range(times):</div><div class="line">    sum = 0</div><div class="line">    st = time()</div><div class="line">    for i in range(10 ** 6):</div><div class="line">        sum += i</div><div class="line">    print(&apos;&#123;&#125;: speed time: &#123;&#125;&apos;.format(t, time()-st))</div><div class="line"></div><div class="line">total_time = time()-start_time</div><div class="line">print(&apos;speed time avrage: &#123;&#125;, total: &#123;&#125;&apos;.format(total_time / times, total_time))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>python3 test.py</p>
+</blockquote>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/python.gif" alt="img"></p>
+<pre><code><span class="number">0</span>: speed time: <span class="number">0.16138482093811035</span>
+<span class="number">1</span>: speed time: <span class="number">0.1585860252380371</span>
+<span class="number">2</span>: speed time: <span class="number">0.1659379005432129</span>
+<span class="number">3</span>: speed time: <span class="number">0.1676487922668457</span>
+<span class="number">4</span>: speed time: <span class="number">0.16137290000915527</span>
+<span class="number">5</span>: speed time: <span class="number">0.16071820259094238</span>
+<span class="number">6</span>: speed time: <span class="number">0.16538310050964355</span>
+<span class="number">7</span>: speed time: <span class="number">0.1611499786376953</span>
+<span class="number">8</span>: speed time: <span class="number">0.17231488227844238</span>
+<span class="number">9</span>: speed time: <span class="number">0.17661476135253906</span>
+speed time avrage: <span class="number">0.165160608291626</span>, total: <span class="number">1.6516060829162598</span>
+</code></pre><blockquote>
+<p>pypy3 test.py</p>
+</blockquote>
+<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/pypy.gif" alt="img"></p>
+<pre><code>0: speed time: <span class="number">0.00528001</span><span class="number">7852783203</span>
+1: speed time: <span class="number">0.003924131</span><span class="number">393432617</span>
+2: speed time: <span class="number">0.00208997</span><span class="number">7264404297</span>
+3: speed time: <span class="number">0.002447128</span><span class="number">2958984375</span>
+4: speed time: <span class="number">0.002082109</span><span class="number">4512939453</span>
+5: speed time: <span class="number">0.00250983</span><span class="number">23822021484</span>
+6: speed time: <span class="number">0.00282788</span><span class="number">2766723633</span>
+7: speed time: <span class="number">0.00203299</span><span class="number">52239990234</span>
+8: speed time: <span class="number">0.00251889</span><span class="number">2288208008</span>
+9: speed time: <span class="number">0.001984119</span><span class="number">415283203</span>
+speed time avrage: <span class="number">0.00293700</span><span class="number">6950378418</span>, total: <span class="number">0.02937006</span><span class="number">950378418</span>
+</code></pre><p>简单的测试来看, pypy比cpython快了好几倍</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装&quot;&gt;安装&lt;/h2&gt;&lt;h3 id=&quot;MacOS&quot;&gt;MacOS&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;先安装&lt;code&gt;brewhome&lt;/code&gt;, 官网: &lt;a href=&quot;https://brew.sh/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://skytoup.wicp.net/categories/Python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一个实现App在线下载、安装的工具</title>
@@ -955,31 +1034,6 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     </summary>
     
       <category term="数据结构" scheme="http://skytoup.wicp.net/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iOS三级联想菜单（SkyAssociationMenuView）</title>
-    <link href="http://skytoup.wicp.net/2015/06/19/iOS%E4%B8%89%E7%BA%A7%E8%81%94%E6%83%B3%E8%8F%9C%E5%8D%95%EF%BC%88SkyAssociationMenuView%EF%BC%89/"/>
-    <id>http://skytoup.wicp.net/2015/06/19/iOS三级联想菜单（SkyAssociationMenuView）/</id>
-    <published>2015-06-19T06:14:00.000Z</published>
-    <updated>2015-11-27T09:29:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="三级联想菜单（SkyAssociationMenuView）">三级联想菜单（SkyAssociationMenuView）</h1><h3 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h3><p>以前做一个项目准备用来当做地区选择用的，后来没用上。。。。。</p>
-<p>只是粗略的实现了一下，写得不是很好，望大家见谅。。。。。</p>
-<p>github：<a href="https://github.com/skytoup/SkyAssociationMenuView" target="_blank" rel="external">https://github.com/skytoup/SkyAssociationMenuView</a></p>
-<p>效果图：</p>
-<p><img src="https://raw.githubusercontent.com/skytoup/SkyAssociationMenuView/master/1.gif" alt="GIF"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;三级联想菜单（SkyAssociationMenuView）&quot;&gt;三级联想菜单（SkyAssociationMenuView）&lt;/h1&gt;&lt;h3 id=&quot;测试环境：Xcode_6，iOS_7-0以上。&quot;&gt;测试环境：Xcode 6，iOS 7.0以上。&lt;/h3&gt;&lt;p&gt;以
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
     
     
   </entry>
