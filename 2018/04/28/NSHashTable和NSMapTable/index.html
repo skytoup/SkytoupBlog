@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>pypy3安装和基本使用 | skytoup blog</title>
+  <title>NSHashTable和NSMapTable | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -225,73 +225,88 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2017-07-28T01:27:10.000Z" itemprop="datePublished">
-          2017-07-28
+      <time datetime="2018-04-28T06:19:23.000Z" itemprop="datePublished">
+          2018-04-28
       </time>
     
 </span>
-                <h1>pypy3安装和基本使用</h1>
+                <h1>NSHashTable和NSMapTable</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="安装">安装</h2><h3 id="MacOS">MacOS</h3><ol>
-<li>先安装<code>brewhome</code>, 官网: <a href="https://brew.sh/" target="_blank" rel="external">brewhome</a>(已安装的跳过)</li>
-<li>打开终端, 输入命令<code>brew install pypy3</code>(没翻墙的可能比较慢)</li>
-<li>安装pypy的pip, 在终端输入<code>curl -O https://bootstrap.pypa.io/get-pip.py &amp;&amp; pypy3 get-pip.py</code></li>
-</ol>
-<h3 id="CentOS">CentOS</h3><p>待测试…</p>
-<h2 id="基本使用">基本使用</h2><h3 id="基本命令">基本命令</h3><ul>
-<li><code>pypy3</code>: 运行脚本, 相当于<code>python3</code><ul>
-<li><code>pypy3 xxx.py</code> # 运行脚本xxx.py</li>
-<li><code>pypy3 -m pip install xxx</code> # 安装依赖xxx</li>
-<li><code>pypy3 -m venv xxx</code> # 创建一个虚拟环境到xxx目录<ul>
-<li>切换到该虚拟环境: <code>source xxx/bin/activate</code>, 退出虚拟环境: <code>deactivate</code></li>
+      		<p>原文来自Apple官方文档: </p>
+<pre><code><span class="bullet">- </span>[<span class="link_label">NSHashTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSMapTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSPointerFunctions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSPointerFunctionsOptions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</span>)
+</code></pre><h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<h2 id="概述">概述</h2><p>NSHashTable和NSSet不同之处：</p>
+<pre><code>-<span class="ruby"> 它可以对它的元素保持弱引用。
+</span>-<span class="ruby"> 它的元素可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
+</span>-<span class="ruby"> 他可以存储任意指针(它的元素不限制是对象[*应该是指<span class="constant">NSObject</span>])</span>
+</code></pre><p>你可以配置一个NSHashTable实例用于任意的指针，不限于是对象，显然你可以能够使用把C函数转为 void* 指针。它的基本API(如addObject:)将会不对非对象的指针进行类型转换。</p>
+<p>因为它的配置，NSHashTable不是一个Set，应为它们有不同之处(比如，如果配置了使用对比指针地址，则两个isEqual:的字符串都将被添加)</p>
+<p>当配置哈希表时，请注意只有在NSHashTableOptions列出的配置才能使API正常使用–包括复制、归档和快速遍历。而其它NSPointerFunctions配置使用于某些配置，例如保持任意指针，单并非所有组合的配置都是有效的。对于谋学组合，哈希表可能无法正常工作，甚至无法正常初始化。</p>
+<h1 id="NSMapTable">NSMapTable</h1><p>一个类似字典的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<h2 id="概述-1">概述</h2><p>NSMapTable和NSDictionary不同之处：</p>
+<pre><code>-<span class="ruby"> <span class="constant">Key</span>/<span class="constant">Value</span> 是可以配置保持弱引用，当对象被回收时就会被移除。
+</span>-<span class="ruby"> <span class="constant">Key</span>/<span class="constant">Value</span>可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
+</span>-<span class="ruby"> 他可以存储任意指针(它的元素不限制是对象[*应该是指<span class="constant">NSObject</span>])</span>
+</code></pre><p>你可以配置一个NSMapTable实例去操作任意指针，不限于对象，显然你可以能够使用把C函数转为 void* 指针。它的基本API(如addObject:forKey:)将会不对非对象的指针进行类型转换。</p>
+<p>当配置MapTable时，请注意只有在NSMapTableOptions列出的配置才能使API正常使用–包括复制、归档和快速遍历。而其它NSPointerFunctions配置使用于某些配置，例如保持任意指针，单并非所有组合的配置都是有效的。对于谋学组合，哈希表可能无法正常工作，甚至无法正常初始化。</p>
+<h1 id="NSPointerFunctions">NSPointerFunctions</h1><p>一个NSPointerFunctions实例定义了调出函数用于管理如何保存指针。</p>
+<h2 id="概述-2">概述</h2><p>NSPointerFunctions实例所指定的函数被分为两个簇——定义一些“特性”的函数，如“object”或“C-string”，以及描述内存管理问题的函数，如内存分配函数。对于常见的特性和内存管理器的选择有一些常量(参见内存和特性选项)。</p>
+<p>NSHashTable，NSMapTable 和 NSPointerArray使用一个NSPointerFunctions对象定义指针的获取和存储。但是请注意，并不是所有的特性和内存管理的组合对这些集合都有效。指针集合对象在输出输入时复制NSPointerFunctions对象，    所以不能把NSPointerFunctions子类化。</p>
+<h1 id="NSPointerFunctionsOptions">NSPointerFunctionsOptions</h1><p>对NSPointerFunction对象定义内存和特性的配置</p>
+<h2 id="概述-3">概述</h2><p>当指定一个值时，你只能使用内存选项的其中一个。</p>
+<h2 id="配置选项">配置选项</h2><h3 id="Memory_Options(这些选项是互斥的)">Memory Options(这些选项是互斥的)</h3><ul>
+<li>NSPointerFunctionsMachVirtualMemory<ul>
+<li>使用Mach内存</li>
+</ul>
+</li>
+<li>NSPointerFunctionsMallocMemory<ul>
+<li>删除使用free()，复制使用calloc()</li>
+</ul>
+</li>
+<li>NSPointerFunctionsOpaqueMemory<ul>
+<li>当指针被删除时，不要采取任何操作</li>
+</ul>
+</li>
+<li>NSPointerFunctionsStrongMemory<ul>
+<li>使用强引用来存储，在复制时使用垃圾回收</li>
+</ul>
+</li>
+<li>NSPointerFunctionsWeakMemory<ul>
+<li>对ARC和GC的读写使用弱引用。使用NSPointerFunctionsWeakMemory对象引用被释放后将在将会返回NULL</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><code>pip_pypy3</code>: 安装依赖库, 相当于 <code>pip3</code><ul>
-<li><code>pip_pypy3 install xxx</code> # 安装依赖xxx</li>
-<li><code>pip_pypy3 install -r requirement.txt</code> # 递归安装requirement.txt里面的依赖</li>
+<h3 id="Personality_Options(这些选项是互斥的)">Personality Options(这些选项是互斥的)</h3><ul>
+<li>NSPointerFunctionsCStringPersonality<ul>
+<li>使用字符串的哈希 和 比对；C-string使用‘%s’</li>
 </ul>
 </li>
-<li><code>easy_install_pypy3</code>: 安装依赖库, 相当于<code>easy_install3</code><ul>
-<li><code>easy_install_pypy3 xxx</code> # 安装依赖xxx</li>
+<li>NSPointerFunctionsIntegerPersonality<ul>
+<li>使用未位移的值用于哈希和比对</li>
+</ul>
+</li>
+<li>NSPointerFunctionsObjectPersonality<ul>
+<li>使用哈希 和 isEqual方法对比是否相同，使用description方法显示详情</li>
+</ul>
+</li>
+<li>NSPointerFunctionsObjectPointerPersonality<ul>
+<li>使用移位指针进行哈希和直接对比相同，使用description方法显示详情</li>
+</ul>
+</li>
+<li>NSPointerFunctionsOpaquePersonality<ul>
+<li>使用移位指针进行哈希和直接对比相同</li>
+</ul>
+</li>
+<li>NSPointerFunctionsStructPersonality<ul>
+<li>使用内存的哈希 和 memcmp(使用sizeFunction).</li>
 </ul>
 </li>
 </ul>
-<h3 id="测试性能">测试性能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># test.py</div><div class="line">from time import time</div><div class="line"></div><div class="line">times = 10</div><div class="line">start_time = time()</div><div class="line"></div><div class="line">for t in range(times):</div><div class="line">    sum = 0</div><div class="line">    st = time()</div><div class="line">    for i in range(10 ** 6):</div><div class="line">        sum += i</div><div class="line">    print(&apos;&#123;&#125;: speed time: &#123;&#125;&apos;.format(t, time()-st))</div><div class="line"></div><div class="line">total_time = time()-start_time</div><div class="line">print(&apos;speed time avrage: &#123;&#125;, total: &#123;&#125;&apos;.format(total_time / times, total_time))</div></pre></td></tr></table></figure>
-<blockquote>
-<p>python3 test.py</p>
-</blockquote>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/python.gif" alt="img"></p>
-<pre><code><span class="number">0</span>: speed time: <span class="number">0.16138482093811035</span>
-<span class="number">1</span>: speed time: <span class="number">0.1585860252380371</span>
-<span class="number">2</span>: speed time: <span class="number">0.1659379005432129</span>
-<span class="number">3</span>: speed time: <span class="number">0.1676487922668457</span>
-<span class="number">4</span>: speed time: <span class="number">0.16137290000915527</span>
-<span class="number">5</span>: speed time: <span class="number">0.16071820259094238</span>
-<span class="number">6</span>: speed time: <span class="number">0.16538310050964355</span>
-<span class="number">7</span>: speed time: <span class="number">0.1611499786376953</span>
-<span class="number">8</span>: speed time: <span class="number">0.17231488227844238</span>
-<span class="number">9</span>: speed time: <span class="number">0.17661476135253906</span>
-speed time avrage: <span class="number">0.165160608291626</span>, total: <span class="number">1.6516060829162598</span>
-</code></pre><blockquote>
-<p>pypy3 test.py</p>
-</blockquote>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/pypy.gif" alt="img"></p>
-<pre><code>0: speed time: <span class="number">0.00528001</span><span class="number">7852783203</span>
-1: speed time: <span class="number">0.003924131</span><span class="number">393432617</span>
-2: speed time: <span class="number">0.00208997</span><span class="number">7264404297</span>
-3: speed time: <span class="number">0.002447128</span><span class="number">2958984375</span>
-4: speed time: <span class="number">0.002082109</span><span class="number">4512939453</span>
-5: speed time: <span class="number">0.00250983</span><span class="number">23822021484</span>
-6: speed time: <span class="number">0.00282788</span><span class="number">2766723633</span>
-7: speed time: <span class="number">0.00203299</span><span class="number">52239990234</span>
-8: speed time: <span class="number">0.00251889</span><span class="number">2288208008</span>
-9: speed time: <span class="number">0.001984119</span><span class="number">415283203</span>
-speed time avrage: <span class="number">0.00293700</span><span class="number">6950378418</span>, total: <span class="number">0.02937006</span><span class="number">950378418</span>
-</code></pre><p>简单的测试来看, pypy比cpython快了好几倍</p>
 
             </br>
             <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
@@ -300,13 +315,9 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2018/04/28/NSHashTable和NSMapTable/" style="float: left;">
-        ← NSHashTable和NSMapTable
-    </a>
     
-    
-    <a class="pull-right" href="/2017/03/01/一个实现App在线下载、安装的工具/">
-        一个实现App在线下载、安装的工具 →
+    <a class="pull-right" href="/2017/07/28/pypy3安装和基本使用/">
+        pypy3安装和基本使用 →
     </a>
     
 </nav>
@@ -319,8 +330,8 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
 	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 	/*
 	var disqus_config = function () {
-		this.page.url = "http://skytoup.wicp.net/2017/07/28/pypy3安装和基本使用/";  // Replace PAGE_URL with your page's canonical URL variable
-		this.page.identifier = "post-pypy3安装和基本使用"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		this.page.url = "http://skytoup.wicp.net/2018/04/28/NSHashTable和NSMapTable/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-NSHashTable和NSMapTable"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 	};
 	*/
 	(function() { // DON'T EDIT BELOW THIS LINE

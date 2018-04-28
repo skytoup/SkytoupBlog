@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2017-07-28T02:00:03.000Z</updated>
+  <updated>2018-04-28T06:21:23.836Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -14,6 +14,98 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NSHashTable和NSMapTable</title>
+    <link href="http://skytoup.wicp.net/2018/04/28/NSHashTable%E5%92%8CNSMapTable/"/>
+    <id>http://skytoup.wicp.net/2018/04/28/NSHashTable和NSMapTable/</id>
+    <published>2018-04-28T06:19:23.000Z</published>
+    <updated>2018-04-28T06:21:23.836Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文来自Apple官方文档: </p>
+<pre><code><span class="bullet">- </span>[<span class="link_label">NSHashTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSMapTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSPointerFunctions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</span>)
+<span class="bullet">- </span>[<span class="link_label">NSPointerFunctionsOptions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</span>)
+</code></pre><h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<h2 id="概述">概述</h2><p>NSHashTable和NSSet不同之处：</p>
+<pre><code>-<span class="ruby"> 它可以对它的元素保持弱引用。
+</span>-<span class="ruby"> 它的元素可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
+</span>-<span class="ruby"> 他可以存储任意指针(它的元素不限制是对象[*应该是指<span class="constant">NSObject</span>])</span>
+</code></pre><p>你可以配置一个NSHashTable实例用于任意的指针，不限于是对象，显然你可以能够使用把C函数转为 void* 指针。它的基本API(如addObject:)将会不对非对象的指针进行类型转换。</p>
+<p>因为它的配置，NSHashTable不是一个Set，应为它们有不同之处(比如，如果配置了使用对比指针地址，则两个isEqual:的字符串都将被添加)</p>
+<p>当配置哈希表时，请注意只有在NSHashTableOptions列出的配置才能使API正常使用–包括复制、归档和快速遍历。而其它NSPointerFunctions配置使用于某些配置，例如保持任意指针，单并非所有组合的配置都是有效的。对于谋学组合，哈希表可能无法正常工作，甚至无法正常初始化。</p>
+<h1 id="NSMapTable">NSMapTable</h1><p>一个类似字典的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<h2 id="概述-1">概述</h2><p>NSMapTable和NSDictionary不同之处：</p>
+<pre><code>-<span class="ruby"> <span class="constant">Key</span>/<span class="constant">Value</span> 是可以配置保持弱引用，当对象被回收时就会被移除。
+</span>-<span class="ruby"> <span class="constant">Key</span>/<span class="constant">Value</span>可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
+</span>-<span class="ruby"> 他可以存储任意指针(它的元素不限制是对象[*应该是指<span class="constant">NSObject</span>])</span>
+</code></pre><p>你可以配置一个NSMapTable实例去操作任意指针，不限于对象，显然你可以能够使用把C函数转为 void* 指针。它的基本API(如addObject:forKey:)将会不对非对象的指针进行类型转换。</p>
+<p>当配置MapTable时，请注意只有在NSMapTableOptions列出的配置才能使API正常使用–包括复制、归档和快速遍历。而其它NSPointerFunctions配置使用于某些配置，例如保持任意指针，单并非所有组合的配置都是有效的。对于谋学组合，哈希表可能无法正常工作，甚至无法正常初始化。</p>
+<h1 id="NSPointerFunctions">NSPointerFunctions</h1><p>一个NSPointerFunctions实例定义了调出函数用于管理如何保存指针。</p>
+<h2 id="概述-2">概述</h2><p>NSPointerFunctions实例所指定的函数被分为两个簇——定义一些“特性”的函数，如“object”或“C-string”，以及描述内存管理问题的函数，如内存分配函数。对于常见的特性和内存管理器的选择有一些常量(参见内存和特性选项)。</p>
+<p>NSHashTable，NSMapTable 和 NSPointerArray使用一个NSPointerFunctions对象定义指针的获取和存储。但是请注意，并不是所有的特性和内存管理的组合对这些集合都有效。指针集合对象在输出输入时复制NSPointerFunctions对象，    所以不能把NSPointerFunctions子类化。</p>
+<h1 id="NSPointerFunctionsOptions">NSPointerFunctionsOptions</h1><p>对NSPointerFunction对象定义内存和特性的配置</p>
+<h2 id="概述-3">概述</h2><p>当指定一个值时，你只能使用内存选项的其中一个。</p>
+<h2 id="配置选项">配置选项</h2><h3 id="Memory_Options(这些选项是互斥的)">Memory Options(这些选项是互斥的)</h3><ul>
+<li>NSPointerFunctionsMachVirtualMemory<ul>
+<li>使用Mach内存</li>
+</ul>
+</li>
+<li>NSPointerFunctionsMallocMemory<ul>
+<li>删除使用free()，复制使用calloc()</li>
+</ul>
+</li>
+<li>NSPointerFunctionsOpaqueMemory<ul>
+<li>当指针被删除时，不要采取任何操作</li>
+</ul>
+</li>
+<li>NSPointerFunctionsStrongMemory<ul>
+<li>使用强引用来存储，在复制时使用垃圾回收</li>
+</ul>
+</li>
+<li>NSPointerFunctionsWeakMemory<ul>
+<li>对ARC和GC的读写使用弱引用。使用NSPointerFunctionsWeakMemory对象引用被释放后将在将会返回NULL</li>
+</ul>
+</li>
+</ul>
+<h3 id="Personality_Options(这些选项是互斥的)">Personality Options(这些选项是互斥的)</h3><ul>
+<li>NSPointerFunctionsCStringPersonality<ul>
+<li>使用字符串的哈希 和 比对；C-string使用‘%s’</li>
+</ul>
+</li>
+<li>NSPointerFunctionsIntegerPersonality<ul>
+<li>使用未位移的值用于哈希和比对</li>
+</ul>
+</li>
+<li>NSPointerFunctionsObjectPersonality<ul>
+<li>使用哈希 和 isEqual方法对比是否相同，使用description方法显示详情</li>
+</ul>
+</li>
+<li>NSPointerFunctionsObjectPointerPersonality<ul>
+<li>使用移位指针进行哈希和直接对比相同，使用description方法显示详情</li>
+</ul>
+</li>
+<li>NSPointerFunctionsOpaquePersonality<ul>
+<li>使用移位指针进行哈希和直接对比相同</li>
+</ul>
+</li>
+<li>NSPointerFunctionsStructPersonality<ul>
+<li>使用内存的哈希 和 memcmp(使用sizeFunction).</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文来自Apple官方文档: &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;bullet&quot;&gt;- &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;NSHashTable&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;https:/
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>pypy3安装和基本使用</title>
@@ -993,47 +1085,6 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     </summary>
     
       <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构-链表</title>
-    <link href="http://skytoup.wicp.net/2015/06/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/"/>
-    <id>http://skytoup.wicp.net/2015/06/20/数据结构-链表/</id>
-    <published>2015-06-20T07:54:00.000Z</published>
-    <updated>2015-11-27T09:29:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-链表基础">1.链表基础</h1><p>链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。</p>
-<p><code>链表的结构如下图（画得不是很好）：</code><br><img src="http://img.blog.csdn.net/20150620152944636" alt="链表示意图"></p>
-<p>这是一个双向链表，可以通过每一个节点，找到它的上一个节点，或者下一个节点。<br>如果为单向链表，则节点没有pre这个成员变量。</p>
-<p>节点的结构体定义：<br>struct link_node {<br>    struct link_node <em>next; // 前一个节点<br>    struct link_node </em>pre; // 后一个节点<br>    void *val; // 节点值<br>};</p>
-<p>一般来说，都会有一个存储链表头节点的结构体，如上图的第一个圆角矩形。</p>
-<p>可以新建一个结构体来存储链表首节点，或者新建一个不存储数值的节点来存储首节点。</p>
-<h1 id="2-优缺点">2.优缺点</h1><ul>
-<li>动态创建节点来存储数据</li>
-<li>插入节点快</li>
-<li>读取指定位置节点慢</li>
-<li>结构较简单</li>
-</ul>
-<h1 id="3-扩展">3.扩展</h1><ul>
-<li>栈</li>
-<li>循环链表</li>
-<li>队列（双向队列、单向队列）</li>
-<li>树、图、链地址法的哈希表 结构的基础</li>
-<li>。。。。。（还有很多吧）</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20150620155207116" alt="栈"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;1-链表基础&quot;&gt;1.链表基础&lt;/h1&gt;&lt;p&gt;链表是一段非连续物理地址的存储结构，通过节点的成员变量，存储其它单元格的地址，构成一条链，称为链表。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;链表的结构如下图（画得不是很好）：&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;http://i
-    
-    </summary>
-    
-      <category term="数据结构" scheme="http://skytoup.wicp.net/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
   </entry>

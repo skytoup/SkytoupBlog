@@ -227,6 +227,41 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2015/08/04/记录一下iOS的几个UIView的方法/">记录一下iOS的几个UIView的方法</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-08-04T13:42:00.000Z" itemprop="datePublished">
+          2015-08-04
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。如果出现错误的地方，希望大家指出，谢谢。
+UIView:`// 重写此方法，当约束更新时，可更新你的特殊约束，别忘记调用super方法
+
+(void)updateConstraints;`
+
+`// 调用这个方法，会触发update Constraints的操作，即更新约束。在needsUpdateConstraints返回YES时，才能
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/08/04/记录一下iOS的几个UIView的方法/">阅读全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2015/07/06/iOS一个带动画的等待指示器/">iOS一个带动画的等待指示器</a></h3>
                     <span>
                         <span class="post-meta">
@@ -296,44 +331,9 @@
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/06/19/iOS三级联想菜单（SkyAssociationMenuView）/">iOS三级联想菜单（SkyAssociationMenuView）</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-06-19T06:14:00.000Z" itemprop="datePublished">
-          2015-06-19
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        三级联想菜单（SkyAssociationMenuView）测试环境：Xcode 6，iOS 7.0以上。以前做一个项目准备用来当做地区选择用的，后来没用上。。。。。
-只是粗略的实现了一下，写得不是很好，望大家见谅。。。。。
-github：https://github.com/skytoup/SkyAssociationMenuView
-效果图：
-
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/06/19/iOS三级联想菜单（SkyAssociationMenuView）/">阅读全文...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/6/">← 新的文章</a>
-          
+          <a class="pull-right" href="/page/8/">旧的文章 →</a>
         </nav>
     </div>
 </section>

@@ -227,6 +227,38 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2016/08/28/Python3的虚拟环境/">Python3的虚拟环境</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-08-28T13:26:57.000Z" itemprop="datePublished">
+          2016-08-28
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        背景Python安装第三方模块的时候, 是安装到系统全局的环境。当你的多个项目里面用到了同一个库, 但是版本却不一样, 这样就会产生冲突了。
+pyvenv(还有一个比较好的非官方工具Virtualenv就不介绍了)pyvenv是Python3安装时自带的创建一个虚拟环境工具(tip: Python3.4版本前的pyven创建的虚拟环境不带pip)
+用这个工具就能创建出多个Python的虚拟环境, 把第三方模块安装到不同的虚拟环境, 就能
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/08/28/Python3的虚拟环境/">阅读全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2016/05/31/iOS自动化打包上传的踩坑记/">iOS自动化打包上传的踩坑记</a></h3>
                     <span>
                         <span class="post-meta">
@@ -291,36 +323,6 @@ Mac上面本来就自带了ruby，所有就不用自己安装
                     
                     <p class="pull-right readMore">
                         <a href="/2016/05/16/2016-CocosPods安装教程/">阅读全文...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/02/02/iOS使用runtime监测UIViewController的dealloc/">iOS使用runtime监测UIViewController的dealloc</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-02-02T08:10:38.000Z" itemprop="datePublished">
-          2016-02-02
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        平时在iOS开发的时候，很多情况会导致内存泄露。有时候因为循环引用，导致了UIViewController不回收，还有其它好多原因。一般检测内存泄露都是使用Xcode的Instruments工具。但是这个工具有点复杂，新手入门还是有点难度。所以想到了使用runtime替换UIViewController的-(void)dealloc:方法的实现，检测ViewController是否被释放，从而知道ViewController里面有没有内
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/02/02/iOS使用runtime监测UIViewController的dealloc/">阅读全文...</a>
                     </p>
                     
                 </div>

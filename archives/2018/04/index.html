@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>pypy3安装和基本使用 | skytoup blog</title>
+  <title>Archives: 2018/4 | skytoup blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -86,7 +86,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 
 <!-- umeng统计 -->
@@ -220,123 +220,41 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-<section id="intro">
+
+
+<section id="services">
     <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2017-07-28T01:27:10.000Z" itemprop="datePublished">
-          2017-07-28
-      </time>
-    
-</span>
-                <h1>pypy3安装和基本使用</h1>
-            </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2018/04/28/NSHashTable和NSMapTable/">NSHashTable和NSMapTable</a></h4>
+                            
+                            <p><time datetime="2018-04-28T06:19:23.000Z"><a href="/2018/04/28/NSHashTable和NSMapTable/">2018-04-28</a></time></p>
+                        </div>
+                    
+                </div>
+                <nav class="pagination" role="pagination">
+                  
+                  
+                </nav>
+            </div>    
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h2 id="安装">安装</h2><h3 id="MacOS">MacOS</h3><ol>
-<li>先安装<code>brewhome</code>, 官网: <a href="https://brew.sh/" target="_blank" rel="external">brewhome</a>(已安装的跳过)</li>
-<li>打开终端, 输入命令<code>brew install pypy3</code>(没翻墙的可能比较慢)</li>
-<li>安装pypy的pip, 在终端输入<code>curl -O https://bootstrap.pypa.io/get-pip.py &amp;&amp; pypy3 get-pip.py</code></li>
-</ol>
-<h3 id="CentOS">CentOS</h3><p>待测试…</p>
-<h2 id="基本使用">基本使用</h2><h3 id="基本命令">基本命令</h3><ul>
-<li><code>pypy3</code>: 运行脚本, 相当于<code>python3</code><ul>
-<li><code>pypy3 xxx.py</code> # 运行脚本xxx.py</li>
-<li><code>pypy3 -m pip install xxx</code> # 安装依赖xxx</li>
-<li><code>pypy3 -m venv xxx</code> # 创建一个虚拟环境到xxx目录<ul>
-<li>切换到该虚拟环境: <code>source xxx/bin/activate</code>, 退出虚拟环境: <code>deactivate</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>pip_pypy3</code>: 安装依赖库, 相当于 <code>pip3</code><ul>
-<li><code>pip_pypy3 install xxx</code> # 安装依赖xxx</li>
-<li><code>pip_pypy3 install -r requirement.txt</code> # 递归安装requirement.txt里面的依赖</li>
-</ul>
-</li>
-<li><code>easy_install_pypy3</code>: 安装依赖库, 相当于<code>easy_install3</code><ul>
-<li><code>easy_install_pypy3 xxx</code> # 安装依赖xxx</li>
-</ul>
-</li>
-</ul>
-<h3 id="测试性能">测试性能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># test.py</div><div class="line">from time import time</div><div class="line"></div><div class="line">times = 10</div><div class="line">start_time = time()</div><div class="line"></div><div class="line">for t in range(times):</div><div class="line">    sum = 0</div><div class="line">    st = time()</div><div class="line">    for i in range(10 ** 6):</div><div class="line">        sum += i</div><div class="line">    print(&apos;&#123;&#125;: speed time: &#123;&#125;&apos;.format(t, time()-st))</div><div class="line"></div><div class="line">total_time = time()-start_time</div><div class="line">print(&apos;speed time avrage: &#123;&#125;, total: &#123;&#125;&apos;.format(total_time / times, total_time))</div></pre></td></tr></table></figure>
-<blockquote>
-<p>python3 test.py</p>
-</blockquote>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/python.gif" alt="img"></p>
-<pre><code><span class="number">0</span>: speed time: <span class="number">0.16138482093811035</span>
-<span class="number">1</span>: speed time: <span class="number">0.1585860252380371</span>
-<span class="number">2</span>: speed time: <span class="number">0.1659379005432129</span>
-<span class="number">3</span>: speed time: <span class="number">0.1676487922668457</span>
-<span class="number">4</span>: speed time: <span class="number">0.16137290000915527</span>
-<span class="number">5</span>: speed time: <span class="number">0.16071820259094238</span>
-<span class="number">6</span>: speed time: <span class="number">0.16538310050964355</span>
-<span class="number">7</span>: speed time: <span class="number">0.1611499786376953</span>
-<span class="number">8</span>: speed time: <span class="number">0.17231488227844238</span>
-<span class="number">9</span>: speed time: <span class="number">0.17661476135253906</span>
-speed time avrage: <span class="number">0.165160608291626</span>, total: <span class="number">1.6516060829162598</span>
-</code></pre><blockquote>
-<p>pypy3 test.py</p>
-</blockquote>
-<p><img src="http://7xoq5y.com1.z0.glb.clouddn.com/pypy.gif" alt="img"></p>
-<pre><code>0: speed time: <span class="number">0.00528001</span><span class="number">7852783203</span>
-1: speed time: <span class="number">0.003924131</span><span class="number">393432617</span>
-2: speed time: <span class="number">0.00208997</span><span class="number">7264404297</span>
-3: speed time: <span class="number">0.002447128</span><span class="number">2958984375</span>
-4: speed time: <span class="number">0.002082109</span><span class="number">4512939453</span>
-5: speed time: <span class="number">0.00250983</span><span class="number">23822021484</span>
-6: speed time: <span class="number">0.00282788</span><span class="number">2766723633</span>
-7: speed time: <span class="number">0.00203299</span><span class="number">52239990234</span>
-8: speed time: <span class="number">0.00251889</span><span class="number">2288208008</span>
-9: speed time: <span class="number">0.001984119</span><span class="number">415283203</span>
-speed time avrage: <span class="number">0.00293700</span><span class="number">6950378418</span>, total: <span class="number">0.02937006</span><span class="number">950378418</span>
-</code></pre><p>简单的测试来看, pypy比cpython快了好几倍</p>
+    </div>
+</section> 
 
-            </br>
-            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
-            <div class="clearfix"></div>
-            <hr class="nogutter">
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>永无止境</p>
         </div>
-        <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2018/04/28/NSHashTable和NSMapTable/" style="float: left;">
-        ← NSHashTable和NSMapTable
-    </a>
-    
-    
-    <a class="pull-right" href="/2017/03/01/一个实现App在线下载、安装的工具/">
-        一个实现App在线下载、安装的工具 →
-    </a>
-    
-</nav>
-
-        <div class="comments"><div id="disqus_thread"></div>
-<script>
-
-	/**
-	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-	/*
-	var disqus_config = function () {
-		this.page.url = "http://skytoup.wicp.net/2017/07/28/pypy3安装和基本使用/";  // Replace PAGE_URL with your page's canonical URL variable
-		this.page.identifier = "post-pypy3安装和基本使用"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-	};
-	*/
-	(function() { // DON'T EDIT BELOW THIS LINE
-		var d = document, s = d.createElement('script');
-		s.src = 'https://skytoupblog.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
-	})();
-</script>
-<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
     </div>
 </section>
-
-
       
 <!-- ============================ Footer =========================== -->
 
