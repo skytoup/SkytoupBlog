@@ -4,9 +4,9 @@
   <subtitle>分享个人经验</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://skytoup.wicp.net/"/>
+  <link href="http://blog.skytoup.com/"/>
   <updated>2018-05-08T05:50:38.890Z</updated>
-  <id>http://skytoup.wicp.net/</id>
+  <id>http://blog.skytoup.com/</id>
   
   <author>
     <name>skytoup</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Objective-C消息转发探究</title>
-    <link href="http://skytoup.wicp.net/2018/05/08/Objective-C%E6%B6%88%E6%81%AF%E8%BD%AC%E5%8F%91%E6%8E%A2%E7%A9%B6/"/>
-    <id>http://skytoup.wicp.net/2018/05/08/Objective-C消息转发探究/</id>
+    <link href="http://blog.skytoup.com/2018/05/08/Objective-C%E6%B6%88%E6%81%AF%E8%BD%AC%E5%8F%91%E6%8E%A2%E7%A9%B6/"/>
+    <id>http://blog.skytoup.com/2018/05/08/Objective-C消息转发探究/</id>
     <published>2018-05-08T04:03:04.000Z</published>
     <updated>2018-05-08T05:50:38.890Z</updated>
     
@@ -128,8 +128,8 @@
   
   <entry>
     <title>NSHashTable和NSMapTable</title>
-    <link href="http://skytoup.wicp.net/2018/04/28/NSHashTable%E5%92%8CNSMapTable/"/>
-    <id>http://skytoup.wicp.net/2018/04/28/NSHashTable和NSMapTable/</id>
+    <link href="http://blog.skytoup.com/2018/04/28/NSHashTable%E5%92%8CNSMapTable/"/>
+    <id>http://blog.skytoup.com/2018/04/28/NSHashTable和NSMapTable/</id>
     <published>2018-04-28T06:19:23.000Z</published>
     <updated>2018-04-28T06:23:24.430Z</updated>
     
@@ -223,8 +223,8 @@
   
   <entry>
     <title>pypy3安装和基本使用</title>
-    <link href="http://skytoup.wicp.net/2017/07/28/pypy3%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <id>http://skytoup.wicp.net/2017/07/28/pypy3安装和基本使用/</id>
+    <link href="http://blog.skytoup.com/2017/07/28/pypy3%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.skytoup.com/2017/07/28/pypy3安装和基本使用/</id>
     <published>2017-07-28T01:27:10.000Z</published>
     <updated>2017-07-28T02:00:03.000Z</updated>
     
@@ -295,15 +295,15 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
     
     </summary>
     
-      <category term="Python" scheme="http://skytoup.wicp.net/categories/Python/"/>
+      <category term="Python" scheme="http://blog.skytoup.com/categories/Python/"/>
     
     
   </entry>
   
   <entry>
     <title>一个实现App在线下载、安装的工具</title>
-    <link href="http://skytoup.wicp.net/2017/03/01/%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0App%E5%9C%A8%E7%BA%BF%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%B7%A5%E5%85%B7/"/>
-    <id>http://skytoup.wicp.net/2017/03/01/一个实现App在线下载、安装的工具/</id>
+    <link href="http://blog.skytoup.com/2017/03/01/%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%8E%B0App%E5%9C%A8%E7%BA%BF%E4%B8%8B%E8%BD%BD%E3%80%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%B7%A5%E5%85%B7/"/>
+    <id>http://blog.skytoup.com/2017/03/01/一个实现App在线下载、安装的工具/</id>
     <published>2017-03-01T07:48:31.000Z</published>
     <updated>2017-03-01T08:26:51.000Z</updated>
     
@@ -338,15 +338,15 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
     
     </summary>
     
-      <category term="Tool" scheme="http://skytoup.wicp.net/categories/Tool/"/>
+      <category term="Tool" scheme="http://blog.skytoup.com/categories/Tool/"/>
     
     
   </entry>
   
   <entry>
     <title>Python3的虚拟环境</title>
-    <link href="http://skytoup.wicp.net/2016/08/28/Python3%E7%9A%84%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/"/>
-    <id>http://skytoup.wicp.net/2016/08/28/Python3的虚拟环境/</id>
+    <link href="http://blog.skytoup.com/2016/08/28/Python3%E7%9A%84%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/"/>
+    <id>http://blog.skytoup.com/2016/08/28/Python3的虚拟环境/</id>
     <published>2016-08-28T13:26:57.000Z</published>
     <updated>2016-08-28T14:04:51.000Z</updated>
     
@@ -370,15 +370,15 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
     
     </summary>
     
-      <category term="Python" scheme="http://skytoup.wicp.net/categories/Python/"/>
+      <category term="Python" scheme="http://blog.skytoup.com/categories/Python/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS自动化打包上传的踩坑记</title>
-    <link href="http://skytoup.wicp.net/2016/05/31/iOS%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
-    <id>http://skytoup.wicp.net/2016/05/31/iOS自动化打包上传的踩坑记/</id>
+    <link href="http://blog.skytoup.com/2016/05/31/iOS%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    <id>http://blog.skytoup.com/2016/05/31/iOS自动化打包上传的踩坑记/</id>
     <published>2016-05-31T11:38:57.000Z</published>
     <updated>2016-09-11T14:26:27.000Z</updated>
     
@@ -495,15 +495,15 @@ speed time avrage: <span class="number">0.00293700</span><span class="number">69
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>2016 CocosPods安装教程</title>
-    <link href="http://skytoup.wicp.net/2016/05/16/2016-CocosPods%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    <id>http://skytoup.wicp.net/2016/05/16/2016-CocosPods安装教程/</id>
+    <link href="http://blog.skytoup.com/2016/05/16/2016-CocosPods%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>http://blog.skytoup.com/2016/05/16/2016-CocosPods安装教程/</id>
     <published>2016-05-16T12:57:03.000Z</published>
     <updated>2016-06-01T11:46:27.000Z</updated>
     
@@ -576,15 +576,15 @@ pod <span class="keyword">update</span>
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS使用runtime监测UIViewController的dealloc</title>
-    <link href="http://skytoup.wicp.net/2016/02/02/iOS%E4%BD%BF%E7%94%A8runtime%E7%9B%91%E6%B5%8BUIViewController%E7%9A%84dealloc/"/>
-    <id>http://skytoup.wicp.net/2016/02/02/iOS使用runtime监测UIViewController的dealloc/</id>
+    <link href="http://blog.skytoup.com/2016/02/02/iOS%E4%BD%BF%E7%94%A8runtime%E7%9B%91%E6%B5%8BUIViewController%E7%9A%84dealloc/"/>
+    <id>http://blog.skytoup.com/2016/02/02/iOS使用runtime监测UIViewController的dealloc/</id>
     <published>2016-02-02T08:10:38.000Z</published>
     <updated>2016-02-02T09:00:04.000Z</updated>
     
@@ -613,15 +613,15 @@ pod <span class="keyword">update</span>
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>Webstorm使用babel6</title>
-    <link href="http://skytoup.wicp.net/2016/01/28/Webstorm%E4%BD%BF%E7%94%A8babel6/"/>
-    <id>http://skytoup.wicp.net/2016/01/28/Webstorm使用babel6/</id>
+    <link href="http://blog.skytoup.com/2016/01/28/Webstorm%E4%BD%BF%E7%94%A8babel6/"/>
+    <id>http://blog.skytoup.com/2016/01/28/Webstorm使用babel6/</id>
     <published>2016-01-28T00:43:45.000Z</published>
     <updated>2016-01-28T00:54:12.000Z</updated>
     
@@ -642,15 +642,15 @@ pod <span class="keyword">update</span>
     
     </summary>
     
-      <category term="node.js" scheme="http://skytoup.wicp.net/categories/node-js/"/>
+      <category term="node.js" scheme="http://blog.skytoup.com/categories/node-js/"/>
     
     
   </entry>
   
   <entry>
     <title>Node.js的BT下载</title>
-    <link href="http://skytoup.wicp.net/2016/01/25/Node-js%E7%9A%84BT%E4%B8%8B%E8%BD%BD/"/>
-    <id>http://skytoup.wicp.net/2016/01/25/Node-js的BT下载/</id>
+    <link href="http://blog.skytoup.com/2016/01/25/Node-js%E7%9A%84BT%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://blog.skytoup.com/2016/01/25/Node-js的BT下载/</id>
     <published>2016-01-25T02:58:42.000Z</published>
     <updated>2016-01-25T07:35:36.000Z</updated>
     
@@ -713,15 +713,15 @@ pod <span class="keyword">update</span>
     
     </summary>
     
-      <category term="node.js" scheme="http://skytoup.wicp.net/categories/node-js/"/>
+      <category term="node.js" scheme="http://blog.skytoup.com/categories/node-js/"/>
     
     
   </entry>
   
   <entry>
     <title>React-Native搭建Redux框架</title>
-    <link href="http://skytoup.wicp.net/2015/12/24/React-Native%E6%90%AD%E5%BB%BARedux%E6%A1%86%E6%9E%B6/"/>
-    <id>http://skytoup.wicp.net/2015/12/24/React-Native搭建Redux框架/</id>
+    <link href="http://blog.skytoup.com/2015/12/24/React-Native%E6%90%AD%E5%BB%BARedux%E6%A1%86%E6%9E%B6/"/>
+    <id>http://blog.skytoup.com/2015/12/24/React-Native搭建Redux框架/</id>
     <published>2015-12-23T22:44:23.000Z</published>
     <updated>2016-01-25T07:40:58.000Z</updated>
     
@@ -766,8 +766,8 @@ pod <span class="keyword">update</span>
   
   <entry>
     <title>React Native 之 Atom配置nuclide插件</title>
-    <link href="http://skytoup.wicp.net/2015/12/09/React-Native-%E4%B9%8B-Atom%E9%85%8D%E7%BD%AEnuclide%E6%8F%92%E4%BB%B6/"/>
-    <id>http://skytoup.wicp.net/2015/12/09/React-Native-之-Atom配置nuclide插件/</id>
+    <link href="http://blog.skytoup.com/2015/12/09/React-Native-%E4%B9%8B-Atom%E9%85%8D%E7%BD%AEnuclide%E6%8F%92%E4%BB%B6/"/>
+    <id>http://blog.skytoup.com/2015/12/09/React-Native-之-Atom配置nuclide插件/</id>
     <published>2015-12-09T15:45:36.000Z</published>
     <updated>2015-12-09T15:53:28.000Z</updated>
     
@@ -812,15 +812,15 @@ apm link
     
     </summary>
     
-      <category term="React" scheme="http://skytoup.wicp.net/categories/React/"/>
+      <category term="React" scheme="http://blog.skytoup.com/categories/React/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS9 ATS 设置</title>
-    <link href="http://skytoup.wicp.net/2015/11/28/iOS9-ATS-%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://skytoup.wicp.net/2015/11/28/iOS9-ATS-设置/</id>
+    <link href="http://blog.skytoup.com/2015/11/28/iOS9-ATS-%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://blog.skytoup.com/2015/11/28/iOS9-ATS-设置/</id>
     <published>2015-11-28T03:07:01.000Z</published>
     <updated>2015-11-28T10:32:18.000Z</updated>
     
@@ -853,22 +853,22 @@ apm link
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>IntelliJ IDEA开发golang环境配置</title>
-    <link href="http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA%E5%BC%80%E5%8F%91golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    <id>http://skytoup.wicp.net/2015/11/26/IntelliJ-IDEA开发golang环境配置/</id>
+    <link href="http://blog.skytoup.com/2015/11/26/IntelliJ-IDEA%E5%BC%80%E5%8F%91golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://blog.skytoup.com/2015/11/26/IntelliJ-IDEA开发golang环境配置/</id>
     <published>2015-11-26T14:50:00.000Z</published>
     <updated>2015-11-28T03:37:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>看到一篇文章说IntelliJ IDEA开发作为Go的开发环境不错，突然发神经地想试了一下。<br>谁知道跟着教程走，到后面越来越不对劲，去百度其它教程，谁知道千篇一律。。。</p>
 <p>好了下面开始了</p>
 <ol>
-<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/">MAC安装GO</a>）</li>
+<li>首先把<code>GO</code>安装好。。。（自行安装，附上一篇我之前写的<a href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/" target="_blank" rel="external">MAC安装GO</a>）</li>
 <li>安装<code>IntelliJ IDEA</code>，下载地址: <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="external">https://www.jetbrains.com/idea/download/</a>。</li>
 <li>下载<code>go-lang-idea-plugin</code>这个插件，下载地址: <a href="https://plugins.jetbrains.com/plugin/5047" target="_blank" rel="external">https://plugins.jetbrains.com/plugin/5047</a>。(PS:网上百度的基本都是下源码、编译，搞了一个下午编译，谁知道有已经编译好的可以下载)</li>
 <li><p>下载之后，是一个zip文件，不需要解压，打开IntelliJ IDEA，打开<code>Preferences-&gt;Plugins</code>，点击<code>Install plugin from disk...</code>，选择刚下载的zip文件，然后重启一下，插件就这样安装好了。<br><img src="http://7xoq5y.com1.z0.glb.clouddn.com/20151126221741634.jpg" alt="install plugin"></p>
@@ -905,15 +905,15 @@ apm link
     
     </summary>
     
-      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
+      <category term="Go" scheme="http://blog.skytoup.com/categories/Go/"/>
     
     
   </entry>
   
   <entry>
     <title>MacOs下安装go lang</title>
-    <link href="http://skytoup.wicp.net/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
-    <id>http://skytoup.wicp.net/2015/10/03/MacOs下安装go-lang/</id>
+    <link href="http://blog.skytoup.com/2015/10/03/MacOs%E4%B8%8B%E5%AE%89%E8%A3%85go-lang/"/>
+    <id>http://blog.skytoup.com/2015/10/03/MacOs下安装go-lang/</id>
     <published>2015-10-03T05:15:00.000Z</published>
     <updated>2015-11-28T03:41:14.000Z</updated>
     
@@ -954,15 +954,15 @@ apm link
     
     </summary>
     
-      <category term="Go" scheme="http://skytoup.wicp.net/categories/Go/"/>
+      <category term="Go" scheme="http://blog.skytoup.com/categories/Go/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS metaio虚拟现实-位置 demo</title>
-    <link href="http://skytoup.wicp.net/2015/08/27/iOS-metaio%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E-%E4%BD%8D%E7%BD%AE-demo/"/>
-    <id>http://skytoup.wicp.net/2015/08/27/iOS-metaio虚拟现实-位置-demo/</id>
+    <link href="http://blog.skytoup.com/2015/08/27/iOS-metaio%E8%99%9A%E6%8B%9F%E7%8E%B0%E5%AE%9E-%E4%BD%8D%E7%BD%AE-demo/"/>
+    <id>http://blog.skytoup.com/2015/08/27/iOS-metaio虚拟现实-位置-demo/</id>
     <published>2015-08-27T04:13:00.000Z</published>
     <updated>2015-11-27T09:29:28.000Z</updated>
     
@@ -995,15 +995,15 @@ apm link
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS价格日历</title>
-    <link href="http://skytoup.wicp.net/2015/08/27/iOS%E4%BB%B7%E6%A0%BC%E6%97%A5%E5%8E%86/"/>
-    <id>http://skytoup.wicp.net/2015/08/27/iOS价格日历/</id>
+    <link href="http://blog.skytoup.com/2015/08/27/iOS%E4%BB%B7%E6%A0%BC%E6%97%A5%E5%8E%86/"/>
+    <id>http://blog.skytoup.com/2015/08/27/iOS价格日历/</id>
     <published>2015-08-27T02:17:00.000Z</published>
     <updated>2015-11-27T09:29:25.000Z</updated>
     
@@ -1034,15 +1034,15 @@ apm link
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>iOS UIView自定义四个边角的圆角</title>
-    <link href="http://skytoup.wicp.net/2015/08/12/UIView%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9B%E4%B8%AA%E8%BE%B9%E8%A7%92%E7%9A%84%E5%9C%86%E8%A7%92/"/>
-    <id>http://skytoup.wicp.net/2015/08/12/UIView自定义四个边角的圆角/</id>
+    <link href="http://blog.skytoup.com/2015/08/12/UIView%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%9B%E4%B8%AA%E8%BE%B9%E8%A7%92%E7%9A%84%E5%9C%86%E8%A7%92/"/>
+    <id>http://blog.skytoup.com/2015/08/12/UIView自定义四个边角的圆角/</id>
     <published>2015-08-11T23:28:00.000Z</published>
     <updated>2016-05-16T13:58:35.000Z</updated>
     
@@ -1063,15 +1063,15 @@ apm link
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
   
   <entry>
     <title>把json转成java、objc的module的小工具</title>
-    <link href="http://skytoup.wicp.net/2015/08/06/%E6%8A%8Ajson%E8%BD%AC%E6%88%90java%E3%80%81objc%E7%9A%84module%E7%9A%84%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
-    <id>http://skytoup.wicp.net/2015/08/06/把json转成java、objc的module的小工具/</id>
+    <link href="http://blog.skytoup.com/2015/08/06/%E6%8A%8Ajson%E8%BD%AC%E6%88%90java%E3%80%81objc%E7%9A%84module%E7%9A%84%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
+    <id>http://blog.skytoup.com/2015/08/06/把json转成java、objc的module的小工具/</id>
     <published>2015-08-06T12:31:00.000Z</published>
     <updated>2015-11-27T09:29:35.000Z</updated>
     
@@ -1111,15 +1111,15 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     
     </summary>
     
-      <category term="c" scheme="http://skytoup.wicp.net/categories/c/"/>
+      <category term="c" scheme="http://blog.skytoup.com/categories/c/"/>
     
     
   </entry>
   
   <entry>
     <title>记录一下iOS的几个UIView的方法</title>
-    <link href="http://skytoup.wicp.net/2015/08/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8BiOS%E7%9A%84%E5%87%A0%E4%B8%AAUIView%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <id>http://skytoup.wicp.net/2015/08/04/记录一下iOS的几个UIView的方法/</id>
+    <link href="http://blog.skytoup.com/2015/08/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8BiOS%E7%9A%84%E5%87%A0%E4%B8%AAUIView%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://blog.skytoup.com/2015/08/04/记录一下iOS的几个UIView的方法/</id>
     <published>2015-08-04T13:42:00.000Z</published>
     <updated>2015-11-27T09:29:38.000Z</updated>
     
@@ -1163,7 +1163,7 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     
     </summary>
     
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
+      <category term="iOS" scheme="http://blog.skytoup.com/categories/iOS/"/>
     
     
   </entry>
