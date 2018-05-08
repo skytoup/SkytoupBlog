@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>Objective-C消息转发探究 | skytoup blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="skytoup blog">
+    <meta name="author" content="skytoup">
+    <meta name="description" content="分享个人经验" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="skytoup blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+
+<!-- umeng统计 -->
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262055698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262055698%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Go/" class="animsition-link">Go<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/React/" class="animsition-link">React<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Tool/" class="animsition-link">Tool<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/c/" class="animsition-link">c<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(10)</small></a></li>
+				    
+				    <li><a href="/categories/node-js/" class="animsition-link">node.js<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/数据结构/" class="animsition-link">数据结构<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">关于</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">skytoup blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">更多</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/bg.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>分享经验，共同进步</br><span>Welcome</sapn></br></h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-05-08T04:03:04.000Z" itemprop="datePublished">
+          2018-05-08
+      </time>
+    
+</span>
+                <h1>Objective-C消息转发探究</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="概(fei)述(hua)">概(fei)述(hua)</h1><p>…(省略1024亿个byte)</p>
+<h1 id="探究">探究</h1><p>为了研究<code>Objective-C</code>的消息转发，做了一系列测试</p>
+<h2 id="Test_0">Test 0</h2><ul>
+<li>内容: 调用对象存的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义一个<code>TestObject</code>类，继承<code>NSObject</code>, 重写的方法如下:</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject</span></span></div><div class="line"></div><div class="line">+ (<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel &#123;</div><div class="line">    <span class="built_in">BOOL</span> ret = [<span class="keyword">super</span> resolveClassMethod:sel];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p resolveClassMethod: %@, return: %d"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(sel), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)respondsToSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">BOOL</span> ret = [<span class="keyword">super</span> respondsToSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p respondsToSelector: %@, return: %d"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [<span class="keyword">super</span> forwardingTargetForSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">NSMethodSignature</span>* ret = [<span class="keyword">super</span> methodSignatureForSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p methodSignatureForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardInvocation: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, anInvocation);</div><div class="line">    [<span class="keyword">super</span> forwardInvocation:anInvocation];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码
+
+    <span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[TestObject alloc] init];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: 什么都没有log    </li>
+<li>结论: 调用存在的方法, 没有发生任何消息转发</li>
+</ul>
+<h2 id="Test_1">Test 1</h2><ul>
+<li>内容: 调用对象不存在的方法</li>
+<li><p>步骤:</p>
+<ol>
+<li><p>代码</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject* obj = [[TestObject alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>结果: <code>TestObject</code>调用了<code>forwardingTargetForSelector:</code>(返回nil), 然后调用<code>methodSignatureForSelector:</code>(返回nil), 最后log <code>unrecognized selector sent to instance</code></li>
+<li>结论: 调用不存在的方法, 发生了消息转发</li>
+</ul>
+<h2 id="Test_2">Test 2</h2><ul>
+<li>内容: <code>TestObject_1</code>重写<code>forwardingTargetForSelector:</code>(返回<code>TestObject</code>对象), 调用它们都不存在的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义<code>TestObject_1</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_1</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [[TestObject alloc] init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码:
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_2* obj = [[TestObject_2 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: <code>TestObject_1</code>对象先调用了<code>forwardingTargetForSelector:</code>(返回TestObject对象), 然后<code>TestObject</code>对象调用<code>forwardingTargetForSelector:</code>(返回nil), 跟着调用<code>methodSignatureForSelector:</code>(返回nil), 最后log <code>unrecognized selector sent to instance</code></li>
+<li>结论: 不存在的方法转发到了其它对象处理失败</li>
+</ul>
+<h2 id="Test_3">Test 3</h2><ul>
+<li>内容: <code>TestObject_2</code>重写<code>forwardingTargetForSelector:</code>(返回<code>TestObject_1</code>), 调用<code>TestObject_2</code>不存在, 但<code>TestObject_1</code>存在的方法</li>
+<li><p>步骤:</p>
+<ol>
+<li><p>定义<code>TestObject_2</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_2</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [[TestObject_1 alloc] init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. TestObject_1, 添加方法
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	- (<span class="keyword">void</span>)testObject_1ExistsMethod &#123;</div><div class="line">   		<span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p I am exists"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></span>
+
+
+3. 代码
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_2* obj = [[TestObject_2 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"testObject_1ExistsMethod"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: <code>TestObject_2</code>对象先调用了<code>forwardingTargetForSelector:</code>(返回TestObject_1对象), 然后<code>TestObject_1</code>对象调用了<code>testObject_1ExistsMethod</code></li>
+<li>结论: 不存在的方法转发到了其它对象处理成功</li>
+</ul>
+<h2 id="Test_4">Test 4</h2><ul>
+<li>内容: <code>TestObject_3</code>重写<code>methodSignatureForSelector:</code>(不返回nil)和<code>forwardInvocation:</code>, 调用不存在的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义<code>TestObject_3</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_3</span></span></div><div class="line"></div><div class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p methodSignatureForSelector: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector));</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSObject</span> methodSignatureForSelector:<span class="keyword">@selector</span>(init)];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardInvocation: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, anInvocation);</div><div class="line"><span class="comment">//    [super forwardInvocation:anInvocation]; // will crash, because the method signature is not right</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_3* obj = [[TestObject_3 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: 先调用了<code>forwardingTargetForSelector:</code>, 然后<code>methodSignatureForSelector:</code>, 最后<code>forwardInvocation:</code>, 没发生崩溃</li>
+<li>结论: <code>TestObject_3</code>自己处理了不存在方法</li>
+</ul>
+<h1 id="总结">总结</h1><p>如下图<br><img src="https://raw.githubusercontent.com/skytoup/TestMessageForwarding/master/MethodForwarding.png" alt="png"></p>
+<h1 id="测试代码">测试代码</h1><p>TestMessageForwarding: <a href="https://github.com/skytoup/TestMessageForwarding" target="_blank" rel="external">https://github.com/skytoup/TestMessageForwarding</a></p>
+
+            </br>
+            <pre><code>本文为博主skytoup原创文章，未经博主skytoup允许不得转载。</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/04/28/NSHashTable和NSMapTable/">
+        NSHashTable和NSMapTable →
+    </a>
+    
+</nav>
+
+        <div class="comments"><div id="disqus_thread"></div>
+<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+		this.page.url = "http://skytoup.wicp.net/2018/05/08/Objective-C消息转发探究/";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "post-Objective-C消息转发探究"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = 'https://skytoupblog.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+</script>
+<script id="dsq-count-scr" src="//skytoupblog.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By skytoup. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/skytoup/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- busuanzi -->
+            <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+            <!-- busuanzi -->
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

@@ -235,11 +235,13 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p>原文来自Apple官方文档: </p>
-<pre><code><span class="bullet">- </span>[<span class="link_label">NSHashTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSMapTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSPointerFunctions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSPointerFunctionsOptions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</span>)
-</code></pre><h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<ul>
+<li>NSHashTable: <a href="https://developer.apple.com/documentation/foundation/nshashtable?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</a></li>
+<li>NSMapTable: <a href="https://developer.apple.com/documentation/foundation/nsmaptable?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</a></li>
+<li>NSPointerFunctions: <a href="https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</a></li>
+<li>NSPointerFunctionsOptions: <a href="https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</a></li>
+</ul>
+<h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
 <h2 id="概述">概述</h2><p>NSHashTable和NSSet不同之处：</p>
 <pre><code>-<span class="ruby"> 它可以对它的元素保持弱引用。
 </span>-<span class="ruby"> 它的元素可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
@@ -314,6 +316,10 @@
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2018/05/08/Objective-C消息转发探究/" style="float: left;">
+        ← Objective-C消息转发探究
+    </a>
     
     
     <a class="pull-right" href="/2017/07/28/pypy3安装和基本使用/">

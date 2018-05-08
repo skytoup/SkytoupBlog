@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skytoup.wicp.net/"/>
-  <updated>2018-04-28T06:21:23.836Z</updated>
+  <updated>2018-05-08T05:50:38.890Z</updated>
   <id>http://skytoup.wicp.net/</id>
   
   <author>
@@ -16,18 +16,131 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Objective-C消息转发探究</title>
+    <link href="http://skytoup.wicp.net/2018/05/08/Objective-C%E6%B6%88%E6%81%AF%E8%BD%AC%E5%8F%91%E6%8E%A2%E7%A9%B6/"/>
+    <id>http://skytoup.wicp.net/2018/05/08/Objective-C消息转发探究/</id>
+    <published>2018-05-08T04:03:04.000Z</published>
+    <updated>2018-05-08T05:50:38.890Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概(fei)述(hua)">概(fei)述(hua)</h1><p>…(省略1024亿个byte)</p>
+<h1 id="探究">探究</h1><p>为了研究<code>Objective-C</code>的消息转发，做了一系列测试</p>
+<h2 id="Test_0">Test 0</h2><ul>
+<li>内容: 调用对象存的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义一个<code>TestObject</code>类，继承<code>NSObject</code>, 重写的方法如下:</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject</span></span></div><div class="line"></div><div class="line">+ (<span class="built_in">BOOL</span>)resolveClassMethod:(SEL)sel &#123;</div><div class="line">    <span class="built_in">BOOL</span> ret = [<span class="keyword">super</span> resolveClassMethod:sel];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p resolveClassMethod: %@, return: %d"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(sel), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">BOOL</span>)respondsToSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">BOOL</span> ret = [<span class="keyword">super</span> respondsToSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p respondsToSelector: %@, return: %d"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [<span class="keyword">super</span> forwardingTargetForSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">NSMethodSignature</span>* ret = [<span class="keyword">super</span> methodSignatureForSelector:aSelector];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p methodSignatureForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardInvocation: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, anInvocation);</div><div class="line">    [<span class="keyword">super</span> forwardInvocation:anInvocation];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码
+
+    <span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[TestObject alloc] init];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: 什么都没有log    </li>
+<li>结论: 调用存在的方法, 没有发生任何消息转发</li>
+</ul>
+<h2 id="Test_1">Test 1</h2><ul>
+<li>内容: 调用对象不存在的方法</li>
+<li><p>步骤:</p>
+<ol>
+<li><p>代码</p>
+ <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject* obj = [[TestObject alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>结果: <code>TestObject</code>调用了<code>forwardingTargetForSelector:</code>(返回nil), 然后调用<code>methodSignatureForSelector:</code>(返回nil), 最后log <code>unrecognized selector sent to instance</code></li>
+<li>结论: 调用不存在的方法, 发生了消息转发</li>
+</ul>
+<h2 id="Test_2">Test 2</h2><ul>
+<li>内容: <code>TestObject_1</code>重写<code>forwardingTargetForSelector:</code>(返回<code>TestObject</code>对象), 调用它们都不存在的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义<code>TestObject_1</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_1</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [[TestObject alloc] init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码:
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_2* obj = [[TestObject_2 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: <code>TestObject_1</code>对象先调用了<code>forwardingTargetForSelector:</code>(返回TestObject对象), 然后<code>TestObject</code>对象调用<code>forwardingTargetForSelector:</code>(返回nil), 跟着调用<code>methodSignatureForSelector:</code>(返回nil), 最后log <code>unrecognized selector sent to instance</code></li>
+<li>结论: 不存在的方法转发到了其它对象处理失败</li>
+</ul>
+<h2 id="Test_3">Test 3</h2><ul>
+<li>内容: <code>TestObject_2</code>重写<code>forwardingTargetForSelector:</code>(返回<code>TestObject_1</code>), 调用<code>TestObject_2</code>不存在, 但<code>TestObject_1</code>存在的方法</li>
+<li><p>步骤:</p>
+<ol>
+<li><p>定义<code>TestObject_2</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_2</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="keyword">id</span> ret = [[TestObject_1 alloc] init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardingTargetForSelector: %@, return: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector), ret);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. TestObject_1, 添加方法
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">	- (<span class="keyword">void</span>)testObject_1ExistsMethod &#123;</div><div class="line">   		<span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p I am exists"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></span>
+
+
+3. 代码
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_2* obj = [[TestObject_2 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"testObject_1ExistsMethod"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: <code>TestObject_2</code>对象先调用了<code>forwardingTargetForSelector:</code>(返回TestObject_1对象), 然后<code>TestObject_1</code>对象调用了<code>testObject_1ExistsMethod</code></li>
+<li>结论: 不存在的方法转发到了其它对象处理成功</li>
+</ul>
+<h2 id="Test_4">Test 4</h2><ul>
+<li>内容: <code>TestObject_3</code>重写<code>methodSignatureForSelector:</code>(不返回nil)和<code>forwardInvocation:</code>, 调用不存在的方法</li>
+<li><p>步骤: </p>
+<ol>
+<li><p>定义<code>TestObject_3</code>, 继承<code>TestObject</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">TestObject_3</span></span></div><div class="line"></div><div class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)aSelector &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p methodSignatureForSelector: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, <span class="built_in">NSStringFromSelector</span>(aSelector));</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSObject</span> methodSignatureForSelector:<span class="keyword">@selector</span>(init)];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)anInvocation &#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"--&gt;&gt; %@ %p forwardInvocation: %@"</span>, [<span class="keyword">self</span> <span class="keyword">class</span>], <span class="keyword">self</span>, anInvocation);</div><div class="line"><span class="comment">//    [super forwardInvocation:anInvocation]; // will crash, because the method signature is not right</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>2. 代码
+
+<span class="comment"><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestObject_3* obj = [[TestObject_3 alloc] init];</div><div class="line">  [obj performSelector:<span class="built_in">NSSelectorFromString</span>(<span class="string">@"not exists sel"</span>)];</div></pre></td></tr></table></figure></span>
+</code></pre><ul>
+<li>结果: 先调用了<code>forwardingTargetForSelector:</code>, 然后<code>methodSignatureForSelector:</code>, 最后<code>forwardInvocation:</code>, 没发生崩溃</li>
+<li>结论: <code>TestObject_3</code>自己处理了不存在方法</li>
+</ul>
+<h1 id="总结">总结</h1><p>如下图<br><img src="https://raw.githubusercontent.com/skytoup/TestMessageForwarding/master/MethodForwarding.png" alt="png"></p>
+<h1 id="测试代码">测试代码</h1><p>TestMessageForwarding: <a href="https://github.com/skytoup/TestMessageForwarding" target="_blank" rel="external">https://github.com/skytoup/TestMessageForwarding</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概(fei)述(hua)&quot;&gt;概(fei)述(hua)&lt;/h1&gt;&lt;p&gt;…(省略1024亿个byte)&lt;/p&gt;
+&lt;h1 id=&quot;探究&quot;&gt;探究&lt;/h1&gt;&lt;p&gt;为了研究&lt;code&gt;Objective-C&lt;/code&gt;的消息转发，做了一系列测试&lt;/p&gt;
+&lt;h2 id=&quot;Te
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>NSHashTable和NSMapTable</title>
     <link href="http://skytoup.wicp.net/2018/04/28/NSHashTable%E5%92%8CNSMapTable/"/>
     <id>http://skytoup.wicp.net/2018/04/28/NSHashTable和NSMapTable/</id>
     <published>2018-04-28T06:19:23.000Z</published>
-    <updated>2018-04-28T06:21:23.836Z</updated>
+    <updated>2018-04-28T06:23:24.430Z</updated>
     
     <content type="html"><![CDATA[<p>原文来自Apple官方文档: </p>
-<pre><code><span class="bullet">- </span>[<span class="link_label">NSHashTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSMapTable</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSPointerFunctions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</span>)
-<span class="bullet">- </span>[<span class="link_label">NSPointerFunctionsOptions</span>](<span class="link_url">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</span>)
-</code></pre><h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
+<ul>
+<li>NSHashTable: <a href="https://developer.apple.com/documentation/foundation/nshashtable?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nshashtable?language=objc</a></li>
+<li>NSMapTable: <a href="https://developer.apple.com/documentation/foundation/nsmaptable?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nsmaptable?language=objc</a></li>
+<li>NSPointerFunctions: <a href="https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nspointerfunctions?language=objc</a></li>
+<li>NSPointerFunctionsOptions: <a href="https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc" target="_blank" rel="external">https://developer.apple.com/documentation/foundation/nspointerfunctionsoptions?language=objc</a></li>
+</ul>
+<h1 id="NSHashTable">NSHashTable</h1><p>一个类似set的集合，但是它有更多的内存语义(*更自由定义集合元素的内存如何管理)。</p>
 <h2 id="概述">概述</h2><p>NSHashTable和NSSet不同之处：</p>
 <pre><code>-<span class="ruby"> 它可以对它的元素保持弱引用。
 </span>-<span class="ruby"> 它的元素可以在输入时拷贝副本 或 使用指针地址对比相同和哈希。
@@ -100,7 +213,8 @@
     <summary type="html">
     
       &lt;p&gt;原文来自Apple官方文档: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;bullet&quot;&gt;- &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;NSHashTable&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;https:/
+&lt;ul&gt;
+&lt;li&gt;NSHashTable: &lt;a href=&quot;https://developer.apple.com/documentation/foundation/nshashtable?language=objc&quot; target
     
     </summary>
     
@@ -1046,41 +1160,6 @@ json2moudle t<span class="class">.json</span> -n test2 -o ~/Desktop/test -<span 
     
       &lt;p&gt;在用自动布局的时候，老是忘记更新Constraint使用哪个方法，特意去查了一下资料，做了一下笔记。&lt;br&gt;如果出现错误的地方，希望大家指出，谢谢。&lt;/p&gt;
 &lt;h3 id=&quot;UIView:&quot;&gt;UIView:&lt;/h3&gt;&lt;p&gt;`// 重写此方法，当约束更新时，可更新你的特殊约束
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://skytoup.wicp.net/categories/iOS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iOS一个带动画的等待指示器</title>
-    <link href="http://skytoup.wicp.net/2015/07/06/iOS%E4%B8%80%E4%B8%AA%E5%B8%A6%E5%8A%A8%E7%94%BB%E7%9A%84%E7%AD%89%E5%BE%85%E6%8C%87%E7%A4%BA%E5%99%A8/"/>
-    <id>http://skytoup.wicp.net/2015/07/06/iOS一个带动画的等待指示器/</id>
-    <published>2015-07-06T07:59:00.000Z</published>
-    <updated>2016-09-08T12:18:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="SkyWaitingView（github链接）">SkyWaitingView（<a href="https://github.com/skytoup/SkyWaitingView" target="_blank" rel="external">github链接</a>）</h1><hr>
-<h2 id="测试环境：Xcode_6，iOS_7-0以上。">测试环境：Xcode 6，iOS 7.0以上。</h2><p><img src="https://raw.githubusercontent.com/skytoup/SkyWaitingView/master/1.gif" alt="GIF"></p>
-<h2 id="简介">简介</h2><p>一个简单的等待指示器</p>
-<ul>
-<li>可自定义圆弧粗细、颜色、旋转速率</li>
-<li>可自定义标签显示</li>
-</ul>
-<hr>
-<h2 id="使用方法">使用方法</h2><p>把头文件 <code>SkyWaitingView.h</code> 导入项目，然后设置各属性，具体使用方法请参考示例项目。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SkyCircleWatingView *v = [SkyCircleWatingView new];</div><div class="line">v.frame = <span class="built_in">CGRectMake</span>(<span class="number">50</span>, baseY, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">[v sizeToFit];</div><div class="line">[<span class="keyword">self</span>.view addSubview:v];</div><div class="line">v.rate = <span class="number">1.</span>f;</div><div class="line">[v start];</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式">联系方式</h2><ul>
-<li>QQ：875766917，请备注</li>
-<li>QQMail：875766917@qq.com</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;SkyWaitingView（github链接）&quot;&gt;SkyWaitingView（&lt;a href=&quot;https://github.com/skytoup/SkyWaitingView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github链接
     
     </summary>
     
